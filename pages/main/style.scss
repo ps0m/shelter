@@ -1,13 +1,15 @@
 @import "_normilize";
-@import "__fonts";
+@import "_fonts";
 $font-f1: Georgia, 'Times New Roman', Times, serif;
 $font-f2: Arial, Helvetica, sans-serif;
 $font-s1: 15px;
-$color-light:#FFFFFF;
+$color-light1:#FFFFFF;
+$color-light2: #FAFAFA;
 $color-decor:#F1CDB3;
 $color-hover: #FDDCC4;
 $color-dark1:#545454;
 $color-dark2:#4C4C4C;
+$color-dark3:#292929;
 
 
 html,body{
@@ -62,7 +64,7 @@ html,body{
       font-size: 13px;
       line-height: 115%;
       letter-spacing: 0.1em;
-      color: $color-light;
+      color: $color-light1;
    }
 
    &__menu {
@@ -110,7 +112,7 @@ html,body{
 //=============================================================//
 
 .not-only {
-   min-height: 908px;
+   // min-height: 908px;
    min-width: 100%;
    padding: 180px 40px 0px;
    margin: 0px 0px 80px 0px;
@@ -136,7 +138,7 @@ html,body{
          margin: 0px 0px 42px 0px;
          font-size: 44px;
          line-height: 130%;
-         color: $color-light;
+         color: $color-light1;
 		}
 
 		&__subtitle {
@@ -145,14 +147,13 @@ html,body{
          font-family: 'Arial';
          line-height: 160%;
          color: #CDCDCD;
-
 		}
 
-		&__button {
-		}
+		// &__button {
+		// }
 
-		&__image {
-		}
+		// &__image {
+		// }
 }
 
 .button {
@@ -163,15 +164,11 @@ html,body{
    border: none;
    outline: none;
    transition: 0.5s;
-
-   &__text {
-      font-family: $font-f1;
-      // padding: 0px 0px 0px 0px;
-      font-size: 17px;
-      line-height: 130%;
-      letter-spacing: 0.06em;
-      color: #292929;
-	}
+   font-family: $font-f1;
+   font-size: 17px;
+   line-height: 130%;
+   letter-spacing: 0.06em;
+   color: $color-dark3;
    &:hover{
       background: $color-hover;
    }
@@ -181,19 +178,20 @@ html,body{
 
 .about {
 
-		&__container {
-		}
+		// &__container {
+		// }
 
 		&__block {
          display: flex;
-         justify-content: space-between;
+         justify-content: center;
          align-items: center;
-         padding: 0px 175px 0px;
+         padding: 0px 15px 0px;
 		}
 
 		&__image {
-         width: 300px;
-         height: 408px;
+         min-width: 300px;
+         min-height: 408px;
+         margin-right: 175px;
 		}
 
 		&__body {
@@ -206,11 +204,12 @@ html,body{
 
 		&__title {
          max-width: 370px;
-         margin: 14px 0px 25px 0px;
+         margin: 14px 0px 0px 0px;
 		}
 
 		&__text {
          font-family:$font-f2;
+         margin: 25px 0px 0px 0px;
          line-height: 160%;
 		}
 }
@@ -222,6 +221,98 @@ html,body{
    line-height: 130%;
    color: $color-dark1;
 }
+
+//=================================================================//
+
+.our-friends {
+      background: #E5E5E5;
+		&__container {
+         padding: 80px 40px 100px 40px;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         align-items: center;
+		}
+
+		&__title {
+         max-width: 400px;
+         text-align: center;
+		}
+
+		&__slider {
+         margin: 60px 0px 60px 0px;
+		}
+      &__button {
+         max-width: 261px;
+         margin: 0px;
+		}
+}
+
+.slider {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+		// &__arrow {
+		// }
+
+		&__cards {
+      flex: 0 1 990px;
+      display: flex;
+      justify-content: space-between;
+      margin: 0px -10px;
+		}
+
+		&__card {
+         flex: 0 1 270px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         background: $color-light2;
+         border-radius: 9px;
+         padding: 0px 0px 30px 0px;
+         margin: 0px 10px;
+		}
+}
+.arrow {
+   position: relative;
+   flex: 0 0 52px;
+   height: 52px;
+   border: 2px solid $color-decor;
+   box-sizing: border-box;
+   border-radius: 100px;
+   &__image {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+		}
+   &__right{
+      transform: rotate(180deg);
+   }
+}
+.card-slider {
+
+		// &__image {
+      //    // flex: 0 1 33.333%;
+		// }
+
+		&__title {
+         font-size: 20px;
+         margin: 30px 0px 30px 0px;
+         letter-spacing: 0.06em;
+         color: $color-dark1;
+		}
+
+		&__button {
+         width: 187px;
+         background: transparent;
+         border: 2px solid $color-decor;
+         // margin: 0 auto;
+		}
+}
+
 
 
 

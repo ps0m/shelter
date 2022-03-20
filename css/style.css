@@ -341,9 +341,44 @@ template {
   display: none;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+/* Regular Georgia*/
+@font-face {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Georgia Regular"), local("Georgia-Regular"), url("../../assets/fonts/Georgia/Georgia.woff2") format("woff2"), url("../../assets/fonts/Georgia/Georgia.woff") format("woff"), url("../../assets/fonts/Georgia/Georgia.ttf") format("ttf"), url("../../assets/fonts/Georgia/Georgia.eot") format("eot");
+}
+
+/* Italic Georgia*/
+@font-face {
+  font-family: 'Georgia';
+  font-style: italic;
+  font-weight: normal;
+  src: local("Georgia-Italic"), local("Georgia Italic"), url("../../assets/fonts/Georgia/Georgia-Italic.woff2") format("woff2"), url("../../assets/fonts/Georgia/Georgia-Italic.woff") format("woff"), url("../../assets/fonts/Georgia/Georgia-Italic.ttf") format("ttf"), url("../../assets/fonts/Georgia/Georgia-Italic.eot") format("eot");
+}
+
+/* Bold Georgia*/
+@font-face {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: bold;
+  src: local("Georgia-Bold"), local("Georgia Bold"), url("../../assets/fonts/Georgia/Georgia-Bold.woff2") format("woff2"), url("../../assets/fonts/Georgia/Georgia-Bold.woff") format("woff"), url("../../assets/fonts/Georgia/Georgia-Bold.ttf") format("ttf"), url("../../assets/fonts/Georgia/Georgia-Bold.eot") format("eot");
+}
+
+/* Italic Arial*/
+@font-face {
+  font-family: 'Arial';
+  src: local("Arial Italic"), local("Arial-Italic"), url("../../assets/fonts/Arial/Arial-ItalicMT.woff2") format("woff2"), url("../../assets/fonts/Arial/Arial-ItalicMT.woff") format("woff"), url("../../assets/fonts/Arial/Arial-ItalicMT.ttf") format("ttf"), url("../../assets/fonts/Arial/Arial-ItalicMT.eot") format("eot");
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Regular Arial*/
+@font-face {
+  font-family: 'Arial';
+  src: local("Arial Regular"), local("Arial-Regular"), url("../../assets/fonts/Arial/ArialMT.woff2") format("woff2"), url("../../assets/fonts/Arial/ArialMT.woff") format("woff"), url("../../assets/fonts/Arial/ArialMT.ttf") format("ttf"), url("../../assets/fonts/Arial/ArialMT.eot") format("eot");
+  font-weight: normal;
+  font-style: normal;
 }
 
 html, body {
@@ -469,7 +504,6 @@ html, body {
 }
 
 .not-only {
-  min-height: 908px;
   min-width: 100%;
   padding: 180px 40px 0px;
   margin: 0px 0px 80px 0px;
@@ -530,9 +564,6 @@ html, body {
   outline: none;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-}
-
-.button__text {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 17px;
   line-height: 130%;
@@ -554,10 +585,19 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0px 15px 0px;
+}
+
+.about__image {
+  min-width: 300px;
+  min-height: 408px;
+  margin-right: 175px;
 }
 
 .about__body {
-  max-width: 430px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 430px;
+          flex: 0 1 430px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -575,11 +615,12 @@ html, body {
 
 .about__title {
   max-width: 370px;
-  margin: 14px 0px 25px 0px;
+  margin: 14px 0px 0px 0px;
 }
 
 .about__text {
   font-family: Arial, Helvetica, sans-serif;
+  margin: 25px 0px 0px 0px;
   line-height: 160%;
 }
 
@@ -590,4 +631,126 @@ html, body {
   font-size: 35px;
   line-height: 130%;
   color: #545454;
+}
+
+.our-friends {
+  background: #E5E5E5;
+}
+
+.our-friends__container {
+  padding: 80px 40px 100px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.our-friends__title {
+  max-width: 400px;
+  text-align: center;
+}
+
+.our-friends__slider {
+  margin: 60px 0px 60px 0px;
+}
+
+.our-friends__button {
+  max-width: 261px;
+  margin: 0px;
+}
+
+.slider {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.slider__cards {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 990px;
+          flex: 0 1 990px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0px -10px;
+}
+
+.slider__card {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 270px;
+          flex: 0 1 270px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #FAFAFA;
+  border-radius: 9px;
+  padding: 0px 0px 30px 0px;
+  margin: 0px 10px;
+}
+
+.arrow {
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 52px;
+          flex: 0 0 52px;
+  height: 52px;
+  border: 2px solid #F1CDB3;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 100px;
+}
+
+.arrow__image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.arrow__right {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.card-slider__title {
+  font-size: 20px;
+  margin: 30px 0px 30px 0px;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+.card-slider__button {
+  width: 187px;
+  background: transparent;
+  border: 2px solid #F1CDB3;
 }
