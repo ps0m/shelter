@@ -13,35 +13,45 @@ $color-dark3:#292929;
 
 
 html,body{
+   box-sizing: border-box;
    height: 100%;
-   line-height: 1;
+   line-height: 1.15;
    font-family: $font-f1;
    font-size: $font-s1;
    font-style: normal;
    font-weight: 400;
+   color: $color-dark1;
+   scroll-behavior:smooth;
 }
+
+h1,h2,h3,h4{
+   margin: 0;
+   padding: 0;
+}
+
 .wrapper {
+   box-sizing: border-box;
    min-height: 100%;
    display: flex;
    flex-direction: column;
 }
 [class*="__container"] {
-   max-width: 1280px;
+   box-sizing: border-box;
+   width: 1280px;
    margin: 0 auto;
    padding: 0px 40px;
-
 }
 
 //===================================================//
 
 .header {
-   min-height: 60px;
-   z-index: 1;
-   
    &__container{
       display: flex;
       justify-content: space-between;
       align-items: center;
+      min-height: 60px;
+      position: relative;
+      z-index: 2;
    }
    &__logo {
       display: flex;
@@ -54,26 +64,27 @@ html,body{
       margin: 0px 0px 10px 0px;
       font-family: 'Georgia';
       font-size: 32px;
-      line-height: 110%;
-      letter-spacing: 0.06em;
+      line-height: 1.1;
+      font-style: normal;
+      font-weight: 400;
       color: $color-decor;
+      letter-spacing: 0.06em;
    }
 
    &__logo-subtitle {
       font-family: $font-f2;
       font-size: 13px;
-      line-height: 115%;
       letter-spacing: 0.1em;
       color: $color-light1;
    }
 
    &__menu {
-      margin: 0px -35px 0px 0px;
+      margin: 0px -33px 5px 0px;
    }
 }
 
 .header-main {
-   margin: 60px 40px -120px;
+   margin: 60px auto -120px;
 }
 
 .menu {
@@ -94,16 +105,21 @@ html,body{
 
    &__link {
       font-family: $font-f2;
-      line-height: 160%;
+      line-height: 1.6;
       color: #FAFAFA;
       text-decoration: none;
+      text-align: center;
+      transition: ease-in-out 0.5s;
+       &:hover{
+            color: $color-decor;
+         }
    }
 
    &__active::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: -5px;
+      bottom: -3px;
       width: 100%;
       border-bottom: 4px solid $color-decor;
    }
@@ -112,20 +128,20 @@ html,body{
 //=============================================================//
 
 .not-only {
-   // min-height: 908px;
-   min-width: 100%;
-   padding: 180px 40px 0px;
+   padding: 180px 0px 0px;
    margin: 0px 0px 80px 0px;
    background: url(../../assets/images/background_not_only.png), radial-gradient(circle, #5B483A 0%, #262425 100%) ;
 
 		&__container {
          display: flex;
-         justify-content: space-between;
-         align-items: center;
+         justify-content:flex-end;
+         align-items:center;
 		}
 
 		&__body {
-         max-width: 460px;
+         flex: 0 1 460px;
+         // max-width: 460px;
+         padding: 0px 0px 6.7% 0px;
          display: flex;
          flex-direction: column;
          justify-content: space-between;
@@ -134,16 +150,17 @@ html,body{
 
 		&__title {
          max-width: 310px;
-         // height: 114px;
-         margin: 0px 0px 42px 0px;
+         font-family: $font-f1;
+         font-style: normal;
          font-size: 44px;
+         font-weight: 400;
          line-height: 130%;
          color: $color-light1;
 		}
 
 		&__subtitle {
          width: 100%;
-         margin: 0px 0px 42px 0px;
+         margin: 42px 0px;
          font-family: 'Arial';
          line-height: 160%;
          color: #CDCDCD;
@@ -152,8 +169,12 @@ html,body{
 		// &__button {
 		// }
 
-		// &__image {
-		// }
+		&__image  {
+         flex: 1 1 auto;
+         display: flex;
+         justify-content: flex-end;
+      }
+
 }
 
 .button {
@@ -166,11 +187,15 @@ html,body{
    transition: ease-in-out 0.5s;
    font-family: $font-f1;
    font-size: 17px;
+   font-style: normal;
+   font-weight: 400;
    line-height: 130%;
    letter-spacing: 0.06em;
+
    color: $color-dark3;
    &:hover{
       background: $color-hover;
+      box-shadow: 0 0 5px #FFFFFF;
    }
 }
 
@@ -178,24 +203,22 @@ html,body{
 
 .about {
 
-		// &__container {
-		// }
-
-		&__block {
+		&__container {
          display: flex;
          justify-content: center;
          align-items: center;
-         padding: 0px 15px 0px;
+         padding: 0px 40px 100px;
 		}
 
+
 		&__image {
-         min-width: 300px;
-         min-height: 408px;
-         margin-right: 175px;
+         // min-width: 300px;
+         // min-height: 408px;
+         margin-right: 120px;
 		}
 
 		&__body {
-         flex: 0 1 430px;
+         max-width: 430px;
          display: flex;
          flex-direction: column;
          justify-content: center;
@@ -211,6 +234,7 @@ html,body{
          font-family:$font-f2;
          margin: 25px 0px 0px 0px;
          line-height: 160%;
+         color: $color-dark2
 		}
 }
 .h3-title {
@@ -218,8 +242,9 @@ html,body{
    font-style: normal;
    font-weight: 400;
    font-size: 35px;
-   line-height: 130%;
-   color: $color-dark1;
+   line-height: 1.25;
+   letter-spacing: 0.06em;
+   margin: 0px 0px 0px 0px;   
 }
 
 //=================================================================//
@@ -243,7 +268,7 @@ html,body{
          margin: 60px 0px 60px 0px;
 		}
       &__button {
-         max-width: 261px;
+         width: 261px;
          margin: 0px;
 		}
 }
@@ -257,7 +282,7 @@ html,body{
 		// }
 
 		&__cards {
-      flex: 0 1 990px;
+      flex: 0 1 1010px;
       display: flex;
       justify-content: space-between;
       margin: 0px -10px;
@@ -273,10 +298,11 @@ html,body{
          border-radius: 9px;
          padding: 0px 0px 30px 0px;
          margin: 0px 10px;
-         transition: ease-in-out 0.5s;
+         transition: ease-in-out 0.3s;
          &:hover {
             z-index: 1;
-            transform: scale(1.1); 
+            transform: scale(1.1);
+            box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.5);
          }
 		}
 }
@@ -299,6 +325,7 @@ html,body{
    }
    &:hover{
       background: $color-hover;
+      box-shadow: 0 0 5px #FFFFFF;
    }
 }
 .card-slider {
@@ -309,9 +336,9 @@ html,body{
 
 		&__title {
          font-size: 20px;
-         margin: 30px 0px 30px 0px;
+         line-height: 1.15;
+         margin: 26px 0px 30px 0px;
          letter-spacing: 0.06em;
-         color: $color-dark1;
 		}
 
 		&__button {
@@ -329,35 +356,31 @@ html,body{
          display: flex;
          flex-direction: column;
          align-items: center;
-         padding: 80px 127px 100px;
+         padding: 83px 127px 100px;
 		}
 
 		&__title {
-         max-width: 308px;
+         max-width: 310px;
          margin: 0px 0px 60px 0px;
          text-align: center;
 		}
-
-		&__list-first {
-         justify-content: space-between;
-         column-gap: 120px;
-         margin: 0px 0px 55px 0px;
-		}
-      &__list-second {
-         justify-content: space-around;
-         column-gap: 120px;
+		&__list {
+         margin: 0px -120px -55px;
 		}
 }
 
 .list-help {
-      max-width: 1026px;
+      max-width: 1149px;
       display: flex;
-      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items:flex-end;
 		&__item {
          display: flex;
          flex-direction: column;
          justify-content: space-between;
          align-items: center;
+         margin: 0px 60px 54px;
 		}
 
 		&__icon {
@@ -368,12 +391,136 @@ html,body{
          font-size: 20px;
          line-height: 115%;
          letter-spacing: 0.06em;
-         color: $color-dark1;
+         text-align: center;
 		}
 }
 
+//===========================================================//
 
+.donate {
+      background: #F6F6F6;
+		&__container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 85px 182px 100px;
+		}
 
+		&__image {
+         margin: 0px 30px 0px 0px;
+		}
+
+		// &__body {
+		// }
+}
+.body-donation {
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+		&__title {
+         max-width: 300px;
+         text-align: start;
+         margin: 0px 0px 20px 0px;
+		}
+
+		&__subtitle {
+         margin: 0px 0px 20px 0px;
+         letter-spacing: 0.06em;
+		}
+
+		&__card {
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+         width: 349px;
+         height: 43px;
+         margin: 0px 0px 20px 0px;
+         // padding: 0px 0px 0px 60px;
+         border-radius: 9px;
+         font-size: 20px;
+         letter-spacing: 0.06em;
+         text-decoration: none;
+         color: $color-dark1;
+         background-color: $color-decor;
+         transition: ease-in-out 0.5s;
+         &:before{
+            content: "";
+            width: 30px;
+            height: 23px;
+            margin: 0px 15px 0px 15px;
+            background: url(../../assets/icons/credit-card.svg) no-repeat;
+         }
+         &:hover{
+            background: $color-hover;
+            box-shadow: 0 0 5px #FFFFFF;
+         }
+		}
+
+		&__text {
+         font-family: $font-f2;
+         font-style: italic;
+         font-size: 12px;
+         line-height: 1.5;
+         color: #B2B2B2;
+		}
+}
+
+.footer {
+         background: url(../../assets/images/background_not_only.png), radial-gradient(circle, #5B483A 0%, #262425 100%) ;
+		&__container {
+         padding: 40px 40px 0px 40px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+		&__contacts {
+         margin: 0px 0px 40px 0px;
+		}
+		&__image {
+         max-width: 300px;
+		}
+      &__feedback{
+         max-width: 280px;
+      }
+}
+.contacts-footer {
+      flex: 0 1 302px;
+      min-height: 234px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+		&__title {
+         line-height: 1.27;
+         color: #FFFFFF;
+		}
+
+		&__content {
+         display: flex;
+         align-items: center;
+         &>img{
+            margin: 0px 20px 0px 0px;
+         }
+         &>a{
+         font-family: 'Georgia';
+         font-style: normal;
+         font-weight: 400;
+         font-size: 20px;
+         line-height: 1.15;
+         letter-spacing: 0.06em;
+         color: $color-decor;
+         text-decoration: none;
+         transition: ease-in-out 0.5s;
+         }
+         &>a:hover{
+            color: $color-light1;
+         }
+         
+		}
+
+}
 
 
 
