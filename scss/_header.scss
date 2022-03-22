@@ -6,39 +6,61 @@
       min-height: 60px;
       position: relative;
       z-index: 2;
+      padding: 60px 0px 0px 0px;
    }
-   &__logo {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-   }
+   // &__logo {
+      
+   // }
 
-   &__logo-title {
-      margin: 0px 0px 10px 0px;
-      font-family: 'Georgia';
-      font-size: 32px;
-      line-height: 1.1;
-      font-style: normal;
-      font-weight: 400;
-      color: $color-decor;
-      letter-spacing: 0.06em;
-   }
+   // &__logo-title {
+      
+   // }
 
-   &__logo-subtitle {
-      font-family: $font-f2;
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      color: $color-light1;
-   }
+   // &__logo-subtitle {
+     
+   // }
 
    &__menu {
       margin: 0px -33px 5px 0px;
    }
 }
 
+.logo-header{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   &__title{
+      margin: 0px 0px 10px 0px;
+      font-family: 'Georgia';
+      font-size: 32px;
+      line-height: 1.1;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+         &-gold{
+         color: $color-decor;
+         }
+         &-dark{
+         color: $color-dark1;
+         }
+   }
+   
+   &__subtitle{
+      font-family: $font-f2;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      &__subtitle-light{
+         color: $color-light1;
+      }
+      &__subtitle-dark{
+         color: $color-dark3;
+      }
+   }
+   
+}
 
-.menu {
+.menu-header {
    
    &__list {
       display: flex;
@@ -51,22 +73,28 @@
       position: relative;
       margin: 0px 35px 0px 0px;
       list-style-type: none;
+      &_light{
+         color: $color-light2;
+      }
+      &_dark{
+         color: $color-dark1;
+      }
    }
-
 
    &__link {
       font-family: $font-f2;
       line-height: 1.6;
-      color: $color-light2;
       text-decoration: none;
+      color: inherit;
       text-align: center;
       transition: ease-in-out 0.5s;
-       &:hover{
+      &:hover{
             color: $color-decor;
-         }
+      }
    }
+    
 
-   &__active::after {
+   &__link_active::after {
       content: "";
       position: absolute;
       left: 0;
