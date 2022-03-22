@@ -473,10 +473,6 @@ h1, h2, h3, h4 {
   margin: 0px -33px 5px 0px;
 }
 
-.header-main {
-  margin: 60px auto -120px;
-}
-
 .menu__list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -520,6 +516,10 @@ h1, h2, h3, h4 {
   bottom: -3px;
   width: 100%;
   border-bottom: 4px solid #F1CDB3;
+}
+
+.header-main {
+  margin: 60px auto -120px;
 }
 
 .not-only {
@@ -969,11 +969,11 @@ h1, h2, h3, h4 {
 }
 
 .footer {
+  padding: 40px 40px 0px 40px;
   background: url(../../assets/images/background_not_only.png), radial-gradient(circle, #5B483A 0%, #262425 100%);
 }
 
 .footer__container {
-  padding: 40px 40px 0px 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

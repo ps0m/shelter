@@ -1,0 +1,77 @@
+.header {
+   &__container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 60px;
+      position: relative;
+      z-index: 2;
+   }
+   &__logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+   &__logo-title {
+      margin: 0px 0px 10px 0px;
+      font-family: 'Georgia';
+      font-size: 32px;
+      line-height: 1.1;
+      font-style: normal;
+      font-weight: 400;
+      color: $color-decor;
+      letter-spacing: 0.06em;
+   }
+
+   &__logo-subtitle {
+      font-family: $font-f2;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: $color-light1;
+   }
+
+   &__menu {
+      margin: 0px -33px 5px 0px;
+   }
+}
+
+
+.menu {
+   
+   &__list {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   &__item {
+      position: relative;
+      margin: 0px 35px 0px 0px;
+      list-style-type: none;
+   }
+
+
+   &__link {
+      font-family: $font-f2;
+      line-height: 1.6;
+      color: $color-light2;
+      text-decoration: none;
+      text-align: center;
+      transition: ease-in-out 0.5s;
+       &:hover{
+            color: $color-decor;
+         }
+   }
+
+   &__active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      border-bottom: 4px solid $color-decor;
+   }
+}
