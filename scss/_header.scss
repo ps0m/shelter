@@ -1,25 +1,19 @@
 .header {
    &__container{
+      position: relative;
+      z-index: 2;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 60px;
-      position: relative;
-      z-index: 2;
-      padding: 60px 0px 0px 0px;
+      &_main{
+         min-height: 60px;
+         margin: 60px auto -120px;
+      }
+      &_pets{
+         min-height: 120px;
+         // margin: 60px auto -120px;
+      }
    }
-   // &__logo {
-      
-   // }
-
-   // &__logo-title {
-      
-   // }
-
-   // &__logo-subtitle {
-     
-   // }
-
    &__menu {
       margin: 0px -33px 5px 0px;
    }
@@ -50,10 +44,10 @@
       font-family: $font-f2;
       font-size: 13px;
       letter-spacing: 0.1em;
-      &__subtitle-light{
+      &-light{
          color: $color-light1;
       }
-      &__subtitle-dark{
+      &-dark{
          color: $color-dark3;
       }
    }
@@ -61,8 +55,13 @@
 }
 
 .menu-header {
-   
-   &__list {
+   &_light{
+         color: $color-light2;
+      }
+      &_dark{
+         color: $color-dark1;
+      }
+   &_row {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -73,12 +72,6 @@
       position: relative;
       margin: 0px 35px 0px 0px;
       list-style-type: none;
-      &_light{
-         color: $color-light2;
-      }
-      &_dark{
-         color: $color-dark1;
-      }
    }
 
    &__link {
@@ -92,7 +85,6 @@
             color: $color-decor;
       }
    }
-    
 
    &__link_active::after {
       content: "";

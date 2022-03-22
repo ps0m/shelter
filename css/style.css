@@ -421,6 +421,8 @@ h1, h2, h3, h4 {
 }
 
 .header__container {
+  position: relative;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -430,10 +432,15 @@ h1, h2, h3, h4 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.header__container_main {
   min-height: 60px;
-  position: relative;
-  z-index: 2;
-  padding: 60px 0px 0px 0px;
+  margin: 60px auto -120px;
+}
+
+.header__container_pets {
+  min-height: 120px;
 }
 
 .header__menu {
@@ -480,15 +487,23 @@ h1, h2, h3, h4 {
   letter-spacing: 0.1em;
 }
 
-.logo-header__subtitle__subtitle-light {
+.logo-header__subtitle-light {
   color: #FFFFFF;
 }
 
-.logo-header__subtitle__subtitle-dark {
+.logo-header__subtitle-dark {
   color: #292929;
 }
 
-.menu-header__list {
+.menu-header_light {
+  color: #FAFAFA;
+}
+
+.menu-header_dark {
+  color: #545454;
+}
+
+.menu-header_row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -508,14 +523,6 @@ h1, h2, h3, h4 {
   position: relative;
   margin: 0px 35px 0px 0px;
   list-style-type: none;
-}
-
-.menu-header__item_light {
-  color: #FAFAFA;
-}
-
-.menu-header__item_dark {
-  color: #545454;
 }
 
 .menu-header__link {
@@ -1092,8 +1099,8 @@ h1, h2, h3, h4 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 120px 0px 0px 0px;
   padding: 80px 40px 100px;
+  background: #F6F6F6;
 }
 
 .our-pets__title {
@@ -1107,7 +1114,13 @@ h1, h2, h3, h4 {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 45px 0px 60px 0px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  margin: 45px 0px;
 }
 
 .card-pets__navigation {
