@@ -1,14 +1,16 @@
 .footer {
-         padding: 40px 40px 0px 40px;
          background: url(../../assets/images/background_not_only.png), radial-gradient(circle, #5B483A 0%, #262425 100%) ;
       &__container {
          display: flex;
          justify-content: space-between;
-         align-items: center;
+         align-items: stretch;
+         padding: 40px 40px 0px 40px;
+
       }
 
       &__contacts {
-         margin: 0px 0px 40px 0px;
+         margin: 16px 0px 60px 0px;
+         flex: 0 1 302px;
       }
       &__image {
          max-width: 300px;
@@ -18,24 +20,19 @@
       }
 }
 .contacts-footer {
-      flex: 0 1 302px;
-      min-height: 234px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
-      &__title {
-         line-height: 1.27;
-         color: #FFFFFF;
-      }
-
+      // &__title {
+      // }
       &__content {
          display: flex;
          align-items: center;
-         &>img{
+         & img{
             margin: 0px 20px 0px 0px;
          }
-         &>a{
+         & a{
          font-family: 'Georgia';
          font-style: normal;
          font-weight: 400;

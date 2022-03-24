@@ -10,8 +10,12 @@
          margin: 60px auto -120px;
       }
       &_pets{
+         position: fixed;
+         width: 100%;
+         left: 50%;
+         transform: translate(-50%);
          min-height: 120px;
-         // margin: 60px auto -120px;
+         background-color: $color-light1;
       }
    }
    &__menu {
@@ -72,7 +76,24 @@
       position: relative;
       margin: 0px 35px 0px 0px;
       list-style-type: none;
+      &:first-of-type::after{
+         content: "";
+         position: absolute;
+         left: 0;
+         bottom: -3px;
+         width: 100%;
+         border-bottom: 4px solid $color-decor;
+      }
+      &:target::after{
+         content: "";
+         position: absolute;
+         left: 0;
+         bottom: -3px;
+         width: 100%;
+         border-bottom: 4px solid $color-decor;
+      }
    }
+  
 
    &__link {
       font-family: $font-f2;
@@ -84,14 +105,10 @@
       &:hover{
             color: $color-decor;
       }
+      
    }
 
-   &__link_active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      width: 100%;
-      border-bottom: 4px solid $color-decor;
-   }
+   // &__link_active::after {
+      
+   // }
 }
