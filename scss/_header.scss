@@ -28,6 +28,17 @@
    flex-direction: column;
    justify-content: center;
    align-items: center;
+   &:hover{
+      cursor: pointer;
+   }
+   &__link{
+      text-decoration: none;
+      &:active,
+      &:hover,
+      &{
+         color:inherit;
+      }
+   }
    &__title{
       margin: 0px 0px 10px 0px;
       font-family: 'Georgia';
@@ -76,14 +87,7 @@
       position: relative;
       margin: 0px 35px 0px 0px;
       list-style-type: none;
-      &:first-of-type::after{
-         content: "";
-         position: absolute;
-         left: 0;
-         bottom: -3px;
-         width: 100%;
-         border-bottom: 4px solid $color-decor;
-      }
+      &:first-of-type::after,
       &:target::after{
          content: "";
          position: absolute;
@@ -92,6 +96,7 @@
          width: 100%;
          border-bottom: 4px solid $color-decor;
       }
+
    }
   
 

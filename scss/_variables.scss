@@ -11,3 +11,10 @@ $color-grey2: #CDCDCD;
 $color-dark1:#545454;
 $color-dark2:#4C4C4C;
 $color-dark3:#292929;
+
+$fz: 15;
+
+@function rem($size) {
+  $remSize: $size / $fz ;
+  @return $remSize * 1rem;
+}
