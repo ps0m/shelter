@@ -1,0 +1,119 @@
+.header {
+   &__container{
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &_main{
+         min-height: 60px;
+         margin: 60px auto -120px;
+      }
+      &_pets{
+         position: fixed;
+         width: 100%;
+         left: 50%;
+         transform: translate(-50%);
+         min-height: 120px;
+         background-color: $color-light1;
+      }
+   }
+   &__menu {
+      margin: 0px -33px 5px 0px;
+   }
+}
+
+.logo-header{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   &:hover{
+      cursor: pointer;
+   }
+   &__link{
+      text-decoration: none;
+      &:active,
+      &:hover,
+      &{
+         color:inherit;
+      }
+   }
+   &__title{
+      margin: 0px 0px 10px 0px;
+      font-family: 'Georgia';
+      font-size: 32px;
+      line-height: 1.1;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+         &-gold{
+         color: $color-decor;
+         }
+         &-dark{
+         color: $color-dark1;
+         }
+   }
+   
+   &__subtitle{
+      font-family: $font-f2;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      &-light{
+         color: $color-light1;
+      }
+      &-dark{
+         color: $color-dark3;
+      }
+   }
+   
+}
+
+.menu-header {
+   &_light{
+         color: $color-light2;
+      }
+      &_dark{
+         color: $color-dark1;
+      }
+   &_row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   &__item {
+      position: relative;
+      margin: 0px 35px 0px 0px;
+      list-style-type: none;
+      &:first-of-type::after,
+      &:target::after{
+         content: "";
+         position: absolute;
+         left: 0;
+         bottom: -3px;
+         width: 100%;
+         border-bottom: 4px solid $color-decor;
+      }
+
+   }
+  
+
+   &__link {
+      font-family: $font-f2;
+      line-height: 1.6;
+      text-decoration: none;
+      color: inherit;
+      text-align: center;
+      transition: ease-in-out 0.5s;
+      &:hover{
+            color: $color-decor;
+      }
+      
+   }
+
+   // &__link_active::after {
+      
+   // }
+}

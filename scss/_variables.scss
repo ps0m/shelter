@@ -1,0 +1,20 @@
+
+$font-f1: Georgia, 'Times New Roman', Times, serif;
+$font-f2: Arial, Helvetica, sans-serif;
+$font-s1: 15px;
+$color-light1:#FFFFFF;
+$color-light2: #FAFAFA;
+$color-decor:#F1CDB3;
+$color-hover: #FDDCC4;
+$color-grey1:#F6F6F6;
+$color-grey2: #CDCDCD;
+$color-dark1:#545454;
+$color-dark2:#4C4C4C;
+$color-dark3:#292929;
+
+$fz: 15;
+
+@function rem($size) {
+  $remSize: $size / $fz ;
+  @return $remSize * 1rem;
+}

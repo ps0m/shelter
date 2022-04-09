@@ -1,0 +1,55 @@
+.footer {
+         background: url(../../assets/images/background_not_only.png), radial-gradient(circle, #5B483A 0%, #262425 100%) ;
+      &__container {
+         display: flex;
+         justify-content: space-between;
+         align-items: stretch;
+         padding: 40px 40px 0px 40px;
+
+      }
+
+      &__contacts {
+         margin: 16px 0px 60px 0px;
+         flex: 0 1 302px;
+      }
+      &__image {
+         max-width: 300px;
+      }
+      &__feedback{
+         max-width: 280px;
+      }
+}
+.contacts-footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      // &__title {
+      // }
+      &__content {
+         display: flex;
+         align-items: center;
+         & img{
+            margin: 0px 20px 0px 0px;
+         }
+         & a{
+         font-family: 'Georgia';
+         font-style: normal;
+         font-weight: 400;
+         font-size: 20px;
+         line-height: 1.15;
+         letter-spacing: 0.06em;
+         color: $color-decor;
+         text-decoration: none;
+         transition: ease-in-out 0.5s;
+         }
+         &>a:hover{
+            color: $color-light1;
+         }
+         
+      }
+
+}
+
+
+
