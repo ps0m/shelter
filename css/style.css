@@ -572,6 +572,7 @@ h1, h2, h3, h4, h5, p {
   background: url(../assets/images/background_not_only.png), radial-gradient(circle, #5B483A 0%, #262425 100%);
 }
 
+
 .not-only__container {
   display: -webkit-box;
   display: -ms-flexbox;
