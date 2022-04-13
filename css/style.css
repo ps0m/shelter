@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -346,7 +347,7 @@ template {
   font-family: 'Georgia';
   font-style: normal;
   font-weight: normal;
-  src: local("Georgia Regular"), local("Georgia-Regular"), url("../../assets/fonts/Georgia/Georgia.woff2") format("woff2"), url("../../assets/fonts/Georgia/Georgia.woff") format("woff"), url("../../assets/fonts/Georgia/Georgia.ttf") format("ttf"), url("../../assets/fonts/Georgia/Georgia.eot") format("eot");
+  src: local("Georgia Regular"), local("Georgia-Regular"), url("../assets/fonts/Georgia/Georgia.woff2") format("woff2"), url("../assets/fonts/Georgia/Georgia.woff") format("woff"), url("../assets/fonts/Georgia/Georgia.ttf") format("ttf"), url("../assets/fonts/Georgia/Georgia.eot") format("eot");
 }
 
 /* Italic Georgia*/
@@ -354,7 +355,7 @@ template {
   font-family: 'Georgia';
   font-style: italic;
   font-weight: normal;
-  src: local("Georgia-Italic"), local("Georgia Italic"), url("../../assets/fonts/Georgia/Georgia-Italic.woff2") format("woff2"), url("../../assets/fonts/Georgia/Georgia-Italic.woff") format("woff"), url("../../assets/fonts/Georgia/Georgia-Italic.ttf") format("ttf"), url("../../assets/fonts/Georgia/Georgia-Italic.eot") format("eot");
+  src: local("Georgia-Italic"), local("Georgia Italic"), url("../assets/fonts/Georgia/Georgia-Italic.woff2") format("woff2"), url("../assets/fonts/Georgia/Georgia-Italic.woff") format("woff"), url("../assets/fonts/Georgia/Georgia-Italic.ttf") format("ttf"), url("../assets/fonts/Georgia/Georgia-Italic.eot") format("eot");
 }
 
 /* Bold Georgia*/
@@ -362,13 +363,13 @@ template {
   font-family: 'Georgia';
   font-style: normal;
   font-weight: bold;
-  src: local("Georgia-Bold"), local("Georgia Bold"), url("../../assets/fonts/Georgia/Georgia-Bold.woff2") format("woff2"), url("../../assets/fonts/Georgia/Georgia-Bold.woff") format("woff"), url("../../assets/fonts/Georgia/Georgia-Bold.ttf") format("ttf"), url("../../assets/fonts/Georgia/Georgia-Bold.eot") format("eot");
+  src: local("Georgia-Bold"), local("Georgia Bold"), url("../assets/fonts/Georgia/Georgia-Bold.woff2") format("woff2"), url("../assets/fonts/Georgia/Georgia-Bold.woff") format("woff"), url("../assets/fonts/Georgia/Georgia-Bold.ttf") format("ttf"), url("../assets/fonts/Georgia/Georgia-Bold.eot") format("eot");
 }
 
 /* Italic Arial*/
 @font-face {
   font-family: 'Arial';
-  src: local("Arial Italic"), local("Arial-Italic"), url("../../assets/fonts/Arial/Arial-ItalicMT.woff2") format("woff2"), url("../../assets/fonts/Arial/Arial-ItalicMT.woff") format("woff"), url("../../assets/fonts/Arial/Arial-ItalicMT.ttf") format("ttf"), url("../../assets/fonts/Arial/Arial-ItalicMT.eot") format("eot");
+  src: local("Arial Italic"), local("Arial-Italic"), url("../assets/fonts/Arial/Arial-ItalicMT.woff2") format("woff2"), url("../assets/fonts/Arial/Arial-ItalicMT.woff") format("woff"), url("../assets/fonts/Arial/Arial-ItalicMT.ttf") format("ttf"), url("../assets/fonts/Arial/Arial-ItalicMT.eot") format("eot");
   font-weight: normal;
   font-style: italic;
 }
@@ -376,7 +377,7 @@ template {
 /* Regular Arial*/
 @font-face {
   font-family: 'Arial';
-  src: local("Arial Regular"), local("Arial-Regular"), url("../../assets/fonts/Arial/ArialMT.woff2") format("woff2"), url("../../assets/fonts/Arial/ArialMT.woff") format("woff"), url("../../assets/fonts/Arial/ArialMT.ttf") format("ttf"), url("../../assets/fonts/Arial/ArialMT.eot") format("eot");
+  src: local("Arial Regular"), local("Arial-Regular"), url("../assets/fonts/Arial/ArialMT.woff2") format("woff2"), url("../assets/fonts/Arial/ArialMT.woff") format("woff"), url("../assets/fonts/Arial/ArialMT.ttf") format("ttf"), url("../assets/fonts/Arial/ArialMT.eot") format("eot");
   font-weight: normal;
   font-style: normal;
 }
@@ -750,7 +751,7 @@ h1, h2, h3, h4, h5, p {
 }
 
 .our-friends {
-  background-color: #E5E5E5;
+  background-color: #F6F6F6;
 }
 
 .our-friends__container {
@@ -1229,3 +1230,8 @@ h1, h2, h3, h4, h5, p {
           align-items: center;
   width: 340px;
 }
+
+/* Это многострочный комментарий.
+ * Так как этот тип комментирования
+ * поддерживается в CSS, то он
+ * попадет в скомпилированный CSS-файл. */
