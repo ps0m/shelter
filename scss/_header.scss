@@ -8,6 +8,9 @@
       &_main{
          min-height: 60px;
          margin: 60px auto -120px;
+         @media screen and (max-width:1000px){
+         margin: 30px auto -90px;
+         }
       }
       &_pets{
          position: fixed;
@@ -113,7 +116,4 @@
       
    }
 
-   // &__link_active::after {
-      
-   // }
 }
