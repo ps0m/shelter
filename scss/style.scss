@@ -14,6 +14,7 @@ html,body{
    font-weight: 400;
    color: $color-dark1;
    scroll-behavior:smooth;
+   // overflow: hidden;
 }
 
 h1,h2,h3,h4,h5,p{
@@ -628,7 +629,7 @@ h1,h2,h3,h4,h5,p{
          color: #B2B2B2;
          @media screen and (max-width:767px) {
             text-align: justify;
-            padding: 0px 10px 0px;
+            padding: 0px 9px 0px;
          }
       }
 }

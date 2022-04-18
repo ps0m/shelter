@@ -22,7 +22,7 @@
       }
    }
    &__menu {
-      margin: 0px -33px 5px 0px;
+      margin: 0px 2px 5px 0px;
       @media screen and (max-width:767px) {
          display: none;
       }
@@ -87,11 +87,11 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      column-gap: 35px;
    }
 
    &__item {
       position: relative;
-      margin: 0px 35px 0px 0px;
       list-style-type: none;
       &:first-of-type::after,
       &:target::after{
