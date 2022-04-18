@@ -8,7 +8,7 @@
       &_main{
          min-height: 60px;
          margin: 60px auto -120px;
-         @media screen and (max-width:1000px){
+         @media screen and (max-width:1279px) {
          margin: 30px auto -90px;
          }
       }
@@ -23,6 +23,9 @@
    }
    &__menu {
       margin: 0px -33px 5px 0px;
+      @media screen and (max-width:767px) {
+         display: none;
+      }
    }
 }
 
@@ -97,7 +100,7 @@
          left: 0;
          bottom: -3px;
          width: 100%;
-         border-bottom: 4px solid $color-decor;
+         border-bottom: 3px solid $color-decor;
       }
 
    }
@@ -116,4 +119,45 @@
       
    }
 
+}
+.heder__burger {
+   display: none;
+   @media screen and (max-width:767px) {
+      display: block;
+      margin: 0px 43px 0px 0px;
+   }
+}
+
+.burger {
+   position: relative;
+   width: 30px;
+   height: 20px;
+   transition: 0.5s;
+   &:hover{
+      cursor: pointer;
+      // transform: rotate(90deg);
+   }
+}
+
+.burger__line {
+   width: 100%;
+   height: 2px;
+   &_gold {
+      background-color: $color-decor;
+   }
+   &_dark {
+      background-color: $color-dark3;
+   }
+   &::before,
+   &::after{
+   content: "";
+   height: 2px;
+   width: 100%;
+   position: absolute;
+   background-color: inherit;
+   top:50%;
+   }
+   &::after{
+   top:100%;
+   }
 }

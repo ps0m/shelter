@@ -32,8 +32,11 @@ h1,h2,h3,h4,h5,p{
    max-width: 1280px;
    margin: 0 auto;
    padding: 0px 40px;
-   @media screen and (max-width:1000px) {
+   @media screen and (max-width:1279px) {
       padding: 0px 30px;
+   }
+   @media screen and (max-width:767px) {
+      padding: 0px 10px;
    }
 }
 
@@ -46,15 +49,18 @@ h1,h2,h3,h4,h5,p{
 .not-only {
    padding: 177px 0px 0px;
    margin: 0px 0px 80px 0px;
-   @media screen and (max-width:1000px) {
+   @media screen and (max-width:1279px) { 
       padding: 150px 0px 0px;
+   }
+   @media screen and (max-width:767px) {
+      margin: 0px 0px 40px 0px;
    }
    background: url(../assets/images/background_not_only.png), radial-gradient(circle, #5B483A 0%, #262425 100%) ;
       &__container {
          display: flex;
          justify-content:space-between;
          align-items:center;
-         @media screen and (max-width:1000px) {
+         @media screen and (max-width:1279px) {
             flex-direction: column;
             justify-content:flex-end;
             align-items:center;
@@ -68,10 +74,14 @@ h1,h2,h3,h4,h5,p{
          flex-direction: column;
          justify-content: space-between;
          align-items:flex-start ;
-         @media screen and (max-width:1000px) {
+         @media screen and (max-width:1279px) {
             max-width: 460px;
             flex: auto;
-            padding: 0px 0px 14% 0px;
+            padding: 0px 0px 100px 0px;
+         }
+         @media screen and (max-width:767px) {
+            align-items: center;
+            padding: 0px 0px 105px 0px;
          }
       }
 
@@ -82,26 +92,33 @@ h1,h2,h3,h4,h5,p{
       &__subtitle {
          width: 100%;
          margin: 42px 0px;
+         @media screen and (max-width:767px) {
+            text-align: center;
+         }
       }
 
       &__button {
          width: 207px;
          height: 52px;
-         @media screen and (max-width:1000px) {
+         @media screen and (max-width:1279px) {
             align-self:center;
          }
       }
 
       &__image  {
-         & > img {
+         & > img {  
             width: 100%;
             height: 100%;
             object-fit: cover;
          }
-         @media screen and (max-width:1000px) {
+         @media screen and (max-width:1279px) {
             flex: 0 0 594px;
             padding-left: 20%;
             align-self:flex-end;
+         }
+         @media screen and (max-width:767px) {
+            padding-left: 14%;
+               flex: 0 0 272px;
          }
       }
 
@@ -114,14 +131,29 @@ h1,h2,h3,h4,h5,p{
    line-height: 1.3;
    &_h2 {
       font-size: 44px;
+      @media screen and (max-width:767px) {
+         font-size: 25px;
+         text-align: center;
+         letter-spacing: 0.06em;
+         padding: 0px 20px 0px;
+      }
    }
    &_h3 {
       font-size: 35px;
       letter-spacing: 0.06em;
+      @media screen and (max-width:767px) {
+         font-size: 25px;
+         text-align: center;
+      }
    }
    &_h4 {
       font-size: 20px;
       letter-spacing: 0.06em;
+      @media screen and (max-width:767px) {
+         font-size: 15px;
+         line-height: 110%;
+         text-align: center;
+      }
    }
    &_light {
       color: $color-light1;
@@ -134,6 +166,7 @@ h1,h2,h3,h4,h5,p{
 .subtitle{
    font-family: $font-f2;
    line-height: 160%;
+   
    &_light{
       color: $color-grey2;
    }
@@ -175,19 +208,32 @@ h1,h2,h3,h4,h5,p{
          display: flex;
          justify-content: center;
          align-items: center;
-         padding: 0px 40px 95px;
-         @media screen and (max-width:1000px) {
+         padding-top:0px;
+         padding-bottom:95px;
+         @media screen and (max-width:1279px) {
             flex-direction: column-reverse;
             justify-content: center;
             align-items: center;
+         }
+         @media screen and (max-width:767px) {
+            padding-bottom:37px;
          }
       }
 
 
       &__image {
          margin-right: 120px;
-         @media screen and (max-width:1000px) {
+         @media screen and (max-width:1279px) {
             margin: 75px 0px 0px 0px;
+         }
+         @media screen and (max-width:767px) {
+            margin: 42px 0px 0px 0px;
+         }
+         & > img {
+            @media screen and (max-width:767px) {
+            max-width: 260px;
+            max-height: 353px;
+         }
          }
       }
 
@@ -197,6 +243,10 @@ h1,h2,h3,h4,h5,p{
          flex-direction: column;
          justify-content: center;
          align-items: flex-start;
+         @media screen and (max-width:767px) {
+         align-items: center;
+         padding: 0px 15px 0px;
+         }
       }
 
       &__title {
@@ -204,7 +254,14 @@ h1,h2,h3,h4,h5,p{
       }
 
       &__subtitle {
-         margin: 22px 0px 5px 0px;
+         margin: 22px 0px 3px 0px;
+         @media screen and (max-width:1279px) {
+            margin: 22px 0px 5px 0px;
+         }
+         @media screen and (max-width:767px) {
+            text-align: justify;
+            margin: 24px 0px 0px 0px;
+         }
       }
 }
 
@@ -215,8 +272,9 @@ h1,h2,h3,h4,h5,p{
    display: flex;
    justify-content: center;
    align-items: center;
-   flex: 0 0 52px;
-   height: 52px;
+   // flex: 0 0 52px;
+   min-width: 52px;
+   min-height: 52px;
    border: 2px solid $color-decor;
    box-sizing: border-box;
    border-radius: 50%;
@@ -232,10 +290,6 @@ h1,h2,h3,h4,h5,p{
       font-size: 20px;
       letter-spacing: 0.06em;
       color: $color-dark3;
-   }
-
-   &_right {
-      transform: rotate(180deg);
    }
 
    &_number {
@@ -257,9 +311,6 @@ h1,h2,h3,h4,h5,p{
          box-shadow: none;
       }
    }
-
-
-
 }
 
 .card-slider {
@@ -276,7 +327,7 @@ h1,h2,h3,h4,h5,p{
    &:hover {
       cursor: pointer;
       z-index: 1;
-      transform: scale(1.1);
+      transform: scale(1.05);
       background: #FFFFFF;
       box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 
@@ -293,10 +344,13 @@ h1,h2,h3,h4,h5,p{
    }
 
    &__title {
-      margin: 30px 0px 30px 0px;
+      margin: 28px 0px 31px 0px;
       font-size: 20px;
       line-height: 1.15;
       letter-spacing: 0.06em;
+      @media screen and (max-width:767px) {
+         margin: 30px 0px 30px 0px;
+      }
    }
 
    &__button {
@@ -315,6 +369,10 @@ h1,h2,h3,h4,h5,p{
          flex-direction: column;
          justify-content: space-between;
          align-items: stretch;
+         @media screen and (max-width:767px) {
+            padding-top: 42px;
+            padding-bottom: 42px;
+         }
       }
 
       &__title {
@@ -327,10 +385,35 @@ h1,h2,h3,h4,h5,p{
          display: flex;
          justify-content: space-between;
          align-items: center;
-         margin: 59px -10px;
+         margin: 59px 0px;
+         @media screen and (max-width:767px) {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            flex: 0 1 507px;
+            margin: 42px -10px 42px;
+         }
       }
       &__arrow{
-         margin: 0 10px;
+         @media screen and (max-width:767px) {
+            margin: 20px 40px 0px 31.5%;
+            order: 1;
+         }
+         @media screen and (max-width:520px) {
+            margin: 20px 40px 0px 0px;
+            order: 1;
+         }
+         &_right {
+            transform: rotate(180deg);
+            @media screen and (max-width:767px) {
+               margin: 20px 31.5% 0px 40px;
+               order: 1;
+            }
+            @media screen and (max-width:520px) {
+               margin: 20px 0px 0px 40px;
+               order: 1;
+            }
+         }
       }
 
       &__cards {
@@ -338,15 +421,26 @@ h1,h2,h3,h4,h5,p{
          justify-content: space-between;
          align-items: center;
          flex: 0 1 990px;
-         @media screen and (max-width:1160px) {
+         @media screen and (max-width:1279px) {
+            flex: 0 1 580px;
             column-gap: 40px;
             justify-content: space-evenly;
+         }
+         @media screen and (max-width:767px) {
+            flex-direction: column;
+            justify-content: center;
+            flex: 0 1 435px;
          }
       }
 
       &__card {
-         @media screen and (max-width:1160px) {
-            &:nth-child(3) {
+         @media screen and (max-width:1279px) {
+            &:nth-child(n+3) {
+               display: none;
+            }
+         }
+         @media screen and (max-width:767px) {
+            &:nth-child(n+2) {
                display: none;
             }
          }
@@ -368,8 +462,11 @@ h1,h2,h3,h4,h5,p{
          justify-content: center;
          align-items: center;
          padding: 80px 0 100px;
-         @media screen and (max-width:1000px) {
+         @media screen and (max-width:1160px) {
             padding: 80px 70px 100px;
+         }
+         @media screen and (max-width:767px) {
+            padding: 42px 0px 42px;
          }
       }
 
@@ -377,6 +474,9 @@ h1,h2,h3,h4,h5,p{
          max-width: 310px;
          margin: 0px 0px 57px 0px;
          text-align: center;
+         @media screen and (max-width:767px) {
+            margin: 0px 0px 42px 0px;
+         }
       }
       &__list {
          flex:0 1 auto;
@@ -389,8 +489,12 @@ h1,h2,h3,h4,h5,p{
       flex-wrap: wrap;
       align-items:flex-end;
       margin-bottom: -52px;
-      @media screen and (max-width:1000px) {
+      @media screen and (max-width:1160px) {
       justify-content:space-between;
+      }
+      @media screen and (max-width:767px) {
+         padding: 0 15px;
+         margin-bottom: -30px;
       }
       &__item {
          display: flex;
@@ -398,14 +502,23 @@ h1,h2,h3,h4,h5,p{
          justify-content: space-between;
          align-items: center;
          padding: 0px 60px 52px;
-         @media screen and (max-width:1000px) {
-         flex: 0 1 170px;
-         padding: 0 0 52px;
+         @media screen and (max-width:1160px) {
+            flex: 0 1 170px;
+            padding: 0 0 52px;
+         }
+         @media screen and (max-width:767px) {
+            flex: 0 1 130px;
+            padding: 0 0 30px;
          }
       }
 
       &__icon {
          margin: 0px 0px 30px 0px;
+         @media screen and (max-width:767px) {
+            max-width: 50px;
+            max-height: 50px;
+            margin: 0px 0px 20px 0px;
+         }
       }
 
 }
@@ -419,15 +532,22 @@ h1,h2,h3,h4,h5,p{
          justify-content: center;
          align-items: center;
          padding: 80px 182px 100px;
-         @media screen and (max-width:1000px) {
+         @media screen and (max-width:1279px) {
             flex-direction: column-reverse;
+         }
+         @media screen and (max-width:767px) {
+            padding: 42px 10px 42px;
          }
       }
 
       &__image {
          margin: 0px 30px 0px 0px;
-         @media screen and (max-width:1000px) {
+         @media screen and (max-width:1279px) {
             margin: 60px 0px 0px 0px;
+         }
+         @media screen and (max-width:767px) {
+            max-width: 260px;
+            margin: 42px 0px 0px 0px;
          }
       }
 
@@ -439,12 +559,20 @@ h1,h2,h3,h4,h5,p{
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      @media screen and (max-width:767px) {
+         max-width: 300px;
+         justify-content: center;
+         align-items: center;
+      }
       &__title {
          max-width: 300px;
          text-align: start;
          margin: 0px 0px 20px 0px;
+         @media screen and (max-width:767px) {
+            text-align: center;
+            padding: 0px 40px 0px;
+         }
       }
-
       &__subtitle {
          margin: 0px 0px 20px 0px;
          font-family: 'Georgia';
@@ -453,6 +581,11 @@ h1,h2,h3,h4,h5,p{
          font-size: 15px;
          line-height: 110%;
          letter-spacing: 0.06em;
+         @media screen and (max-width:767px) {
+            text-align: center;
+            letter-spacing: 0em;
+            line-height: 160%;
+         }
       }
 
       &__card {
@@ -469,6 +602,10 @@ h1,h2,h3,h4,h5,p{
          color: $color-dark1;
          background-color: $color-decor;
          transition: ease-in-out 0.5s;
+         @media screen and (max-width:767px) {
+            width: 281px;
+            font-size: 15px;
+         }
          &:before{
             content: "";
             width: 30px;
@@ -489,6 +626,10 @@ h1,h2,h3,h4,h5,p{
          font-size: 12px;
          line-height: 1.5;
          color: #B2B2B2;
+         @media screen and (max-width:767px) {
+            text-align: justify;
+            padding: 0px 10px 0px;
+         }
       }
 }
 
@@ -500,10 +641,13 @@ h1,h2,h3,h4,h5,p{
          flex-direction: column;
          justify-content: center;
          align-items: center;
-         padding: 200px 40px 100px;
+         padding: 201px 40px 100px;
          background: $color-grey1; 
-         @media screen and (max-width:1060px) {
-            padding-bottom:75px;
+         @media screen and (max-width:1279px) {
+            padding-bottom:77px;
+         }
+         @media screen and (max-width:767px) {
+            padding: 162px 10px 43px;
          }
 		}
 
@@ -520,14 +664,22 @@ h1,h2,h3,h4,h5,p{
          column-gap: 40px;
          row-gap: 30px;
          margin: 59px 0px;
-         @media screen and (max-width:1060px) {
+         @media screen and (max-width:1279px) {
             margin: 30px 0px 40px;
+         }
+         @media screen and (max-width:767px) {
+            flex-direction: column;
+            margin: 42px 10px 40px;
          }
 		}
       &__card {
-         @media screen and (max-width:1060px) {
-            &:nth-child(7),
-            &:nth-child(8) {
+         @media screen and (max-width:1279px) {
+            &:nth-child(n+7){
+               display: none;
+            }
+         }
+         @media screen and (max-width:767px) {
+            &:nth-child(n+4){
                display: none;
             }
          }
@@ -541,6 +693,9 @@ h1,h2,h3,h4,h5,p{
          justify-content: space-between;
          align-items: center;
          width: 340px;
+         @media screen and (max-width:767px) {
+            width: 300px;
+         }
+         }
 		}
-}
 
