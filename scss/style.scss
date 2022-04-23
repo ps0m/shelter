@@ -13,9 +13,10 @@ html,body{
    font-style: normal;
    font-weight: 400;
    color: $color-dark1;
-   scroll-behavior:smooth;
+   scroll-behavior:smooth; 
    // overflow: hidden;
 }
+
 
 h1,h2,h3,h4,h5,p{
    margin: 0;
@@ -28,6 +29,7 @@ h1,h2,h3,h4,h5,p{
    display: flex;
    flex-direction: column;
 }
+
 [class*="__container"] {
    box-sizing: border-box;
    max-width: 1280px;
@@ -40,7 +42,32 @@ h1,h2,h3,h4,h5,p{
       padding: 0px 10px;
    }
 }
-
+.shadow{
+   display: none;
+   position: fixed;
+   width: 100vw;
+   height: 100vh;
+   &_active-all{
+      display: block;
+      z-index: 1;
+      background: rgba(41, 41, 41, 0.6);
+   }
+   &_active-header{
+      display: block;
+      z-index: 5;
+      background: rgba(41, 41, 41, 0.6);
+      animation: moveShadow 0.5s ease-in-out forwards;
+      }
+}
+      @keyframes moveShadow {
+         1% {
+            right: -330px;
+         }
+      
+         100% {
+            right: 320px;
+         }
+      }
 //===================================================//
 @import '_header';
 
@@ -327,7 +354,6 @@ h1,h2,h3,h4,h5,p{
 
    &:hover {
       cursor: pointer;
-      z-index: 1;
       transform: scale(1.05);
       background: #FFFFFF;
       box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
@@ -699,4 +725,3 @@ h1,h2,h3,h4,h5,p{
          }
          }
 		}
-
