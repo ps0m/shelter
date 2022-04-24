@@ -49,7 +49,7 @@ h1,h2,h3,h4,h5,p{
    height: 100vh;
    &_active-all{
       display: block;
-      z-index: 1;
+      z-index: 3;
       background: rgba(41, 41, 41, 0.6);
    }
    &_active-header{
@@ -725,3 +725,167 @@ h1,h2,h3,h4,h5,p{
          }
          }
 		}
+
+//===========================================================//      
+.popup {
+   display: none;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,- 50%);
+   z-index: 5;
+   width: 900px;
+   max-height: 500px;
+   justify-content: space-between;
+   align-items: center;
+   background: $color-light2;
+   border-radius: 9px;
+   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+   @media screen and (max-width:1279px) {
+      width: 630px;
+      max-height: 350px;
+   }
+   @media screen and (max-width:767px) {
+      width: 240px;
+      max-height:none;
+   }
+
+   &_active{
+      display: flex;
+      animation: opacityPopup 1s forwards;
+   }
+   @keyframes opacityPopup {
+      0%{
+         opacity: 0%;
+      }
+      100%{
+         opacity: 100%;
+      }
+   }
+   &__closer {
+      content: "";
+      position: absolute;
+      top: 0%;
+      left: 100%;
+      transform: translate(-20%, -100%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid $color-decor;
+      transition: 0.5s;
+      @media screen and (max-width:767px) {
+         transform: translate(-43%, -100%);
+      }
+      &:hover{
+         cursor: pointer;
+         box-shadow: 0px 0px 10px $color-light1;
+      }
+      &_hover {
+         cursor: pointer;
+         box-shadow: 0px 0px 10px $color-light1;
+      }
+      &::after, &::before{
+         content: "";
+         position: absolute;
+         width: 28px;
+         height: 2px;
+         background-color: #000;
+         top: 50%;
+         left:25%;
+         transform: translate(-50%, -50%);
+         transform: rotate(45deg);
+      }
+      &::before{
+         transform: rotate(-45deg);
+      }
+   }
+   &__image {
+      min-width: 500px;
+      min-height: 500px;
+      object-fit: cover;
+      border-radius: 9px;
+      @media screen and (max-width:1279px) {
+         min-width: 350px;
+         min-height: 350px;
+      }
+      @media screen and (max-width:767px) {
+         display: none;
+      }
+   }
+
+   &__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 50px 20px 88px 29px;
+      color: #000;
+      letter-spacing: 0.06em;
+      @media screen and (max-width:1279px) {
+         padding: 10px 10px 37px 10px;
+      }
+      @media screen and (max-width:767px) {
+         padding: 10px 10px 10px 10px;
+      }
+   }
+
+   &__title {
+      margin: 0px 0px 10px 0px;
+      @media screen and (max-width:767px) {
+         font-size: 35px;
+         text-align: center;
+      }
+   }
+
+   &__subtitle {
+      margin: 0px 0px 40px 0px;
+      font-size: 20px;
+      @media screen and (max-width:1279px) {
+      margin: 0px 0px 20px 0px;
+      }
+      @media screen and (max-width:767px) {
+         text-align: center;
+      }
+      &_text{
+         display: inline-block;
+      }
+   }
+
+   &__text {
+      margin: 0px 0px 40px 0px;
+      font-size: 15px;
+      line-height: 110%;
+      @media screen and (max-width:1279px) {
+         margin: 0px 0px 20px 0px;
+         font-size: 13px;
+      }
+      @media screen and (max-width:767px) {
+         margin: 0px 0px 24px 0px;
+         text-align: justify;
+      }
+   }
+
+   &__list {
+      margin: 0px 0px 0px 10px;
+      padding: 0px 0px 0px 0px;
+      list-style-type:none;
+   }
+
+   &__item {
+      position: relative;
+      margin: 0px 0px 11px 0px;
+      @media screen and (max-width:1279px) {
+         margin: 0px 0px 6px 0px;
+      }
+      &::before{
+         position: absolute;
+         top: 50%;
+         left: -10px;
+         transform: translateY(-50%);
+         content: "";
+         width: 4px;
+         height: 4px;
+         border-radius: 50%;
+         background-color: $color-decor;
+      }
+   }
+}

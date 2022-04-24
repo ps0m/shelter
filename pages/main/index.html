@@ -113,32 +113,32 @@
                 alt="arrow"
               />
             </div>
-            <div class="our-friends__cards">
-              <div class="our-friends__card card-slider">
+            <div class="our-friends__cards cards">
+              <div class="our-friends__card card-slider" data-card="1">
                 <img
                   class="card-slider__image"
-                  src="../../assets/images/pets-katrine.jpg"
+                  src="../../assets/images/katrine.png"
                   alt="pets"
                 />
-                <p class="card-slider__title">Katrine</p>
+                <p class="card-slider__title" data-content="name">Kat</p>
                 <button class="card-slider__button button">Learn more</button>
               </div>
-              <div class="our-friends__card card-slider">
+              <div class="our-friends__card card-slider" data-card="2">
                 <img
                   class="card-slider__image"
-                  src="../../assets/images/pets-jennifer.jpg"
+                  src="../../assets/images/jennifer.png"
                   alt="pets"
                 />
-                <p class="card-slider__title">Jennifer</p>
+                <p class="card-slider__title" data-content="name">Jennifer</p>
                 <button class="card-slider__button button">Learn more</button>
               </div>
-              <div class="our-friends__card card-slider">
+              <div class="our-friends__card card-slider" data-card="3">
                 <img
                   class="card-slider__image"
-                  src="../../assets/images/pets-woody.jpg"
+                  src="../../assets/images/woody.png"
                   alt="pets"
                 />
-                <p class="card-slider__title">Woody</p>
+                <p class="card-slider__title" data-content="name">Woody</p>
                 <button class="card-slider__button button">Learn more</button>
               </div>
             </div>
@@ -252,7 +252,10 @@
             <h5 class="body-donation__subtitle">
               Name of the bank / Type of bank account
             </h5>
-            <a class="body-donation__card" href="#" onclick="return false"
+            <a
+              class="body-donation__card"
+              href="#"
+              onclick="event.preventDefault()"
               >8380 2880 8028 8791 7435</a
             >
             <p class="body-donation__text">
@@ -314,9 +317,50 @@
           />
         </div>
       </footer>
-      <!-- <div class="popup">
-
-      </div> -->
+      <div class="popup">
+        <div class="popup__closer"></div>
+        <img
+          src="../../assets/images/jennifer.png"
+          alt="pets"
+          class="popup__image"
+          data-popup-content="img"
+        />
+        <div class="popup__body">
+          <div class="popup__title title title_h3" data-popup-content="name">
+            Jennifer
+          </div>
+          <div class="popup__subtitle">
+            <div class="popup__subtitle_text" data-popup-content="type">
+              Dog
+            </div>
+            <span>-</span>
+            <div class="popup__subtitle_text" data-popup-content="breed">
+              Labrador
+            </div>
+          </div>
+          <div class="popup__text" data-popup-content="description">
+            Jennifer is a sweet 2 months old Labrador that is patiently waiting
+            to find a new forever home. This girl really enjoys being able to go
+            outside to run and play, but won't hesitate to play up a storm in
+            the house if she has all of her favorite toys.
+          </div>
+          <ul class="popup__list">
+            <li class="popup__item">
+              <b>Age: </b><span data-popup-content="age">2 months</span>
+            </li>
+            <li class="popup__item">
+              <b>Inoculations: </b
+              ><span data-popup-content="inoculations">none</span>
+            </li>
+            <li class="popup__item">
+              <b>Diseases: </b><span data-popup-content="diseases">none</span>
+            </li>
+            <li class="popup__item">
+              <b>Parasites: </b><span data-popup-content="parasites">none</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <script src="../main/script.js"></script>
   </body>
