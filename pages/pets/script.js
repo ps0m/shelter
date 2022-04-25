@@ -141,6 +141,9 @@ parasites: [
 ]
 }
 ]
+// highlighting page
+
+document.querySelectorAll('.menu-header__item')[2].classList.add('menu-header__item_active')
 
 // Burger Menu //
 
@@ -184,7 +187,6 @@ burgerIcon.addEventListener('click', burgerMove);
 // Popup //
 const popup = document.querySelector('.popup');
 let cards = document.querySelector('.cards');
-console.log(cards);
 const popupCloser = document.querySelector('.popup__closer');
 let numberSelectCard = 1;
 
@@ -214,7 +216,6 @@ cards.addEventListener('click', (event)=>{
       numberSelectCard = event.target.closest('.card-slider').dataset.card;
    showPopup();
    fillContentsPopup(dataPets, numberSelectCard);
-   console.log(numberSelectCard);  
 });
 
 
@@ -240,107 +241,141 @@ function fillContentsPopup(dataJson, number) {
 fillContentsPopup(dataPets, numberSelectCard);
 
 
+//Pagination
+const allQuantityPets = 48;
+let quantityPerPage;
+
+function getWidthPage() {
+   if (1279 < document.documentElement.clientWidth) {
+      quantityPerPage = 8;
+   } else if (767 < document.documentElement.clientWidth) {
+      quantityPerPage = 6;
+   }else {
+      quantityPerPage = 3;
+   }
+}
+getWidthPage();
+
+let maxPage = allQuantityPets/quantityPerPage; 
+
+let startArray = (function(){
+   let array = [];
+   for (let i = 0; i < 6; i++) {
+         for (let i = 1; i < 9; i++) {
+            array.push(i);
+         }
+   }
+   return array;
+}())
+
+function shuffleArray(array) {
+   let resultArray = array.slice();
+   for (let i = 0; i < resultArray.length; i++) {
+      let current = resultArray[i];
+      let randomIndex = Math.floor(Math.random()*(resultArray.length-1));
+      resultArray[i] = resultArray[randomIndex];
+      resultArray[randomIndex]= current;
+   }
+   return resultArray;
+}
+
+function fillListPets (array, number) {
+   let resultArray = [];
+   let currentArray = [];
+   for (let i = 0; i < allQuantityPets/number; i++) {
+      currentArray = array.slice(i*number, number*(i+1))
+      resultArray[i] = shuffleArray(currentArray);
+   }
+   return resultArray;
+}
+let arrayListPets;
+arrayListPets = fillListPets (startArray, quantityPerPage);
 
 
-// // Carousel
-// let currentSetCards = [1,2,3];
-// let nextSet = [];
-// const card = document.querySelectorAll('.card-slider');
-
-// const arrowLeft = document.querySelector('.our-friends__arrow_left');
-// const arrowRight = document.querySelector('.our-friends__arrow_right');
-
-// let widthCards = cards.offsetWidth;
-// console.log(widthCards);
-
-// let leftCards = cards.cloneNode(true);
-// let rightCards = cards.cloneNode(true);
-
-// cards.before(leftCards);
-// cards.after(rightCards);
+function fillCards(dataJson, page, number) {
+   for (let i = 0; i < number; i++) {
+      cards.children[i].dataset.card = arrayListPets[page-1][i];
+      for (const item of cards.children[i].children) {
+            if (item.dataset.content === 'img') {
+               item.src = dataJson[+`${cards.children[i].dataset.card-1}`].img;
+            }
+            if (item.dataset.content === 'name') {
+               item.textContent = dataJson[+`${cards.children[i].dataset.card-1}`].name;
+            }
+      }
+   }
+   fillNavigationPanel();
+}
 
 
-// arrowLeft.addEventListener('click', moveLeft);
-// arrowRight.addEventListener('click', moveRight)
+const navigationPanel = document.querySelector('.navigation-pets');
 
-// function unActiveArrow() {
-//    arrowLeft.classList.toggle('arrow_unactive');
-//    arrowRight.classList.toggle('arrow_unactive');
-//    if (arrowRight.classList.contains('arrow_unactive') || arrowLeft.classList.contains('arrow_unactive')) {
-//       arrowRight.removeEventListener('click', moveRight);
-//       arrowLeft.removeEventListener('click', moveLeft);
-//    } else {
-//       arrowRight.addEventListener('click', moveRight);
-//       arrowLeft.addEventListener('click', moveLeft);
-//    }
+const firstArrow = document.querySelector('[data-arrow="first"]');
+const previousArrow = document.querySelector('[data-arrow="previous"]');
+const currentArrow = document.querySelector('[data-arrow="current"]');
+const nextArrow = document.querySelector('[data-arrow="next"]');
+const lastArrow = document.querySelector('[data-arrow="last"]');
 
-// }
+let currentPage = currentArrow.firstElementChild.dataset.page;
+currentArrow.firstElementChild.textContent = currentArrow.firstElementChild.dataset.page;
 
-// function moveLeft() {
-//    cards.classList.add('our-friends__cards_move-left');
-//    rightCards.classList.add('our-friends__cards_move-left');
-//    unActiveArrow();
-//    changeContentCards(dataPets);
-// }
+function fillNavigationPanel() {
+   currentArrow.firstElementChild.textContent = currentArrow.firstElementChild.dataset.page;
+   if (currentPage === 1) {
+      firstArrow.classList.add('arrow_unactive');
+      previousArrow.classList.add('arrow_unactive');
+      nextArrow.classList.remove('arrow_unactive');
+      lastArrow.classList.remove('arrow_unactive');
+   }
+    if(currentPage === maxPage) {
+      firstArrow.classList.remove('arrow_unactive');
+      previousArrow.classList.remove('arrow_unactive');
+      nextArrow.classList.add('arrow_unactive');
+      lastArrow.classList.add('arrow_unactive');
+   } 
+   if((currentPage < maxPage) && ((currentPage > 1))) {
+      firstArrow.classList.remove('arrow_unactive');
+      previousArrow.classList.remove('arrow_unactive');
+      nextArrow.classList.remove('arrow_unactive');
+      lastArrow.classList.remove('arrow_unactive');
+   }
 
-// function moveRight() {
-//    cards.classList.add('our-friends__cards_move-right');
-//    leftCards.classList.add('our-friends__cards_move-right');
-//    unActiveArrow();
-//    changeContentCards(dataPets);
-// }
+}
 
+navigationPanel.addEventListener('click', (event) => {
+   if (event.target.closest('[data-arrow="first"]')) {
+      if (currentPage === 1) {
+         return;
+      } else {
+         currentPage = currentArrow.firstElementChild.dataset.page = 1;
+         fillCards(dataPets, currentPage, quantityPerPage);
+      }
+   } 
+   if (event.target.closest('[data-arrow="previous"]')) {
+      if (currentPage === 1) {
+         return;
+      } else {
+      currentPage = --currentArrow.firstElementChild.dataset.page;
+      fillCards(dataPets, currentPage, quantityPerPage)
+      }
+   }
+   if (event.target.closest('[data-arrow="next"]')) {
+      if (currentPage === maxPage) {
+         return;
+      } else {
+      currentPage = ++currentArrow.firstElementChild.dataset.page;
+      fillCards(dataPets, currentPage, quantityPerPage)
+      }
+   }
+   if (event.target.closest('[data-arrow="last"]')) {
+      if (currentPage === maxPage) {
+         return;
+      } else {
+      currentPage = currentArrow.firstElementChild.dataset.page = maxPage;
+      fillCards(dataPets, currentPage, quantityPerPage);
+      }
+   } 
+})
 
-// cards.addEventListener('animationend', (animationEvent)=>{
-//    if (animationEvent.animationName === "moveCardsLeft1280" || "moveCardsLeft768") {
-//       cards.innerHTML = rightCards.innerHTML;
-//       cards.classList.remove('our-friends__cards_move-left');
-//       rightCards.classList.remove('our-friends__cards_move-left');
-//    } 
-//    if (animationEvent.animationName === "moveCardsRight1280" || "moveCardsRight768") {
-//       cards.innerHTML = leftCards.innerHTML;
-//       cards.classList.remove('our-friends__cards_move-right');
-//       leftCards.classList.remove('our-friends__cards_move-right');
-//    }
-//    unActiveArrow();
-//    currentSetCards = nextSet.slice();
-//    getRandomSet(currentSetCards);
-   
-// } )
+fillCards(dataPets, currentPage, quantityPerPage);
 
-// function getRandomSet(currentSet) {
-//    for (let i = 0; i < 3; i++) {
-//       let randomNumber;
-//       do {
-//          randomNumber = Math.ceil(Math.random()*8);
-//          // console.log(randomNumber);
-//       } while (currentSet.includes(randomNumber) || nextSet.includes(randomNumber));
-//       nextSet[i] = randomNumber;
-//    }
-//    console.log('nextSet:'+ nextSet, 'currentSetCards:'+ currentSetCards);
-   
-// }
-// getRandomSet(currentSetCards);
-
-//    function fillContents(dataJson, block, set) {
-//    for (let i = 0; i < 3; i++) {
-//       block.children[i].dataset.card = set[i];
-//       for (const item of block.children) {
-//          for (const iterator of item.children) {
-//             if (iterator.dataset.content === 'img') {
-//                iterator.src = dataJson[+`${item.dataset.card-1}`].img;
-//             }
-//             if (iterator.dataset.content === 'name') {
-//                iterator.textContent = dataJson[+`${item.dataset.card-1}`].name;
-//             }
-//          }
-//       }
-//    }
-// }
-
-// function changeContentCards(dataJson) {
-//    fillContents(dataPets,leftCards, nextSet);
-//    fillContents(dataPets, rightCards, nextSet);
-// }
-// fillContents(dataPets, cards, currentSetCards);
-// changeContentCards(dataPets);

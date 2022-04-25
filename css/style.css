@@ -704,7 +704,7 @@ h1, h2, h3, h4, h5, p {
   list-style-type: none;
 }
 
-.menu-header__item:first-of-type::after, .menu-header__item:target::after {
+.menu-header__item_active::after {
   content: "";
   position: absolute;
   left: 0;
@@ -1159,7 +1159,7 @@ h1, h2, h3, h4, h5, p {
 .arrow__text {
   font-size: 20px;
   letter-spacing: 0.06em;
-  color: #292929;
+  text-align: center;
 }
 
 .arrow_number {
@@ -1179,7 +1179,7 @@ h1, h2, h3, h4, h5, p {
 
 .arrow_unactive:hover {
   cursor: auto;
-  background: transparent;
+  background: none;
   -webkit-box-shadow: none;
           box-shadow: none;
 }

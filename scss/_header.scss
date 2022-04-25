@@ -150,15 +150,19 @@
    &__item {
       position: relative;
       list-style-type: none;
-      &:first-of-type::after,
-      &:target::after{
-         content: "";
-         position: absolute;
-         left: 0;
-         bottom: -3px;
-         width: 100%;
-         border-bottom: 3px solid $color-decor;
+      &_active {
+         // display: block;
+         &::after {
+            // display: none;
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            border-bottom: 3px solid $color-decor;
+         }
       }
+      
    }
   
    &__link {

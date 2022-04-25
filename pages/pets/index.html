@@ -43,9 +43,7 @@
                 >
               </li>
               <li class="menu-header__item" id="our-pets-link">
-                <a
-                  href="../pets/index.html#our-pets-link"
-                  class="menu-header__link"
+                <a href="../pets/index.html#our-pets" class="menu-header__link"
                   >Our pets</a
                 >
               </li>
@@ -61,7 +59,7 @@
           </nav>
         </div>
       </header>
-      <section class="our-pets">
+      <section class="our-pets" id="our-pets">
         <div class="our-pets__container">
           <h3 class="our-pets__title title title_h3 title_dark">
             Our friends who<br />
@@ -73,8 +71,9 @@
                 class="card-slider__image"
                 src="../../assets/images/katrine.png"
                 alt="cat"
+                data-content="img"
               />
-              <p class="card-slider__title">Katrine</p>
+              <p class="card-slider__title" data-content="name">Katrine</p>
               <button class="card-slider__button button">Learn more</button>
             </div>
             <div class="our-pets__card card-slider" data-card="2">
@@ -82,8 +81,9 @@
                 class="card-slider__image"
                 src="../../assets/images/jennifer.png"
                 alt="dog"
+                data-content="img"
               />
-              <p class="card-slider__title">Jennifer</p>
+              <p class="card-slider__title" data-content="name">Jennifer</p>
               <button class="card-slider__button button">Learn more</button>
             </div>
             <div class="our-pets__card card-slider" data-card="3">
@@ -91,8 +91,9 @@
                 class="card-slider__image"
                 src="../../assets/images/woody.png"
                 alt="dog"
+                data-content="img"
               />
-              <p class="card-slider__title">Woody</p>
+              <p class="card-slider__title" data-content="name">Woody</p>
               <button class="card-slider__button button">Learn more</button>
             </div>
             <div class="our-pets__card card-slider" data-card="4">
@@ -100,8 +101,9 @@
                 class="card-slider__image"
                 src="../../assets/images/sophia.png"
                 alt="dog"
+                data-content="img"
               />
-              <p class="card-slider__title">Sophia</p>
+              <p class="card-slider__title" data-content="name">Sophia</p>
               <button class="card-slider__button button">Learn more</button>
             </div>
             <div class="our-pets__card card-slider" data-card="5">
@@ -109,8 +111,9 @@
                 class="card-slider__image"
                 src="../../assets/images/timmy.png"
                 alt="cat"
+                data-content="img"
               />
-              <p class="card-slider__title">Timmy</p>
+              <p class="card-slider__title" data-content="name">Timmy</p>
               <button class="card-slider__button button">Learn more</button>
             </div>
             <div class="our-pets__card card-slider" data-card="6">
@@ -118,8 +121,9 @@
                 class="card-slider__image"
                 src="../../assets/images/charly.png"
                 alt="dog"
+                data-content="img"
               />
-              <p class="card-slider__title">Charly</p>
+              <p class="card-slider__title" data-content="name">Charly</p>
               <button class="card-slider__button button">Learn more</button>
             </div>
             <div class="our-pets__card card-slider" data-card="7">
@@ -127,8 +131,9 @@
                 class="card-slider__image"
                 src="../../assets/images/scarlett.png"
                 alt="dog"
+                data-content="img"
               />
-              <p class="card-slider__title">Scarlett</p>
+              <p class="card-slider__title" data-content="name">Scarlett</p>
               <button class="card-slider__button button">Learn more</button>
             </div>
             <div class="our-pets__card card-slider" data-card="8">
@@ -136,25 +141,35 @@
                 class="card-slider__image"
                 src="../../assets/images/freddie.png"
                 alt="cat"
+                data-content="img"
               />
-              <p class="card-slider__title">Freddie</p>
+              <p class="card-slider__title" data-content="name">Freddie</p>
               <button class="card-slider__button button">Learn more</button>
             </div>
           </div>
           <div class="card-pets__navigation navigation-pets">
-            <div class="navigation-pets__arrow arrow arrow_unactive">
+            <div
+              class="navigation-pets__arrow arrow arrow_unactive"
+              data-arrow="first"
+            >
               <span class="arrow__text"><<</span>
             </div>
-            <div class="navigation-pets__arrow arrow arrow_unactive">
+            <div
+              class="navigation-pets__arrow arrow arrow_unactive"
+              data-arrow="previous"
+            >
               <span class="arrow__text"><</span>
             </div>
-            <div class="navigation-pets__arrow arrow arrow_number">
-              <span class="arrow__text">1</span>
+            <div
+              class="navigation-pets__arrow arrow arrow_number"
+              data-arrow="current"
+            >
+              <span class="arrow__text" data-page="1">1</span>
             </div>
-            <div class="navigation-pets__arrow arrow">
+            <div class="navigation-pets__arrow arrow" data-arrow="next">
               <span class="arrow__text">></span>
             </div>
-            <div class="navigation-pets__arrow arrow">
+            <div class="navigation-pets__arrow arrow" data-arrow="last">
               <span class="arrow__text">>></span>
             </div>
           </div>

@@ -142,6 +142,11 @@ parasites: [
 }
 ]
 
+// highlighting page
+
+document.querySelectorAll('.menu-header__item')[0].classList.add('menu-header__item_active')
+
+
 // Burger Menu //
 
 const burgerIcon = document.querySelector('.header__burger');
@@ -236,13 +241,6 @@ function fillContentsPopup(dataJson, number) {
    });
 }
 
-// async function getData() {
-//       const res = await fetch('../../assets/json/pets.json');
-//       const data = await res.json();
-// }
-// getData();
-
-
 // Carousel
 let currentSetCards = [1,2,3];
 let nextSet = [];
@@ -252,7 +250,6 @@ const arrowLeft = document.querySelector('.our-friends__arrow_left');
 const arrowRight = document.querySelector('.our-friends__arrow_right');
 
 let widthCards = cards.offsetWidth;
-console.log(widthCards);
 
 let leftCards = cards.cloneNode(true);
 let rightCards = cards.cloneNode(true);
@@ -314,11 +311,9 @@ function getRandomSet(currentSet) {
       let randomNumber;
       do {
          randomNumber = Math.ceil(Math.random()*8);
-         // console.log(randomNumber);
       } while (currentSet.includes(randomNumber) || nextSet.includes(randomNumber));
       nextSet[i] = randomNumber;
    }
-   console.log('nextSet:'+ nextSet, 'currentSetCards:'+ currentSetCards);
    
 }
 getRandomSet(currentSetCards);

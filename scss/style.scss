@@ -317,7 +317,8 @@ h1,h2,h3,h4,h5,p{
    &__text {
       font-size: 20px;
       letter-spacing: 0.06em;
-      color: $color-dark3;
+      text-align: center;
+      // color: $color-dark3;
    }
 
    &_number {
@@ -335,7 +336,7 @@ h1,h2,h3,h4,h5,p{
 
       &:hover {
          cursor: auto;
-         background: transparent;
+         background: none;
          box-shadow: none;
       }
    }
