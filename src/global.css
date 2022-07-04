@@ -1,35 +1,92 @@
+html,
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #17181c;
+  font-family: sans-serif;
 }
 
-header {
-    padding: 10px 30px;
+.container {
+  max-width: 1400px;
+  min-height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
+
+/* header {
+  padding: 10px 30px;
+} */
 
 header h1 {
-    font-size: 40px;
-    font-weight: 800;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  margin: 15px;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 footer {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.footer__body {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0.75rem;
+  padding: 1rem;
+  border: 2px solid #30c5ff;
+}
+
+.footer__data,
+.footer__school {
+  text-align: center;
+  margin: 0 1rem;
+}
+
+.footer__link,
+.footer__link:active,
+.footer__link:visited {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer__link:hover {
+  color: #69db7e;
+  transition: 0.5s;
+}
+
 footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
 }
 footer .copyright a {
-    color: #444;
+  text-decoration: none;
+  color: #70d6ff;
 }
 footer .copyright a:hover {
-    color: #555;
+  color: #69db7e;
 }
 footer .copyright:before {
-    content: '©';
+  content: "©";
+}
+@media (min-width: 800px) {
+  header h1 {
+    font-size: 40px;
+    font-weight: 800;
+    text-align: center;
+    margin: 30px;
+  }
 }
