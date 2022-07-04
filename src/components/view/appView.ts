@@ -16,9 +16,9 @@ export class AppView {
     }
   }
 
-  drawSources(data: Partial<DataInterface>) {
+  drawSources(data: Partial<DataInterface>, pointer: string) {
     if (data && data.status === Status.ok) {
-      this._sources.draw(data);
+      this._sources.draw(data, pointer);
     }
   }
 }

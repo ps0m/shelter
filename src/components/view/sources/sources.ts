@@ -2,7 +2,7 @@ import './sources.css';
 import { DataInterface, DataSources } from '../../../types/interface';
 
 class Sources {
-  draw(data: Partial<DataInterface>): void {
+  draw(data: Partial<DataInterface>, pointer: string): void {
     const fragment: DocumentFragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement || null;
     if (sourceItemTemp === null) {
@@ -18,15 +18,22 @@ class Sources {
         if (sourceItemName === null || sourceItem === null) {
           throw new Error('Element is undefined');
         }
-        sourceItemName.textContent = item.name;
-        sourceItem.setAttribute('data-source-id', item.id);
-        fragment.append(sourceClone);
+        // console.log('dd', item.name[0], pointer);
+
+        if (item.name[0] === pointer || item.name[0] === pointer.toLocaleLowerCase()) {
+          sourceItemName.textContent = item.name;
+          sourceItem.setAttribute('data-source-id', item.id);
+          fragment.append(sourceClone);
+        }
       });
     }
 
     const sources = document.querySelector('.sources') as HTMLElement || null;
     if (sources === null) {
       throw new Error('Element is undefined');
+    }
+    while (sources.firstChild) {
+      sources.removeChild(sources.firstChild);
     }
     sources.append(fragment);
   }

@@ -1,5 +1,6 @@
 import './news.css';
 import { DataInterface, DataArticles } from '../../../types/interface';
+// import { s } from '../../../assets/images/';
 
 
 class News {
@@ -37,12 +38,7 @@ class News {
         if (idx % 2) newsItem.classList.add('alt');
 
         if (item.urlToImage) {
-          console.log('Img is here');
-
           newsMetaPhoto.style.backgroundImage = `url(${item.urlToImage})`;
-        } else {
-          console.log('Img is`nt here');
-          newsMetaPhoto.style.backgroundImage = `url("../src/assets/images/news_placeholder.jpg")`
         }
         newsMetaAuthor.textContent = item.author || item.source.name;
         newsMetaDate.textContent = item.publishedAt
