@@ -18,7 +18,6 @@ class Sources {
         if (sourceItemName === null || sourceItem === null) {
           throw new Error('Element is undefined');
         }
-        // console.log('dd', item.name[0], pointer);
 
         if (item.name[0] === pointer || item.name[0] === pointer.toLocaleLowerCase()) {
           sourceItemName.textContent = item.name;

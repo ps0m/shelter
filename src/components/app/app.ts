@@ -21,16 +21,13 @@ class App {
       navigation.addEventListener('click', (e) => {
         this._navigation.changePointer(e)
         this._controller.getSources((data) => {
-          console.log('data2', data);
           this._view.drawSources(data, this._navigation.pointer)
         });
       });
       sources.addEventListener('click', (e) => this._controller.getNews(e, (data) => {
-        console.log('data1', data);
         this._view.drawNews(data)
       }));
       this._controller.getSources((data) => {
-        console.log('data2', data);
         this._view.drawSources(data, this._navigation.pointer)
       });
     }
