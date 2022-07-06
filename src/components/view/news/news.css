@@ -2,14 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /* flex-direction: column; */
   flex-wrap: wrap;
 }
 .news__item {
   display: flex;
   flex-direction: column;
   margin: 1rem 1rem;
-  margin-bottom: 1.6%;
   background: #fff;
   color: #333;
   line-height: 1.4;
@@ -131,7 +129,7 @@
 @media (min-width: 640px) {
   .news__item {
     flex-direction: row;
-    max-width: 800px;
+    width: 85%;
     min-height: 300px;
   }
 
@@ -180,6 +178,7 @@
   .news__item {
     flex-direction: row;
     max-width: 600px;
+    min-width: 45%;
     min-height: 300px;
   }
 }
