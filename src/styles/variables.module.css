@@ -1,0 +1,6 @@
+:root {
+  --white: #fff;
+  --green: #004f44;
+  --mainColor: var(--green);
+  --mainTextColor: var(--white);
+}
