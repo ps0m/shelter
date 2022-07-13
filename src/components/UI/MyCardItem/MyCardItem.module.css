@@ -1,0 +1,37 @@
+@import url(../../../styles/variables.module.css);
+
+.card__item{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 0 auto;
+  margin: 0.75rem;
+  padding: 0.75rem;
+  border: 2px solid var(--mainColor);
+  text-align: center;
+}
+
+.card__image{
+  width:100%;
+}
+
+.card__title{
+  width:100%;
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+}
+
+.card__text{
+  width:100%;
+  font-size: 1.2rem;
+  padding: 3px 0px;
+}
+
+.card__buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.75rem;
+}
+

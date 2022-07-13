@@ -1,6 +1,8 @@
 :root {
   --white: #fff;
   --green: #004f44;
+  --whiteFilter: invert(97%) sepia(0%) saturate(7488%) hue-rotate(77deg) brightness(110%) contrast(100%);
+  --greenFilter: invert(19%) sepia(95%) saturate(809%) hue-rotate(136deg) brightness(97%) contrast(105%);
   --mainColor: var(--green);
   --mainTextColor: var(--white);
 }
