@@ -1,9 +1,20 @@
 import React from 'react';
 import classes from "./MyButton.module.css";
 
-const MyButton = () => {
+interface MyButtonProps {
+  onClick(e: React.MouseEvent<HTMLButtonElement>): void;
+  inBasket: boolean
+}
+
+const MyButton = (props: MyButtonProps) => {
+
+  const cardClasses = [classes.button]
+  if (props.inBasket) {
+    cardClasses.push(classes.button_select)
+  }
+
   return (
-    <button className={classes.button}>
+    <button {...props} className={cardClasses.join(" ")} >
       <p>Купить</p>
       <div className={classes.button__image}></div>
     </button>

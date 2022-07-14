@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './styles/App.css';
-import MyHeader from './components/UI/MyHeader/MyHeader';
-import MyFooter from './components/UI/MyFooter/MyFooter';
 import { ICard } from './types/types';
-import CardList from './components/UI/CardList';
 import GeterCards from "./API/GeterCards";
+import MyHeader from './components/UI/MyHeader/MyHeader';
+import CardList from './components/UI/CardList';
+import MyFooter from './components/UI/MyFooter/MyFooter';
 
 const App = () => {
   const [cards, setCards] = useState<ICard[]>([]);
+  const [equalPurchase, setEqualPurchase] = useState<number>(0);
 
   useEffect(() => {
     getCards();
@@ -18,10 +19,15 @@ const App = () => {
     data ? setCards(data) : setCards([]);
   }
 
+  const putInBasket = (equal: number) => {
+    setEqualPurchase(equal);
+  }
+
+
   return (
     <div className=".container" >
-      <MyHeader />
-      <CardList cards={cards} />
+      <MyHeader purchase={equalPurchase} />
+      <CardList cards={cards} put={putInBasket} />
       <MyFooter />
     </div>
   );

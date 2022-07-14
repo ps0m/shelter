@@ -1,19 +1,19 @@
 import React from 'react';
 import classes from './MyBasket.module.css';
 
-interface BasketProps {
-  counter: number;
+export interface BasketProps {
+  purchase: number;
 }
 
-const MyBasket = ({ counter }: BasketProps) => {
+export const MyBasket = ({ purchase }: BasketProps) => {
   return (
     <div className={classes.basket}>
       <div className={classes.logo} />
       <div className={classes.screen}>
-        {counter}
+        {purchase}
       </div>
     </div>
 
   );
 };
-export default MyBasket;
+
