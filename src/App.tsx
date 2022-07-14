@@ -3,7 +3,7 @@ import './styles/App.css';
 import { ICard } from './types/types';
 import GeterCards from "./API/GeterCards";
 import MyHeader from './components/UI/MyHeader/MyHeader';
-import CardList from './components/UI/CardList';
+import CardList from './components/CardList';
 import MyFooter from './components/UI/MyFooter/MyFooter';
 
 const App = () => {

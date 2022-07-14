@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import classes from './MyCardItem.module.css';
-import { ICard } from '../../../types/types';
-import MyButtonStar from '../MyButtons/MyButtonStar/MyButtonStar';
-import MyButton from '../MyButtons/MyButton/MyButton';
+import { ICard } from '../../types/types';
+import MyButtonStar from '../UI/MyButtons/MyButtonStar/MyButtonStar';
+import MyButton from '../UI/MyButtons/MyButton/MyButton';
 
 interface MyCardItemProps {
   card: ICard;

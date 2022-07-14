@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ICard } from '../../types/types';
+import { ICard } from '../types/types'
 import MyCardItem from './MyCardItem/MyCardItem';
 
 interface CardListProps {
