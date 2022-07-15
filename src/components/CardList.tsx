@@ -43,7 +43,6 @@ const CardList: React.FC<CardListProps> = (props) => {
           isFull={isFullBasket}
           key={card.id} />
       )}
-
     </div>
   );
 };

@@ -20,7 +20,7 @@ const MyModalWindow = (props: PropsMyModalWindow) => {
       ? <div className={classes.background} onClick={(e) => clickHandler(e)}>
         <div className={classes.window} onClick={(e) => e.stopPropagation()}>
           <h1 className={classes.window__text}>Невозможно добавить новый элемент, корзина переполнена</h1>
-          <MyButton onClick={clickHandler} active={false}>
+          <MyButton onClick={clickHandler} isActive={false}>
             <p>Спасибо</p>
           </MyButton>
         </div>

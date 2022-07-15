@@ -11,7 +11,7 @@ interface MyCardItemProps {
 }
 
 const MyCardItem = (props: MyCardItemProps) => {
-  const [inBasket, setInBasket] = useState(false);
+  const [inBasket, setInBasket] = useState<boolean>(false);
 
   const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ const MyCardItem = (props: MyCardItemProps) => {
         <MyButtonStar />
         <MyButton
           onClick={clickHandler}
-          active={inBasket}>
+          isActive={inBasket}>
           <p>Купить</p>
           <div className={classes.card__button_image}></div>
         </MyButton>

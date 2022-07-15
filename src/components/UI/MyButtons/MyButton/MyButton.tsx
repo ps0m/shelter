@@ -3,19 +3,19 @@ import classes from "./MyButton.module.css";
 
 interface MyButtonProps {
   onClick(e: React.MouseEvent<HTMLButtonElement>): void;
-  active: boolean;
+  isActive: boolean;
   children?: React.ReactNode
 }
 
 const MyButton = (props: MyButtonProps) => {
 
-  const cardClasses = [classes.button]
-  if (props.active) {
+  const cardClasses = [classes.button];
+  if (props.isActive) {
     cardClasses.push(classes.button_select)
   }
 
   return (
-    <button {...props} className={cardClasses.join(" ")} >
+    <button onClick={props.onClick} className={cardClasses.join(" ")} >
       {props.children}
     </button>
   );
