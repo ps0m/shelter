@@ -1,0 +1,59 @@
+@import url(../../styles/variables.module.css);
+
+.card__item{
+  max-width: 400px;
+  /* min-width: 400px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 0 400px;
+  margin: 12px;
+  padding: 12px;
+  border: 3px solid var(--mainColor);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card__item_select{
+  border: 5px solid gold;
+  padding: 10px;
+}
+
+.card__image{
+  min-width:100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card__title{
+  width:100%;
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+}
+
+.card__text{
+  width:100%;
+  font-size: 1.2rem;
+  padding: 3px 0px;
+}
+
+.card__buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.75rem;
+}
+
+.card__button_image{
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  background: url(../UI/MyBasket/MyBasket.svg) center/cover no-repeat;
+  filter: var(--greenFilter);
+  transition: 0.5s;
+}
+
+button:hover >  .card__button_image,
+button:active >  .card__button_image{
+  transform: translateX(150%);
+}

@@ -7,14 +7,13 @@
   width: 50px;
   height: 50px;
   background: url(./MyBasket.svg) center/cover no-repeat;
-  filter: invert(97%) sepia(0%) saturate(7488%) hue-rotate(77deg) brightness(110%) contrast(100%);
+  filter: var(--whiteFilter);
 }
 .screen {
   content: "";
   position: absolute;
   display: flex;
   justify-content: center;
-  align-items: center;
   top: 70%;
   left: 90%;
   width: 25px;

@@ -16,21 +16,11 @@
 }
 
 .button:hover,
-.button:active{
+.button:active,
+.button:focus-visible,
+.button_select{
   background-color: var(--mainColor);
   color: var(--mainTextColor);
+  outline:none;
 }
 
-.button__image{
-  width: 25px;
-  height: 25px;
-  margin-left: 10px;
-  background: url(../../MyBasket/MyBasket.svg) center/cover no-repeat;
-  filter: var(--greenFilter);
-  transition: 0.5s;
-}
-
-.button:hover .button__image,
-.button:active .button__image{
-  transform: translateX(100%);
-}

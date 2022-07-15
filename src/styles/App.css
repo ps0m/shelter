@@ -9,16 +9,23 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.body_hidden {
+  overflow: hidden;
+  padding-right: 21px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
-  max-width: 1400px;
+  max-width: 1900px;
+  margin: 0 auto;
 }
 
 .cards{
+  width: 100%;
   display:flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }

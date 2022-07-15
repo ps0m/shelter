@@ -11,6 +11,8 @@
   }
 
 .button__star:hover,
-.button__star:active{
+.button__star:active,
+.button__star:focus-visible{
   background: url(./full_star.svg) center/contain no-repeat;
+  outline:none;
 }
