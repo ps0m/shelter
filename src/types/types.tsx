@@ -14,3 +14,7 @@ export interface ICardList {
   cards: ICard[];
 }
 
+export enum fullBasket {
+  no = 0,
+  yes = 1
+}

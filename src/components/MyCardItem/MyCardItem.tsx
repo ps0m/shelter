@@ -7,6 +7,7 @@ import MyButton from '../UI/MyButtons/MyButton/MyButton';
 interface MyCardItemProps {
   card: ICard;
   add(el: ICard): void;
+  isFull: boolean;
 }
 
 const MyCardItem = (props: MyCardItemProps) => {
@@ -14,8 +15,12 @@ const MyCardItem = (props: MyCardItemProps) => {
 
   const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    inBasket ? setInBasket(false) : setInBasket(true);
-    props.add(props.card)
+    props.add(props.card);
+    if (inBasket) {
+      setInBasket(false)
+    } else {
+      if (!props.isFull) setInBasket(true)
+    }
   }
 
   const cardClasses = [classes.card__item]
@@ -35,7 +40,13 @@ const MyCardItem = (props: MyCardItemProps) => {
       <p className={classes.card__text}>Освещенние: {props.card.illumination}</p>
       <div className={classes.card__buttons}>
         <MyButtonStar />
-        <MyButton onClick={clickHandler} inBasket={inBasket} />
+        <MyButton
+          onClick={clickHandler}
+          active={inBasket}>
+          <p>Купить</p>
+          <div className={classes.card__button_image}></div>
+        </MyButton>
+
       </div>
 
     </div >
