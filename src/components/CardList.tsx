@@ -33,6 +33,9 @@ const CardList: React.FC<CardListProps> = (props) => {
       : setIsFullBasket(false)
   }, [purchase]);
 
+  if (props.cards.length === 0) {
+    return <p className='cards__note'>Нет товаров соответсвующих вашему запросу..</p>
+  }
   return (
     <div className='cards'>
       <MyModalWindow show={showModalWindow} setShow={setShowModalWindow} />
