@@ -7,14 +7,17 @@ export interface ICard {
   depth: string,
   frostresistance: string,
   illumination: string,
-  link: string
+  link: string,
+  popular: string
 }
 
 export interface ICardList {
   cards: ICard[];
 }
 
-export enum fullBasket {
-  no = 0,
-  yes = 1
+export interface IFilterParameters {
+  soil: string[],
+  frostresistance: string[],
+  illumination: string[],
+  popular: string[],
 }
