@@ -1,0 +1,26 @@
+@import url(../../../styles/variables.module.css);
+
+.basket {
+  position: relative;
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  background: url(./MyBasket.svg) center/cover no-repeat;
+  filter: var(--whiteFilter);
+}
+.screen {
+  content: "";
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 70%;
+  left: 90%;
+  width: 25px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--mainColor);
+  background-color: var(--mainTextColor);
+}

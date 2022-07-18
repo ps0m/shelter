@@ -1,0 +1,18 @@
+@import url(../../../../styles/variables.module.css);
+
+.button__star{
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  border: none;
+  background: url(./empty_star.svg) center/contain no-repeat;
+  filter: var(--greenFilter);
+  transition: 0.3s;
+  }
+
+.button__star:hover,
+.button__star:active,
+.button__star:focus-visible{
+  background: url(./full_star.svg) center/contain no-repeat;
+  outline:none;
+}
