@@ -9,6 +9,7 @@ export interface ICard {
   illumination: string,
   link: string,
   popular: string
+  price: string
 }
 
 export interface ICardList {
@@ -20,4 +21,9 @@ export interface IFilterParameters {
   frostresistance: string[],
   illumination: string[],
   popular: string[],
+}
+
+export interface ISliderParameters {
+  price: number[],
+  equal: number[]
 }

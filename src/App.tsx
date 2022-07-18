@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './styles/App.css';
-import { ICard, IFilterParameters } from './types/types';
+import { ICard, IFilterParameters, ISliderParameters } from './types/types';
 import GeterCards from "./API/GeterCards";
 import MyHeader from './components/UI/MyHeader/MyHeader';
 import CardList from './components/CardList';
@@ -8,6 +8,7 @@ import MyFooter from './components/UI/MyFooter/MyFooter';
 import MySelect from './components/UI/MySelect/MySelect';
 import MyInput from './components/UI/MyInput/MyInput';
 import MyCheckboxBlock from './components/UI/MyCheckboxBlock/MyCheckboxBlock';
+import Slider from './components/UI/Slider/Slider';
 
 
 const App = () => {
@@ -16,6 +17,9 @@ const App = () => {
   const [selectedSort, setSelectedSort] = useState<keyof ICard>('id');
   const [searchLine, setSearchLine] = useState<string>('');
   const [filterParameters, setFilterParameters] = useState<string[]>([]);
+  const [sliderParameters, setSliderParameters] = useState<ISliderParameters>(
+    { price: [0, 100], equal: [0, 100] }
+  );
 
   useEffect(() => {
     getCards();
@@ -62,6 +66,8 @@ const App = () => {
   }
 
   const sortAndFilterAndSearchCards = useMemo(() => {
+    console.log('s', sliderParameters);
+
     const filterObject: IFilterParameters = {
       soil: [],
       frostresistance: [],
@@ -89,6 +95,29 @@ const App = () => {
     })
   }, [searchLine, selectedSort, filterParameters])
 
+  const sortSlider = useMemo(() => {
+    return sortAndFilterAndSearchCards.filter(card => {
+      return (sliderParameters.equal[0] <= Number(card.equal)
+        && Number(card.equal) <= sliderParameters.equal[1]
+        && sliderParameters.price[0] <= Number(card.price)
+        && Number(card.price) <= sliderParameters.price[1])
+        ? true
+        : false
+    })
+  }, [searchLine, selectedSort, filterParameters, sliderParameters])
+
+  const onSetSlider = (name: string, value: number[]) => {
+    name === 'price'
+      ? setSliderParameters({
+        price: [value[0], value[1]],
+        equal: [sliderParameters.equal[0], sliderParameters.equal[1]]
+      })
+      : setSliderParameters({
+        price: [sliderParameters.price[0], sliderParameters.price[1]],
+        equal: [value[0], value[1]]
+      });
+
+  };
 
   return (
     <div className="container" >
@@ -102,7 +131,21 @@ const App = () => {
             { title: "Выбор покупателей:", group: "popular", options: ["Поппулярные"] },
           ]}
           changeFilter={changeFilter}
-        />
+        >
+          <Slider
+            parameters={sliderParameters.price}
+            onSetSlider={onSetSlider}
+            name={'price'}>
+            Цена
+          </Slider >
+          <Slider
+            parameters={sliderParameters.equal}
+            onSetSlider={onSetSlider}
+            name={'equal'}>
+            Количество
+          </Slider>
+
+        </MyCheckboxBlock>
         <section className='content__container'>
           <div className='search_find'>
             <MyInput
@@ -129,7 +172,7 @@ const App = () => {
             />
           </div>
 
-          <CardList cards={sortAndFilterAndSearchCards} put={putInBasket} />
+          <CardList cards={sortSlider} put={putInBasket} />
         </section>
       </main>
       <MyFooter />
