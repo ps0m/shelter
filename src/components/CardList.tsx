@@ -9,16 +9,16 @@ interface CardListProps {
 }
 
 const CardList: React.FC<CardListProps> = (props) => {
-  const [purchase, setPurchase] = useState<ICard[]>([]);
+  const [shopping, setShopping] = useState<ICard[]>([]);
   const [isFullBasket, setIsFullBasket] = useState<boolean>(false);
   const [showModalWindow, setShowModalWindow] = useState<boolean>(false);
 
-  const addPurchase = (newPurchase: ICard) => {
-    if (purchase.includes(newPurchase)) {
-      setPurchase([...purchase.filter(card => card.id !== newPurchase.id)]);
+  const addShopping = (newShopping: ICard) => {
+    if (shopping.includes(newShopping)) {
+      setShopping([...shopping.filter(card => card.id !== newShopping.id)]);
     } else {
       if (!isFullBasket) {
-        setPurchase([...purchase, newPurchase]);
+        setShopping([...shopping, newShopping]);
       } else {
         setShowModalWindow(true);
         document.body.classList.add('body_hidden');
@@ -27,11 +27,11 @@ const CardList: React.FC<CardListProps> = (props) => {
   }
 
   useEffect(() => {
-    props.put(purchase.length);
-    purchase.length > 2
+    props.put(shopping.length);
+    shopping.length > 2
       ? setIsFullBasket(true)
       : setIsFullBasket(false)
-  }, [purchase]);
+  }, [shopping]);
 
   if (props.cards.length === 0) {
     return <p className='cards__note'>Нет товаров соответсвующих вашему запросу..</p>
@@ -42,7 +42,7 @@ const CardList: React.FC<CardListProps> = (props) => {
       {props.cards.map((card) =>
         <MyCardItem
           card={card}
-          add={addPurchase}
+          add={addShopping}
           isFull={isFullBasket}
           key={card.id} />
       )}

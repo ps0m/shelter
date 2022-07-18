@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './styles/App.css';
-import { ICard, IFilterParameters, ISliderParameters } from './types/types';
+import { ICard, IFilterParameters, IInitialParameters, ISliderParameters } from './types/types';
 import GeterCards from "./API/GeterCards";
 import MyHeader from './components/UI/MyHeader/MyHeader';
 import CardList from './components/CardList';
@@ -9,17 +9,19 @@ import MySelect from './components/UI/MySelect/MySelect';
 import MyInput from './components/UI/MyInput/MyInput';
 import MyCheckboxBlock from './components/UI/MyCheckboxBlock/MyCheckboxBlock';
 import Slider from './components/UI/Slider/Slider';
+import MyButton from './components/UI/MyButtons/MyButton/MyButton';
 
 
 const App = () => {
+  const initialParameters: IInitialParameters = getLocalStorage();
+  console.log('init', initialParameters);
+
   const [cards, setCards] = useState<ICard[]>([]);
-  const [equalPurchase, setEqualPurchase] = useState<number>(0);
+  const [equalShopping, setEqualShopping] = useState<number>(0);
   const [selectedSort, setSelectedSort] = useState<keyof ICard>('id');
   const [searchLine, setSearchLine] = useState<string>('');
-  const [filterParameters, setFilterParameters] = useState<string[]>([]);
-  const [sliderParameters, setSliderParameters] = useState<ISliderParameters>(
-    { price: [0, 100], equal: [0, 100] }
-  );
+  const [filterParameters, setFilterParameters] = useState<string[]>(initialParameters.filter);
+  const [sliderParameters, setSliderParameters] = useState<ISliderParameters>(initialParameters.slider)
 
   useEffect(() => {
     getCards();
@@ -28,11 +30,17 @@ const App = () => {
   async function getCards() {
     const data = await GeterCards.getCards();
     data ? setCards(data) : setCards([]);
-    setSelectedSort('name');
+    setSelectedSort(initialParameters.sort);
+    // setInitialSlider();
   }
 
+  // const setInitialSlider = () => {
+
+  //   setSliderParameters(initialParameters.slider);
+  // }
+
   const putInBasket = (equal: number) => {
-    setEqualPurchase(equal);
+    setEqualShopping(equal);
   }
 
   const sortCarding = useMemo(() => {
@@ -66,7 +74,6 @@ const App = () => {
   }
 
   const sortAndFilterAndSearchCards = useMemo(() => {
-    console.log('s', sliderParameters);
 
     const filterObject: IFilterParameters = {
       soil: [],
@@ -116,43 +123,94 @@ const App = () => {
         price: [sliderParameters.price[0], sliderParameters.price[1]],
         equal: [value[0], value[1]]
       });
-
   };
+
+
+
+  const setLocalStorage = () => {
+    const allParameters = {
+      'shopping': equalShopping,
+      'sort': selectedSort,
+      'filter': filterParameters,
+      'slider': sliderParameters,
+    }
+    localStorage.setItem('ps0m_online_store', JSON.stringify(allParameters))
+  }
+
+  function getLocalStorage() {
+    const initialRaw = localStorage.getItem('ps0m_online_store')
+    return initialRaw
+      ? JSON.parse(initialRaw)
+      : {
+        'shopping': 0,
+        'sort': 'name',
+        'filter': [],
+        'slider': { price: [0, 100], equal: [0, 100] },
+      }
+  }
+
+  useEffect(() => {
+    setLocalStorage();
+  }, [sortSlider]);
+
+
+
 
   return (
     <div className="container" >
-      <MyHeader purchase={equalPurchase} />
+      <MyHeader shopping={equalShopping} />
       <main className="main">
         <MyCheckboxBlock
           instructions={[
-            { title: "Почва:", group: "soil", options: ['Кислая', 'Любая', 'Болотистая'] },
-            { title: "Морозоустойчивость:", group: "frostresistance", options: ['4', '5'] },
-            { title: "Освещенние:", group: "illumination", options: ['Солнечное', 'Затенненное', 'Любое'] },
-            { title: "Выбор покупателей:", group: "popular", options: ["Поппулярные"] },
+            { title: "Почва:", group: "soil", name: ['Кислая', 'Любая', 'Болотистая'] },
+            { title: "Морозоустойчивость:", group: "frostresistance", name: ['4', '5'] },
+            { title: "Освещенние:", group: "illumination", name: ['Солнечное', 'Затенненное', 'Любое'] },
+            { title: "Выбор покупателей:", group: "popular", name: ["Поппулярные"] },
           ]}
           changeFilter={changeFilter}
+          checkedFilter={filterParameters}
         >
           <Slider
             parameters={sliderParameters.price}
             onSetSlider={onSetSlider}
-            name={'price'}>
+            name={'price'}
+            initialValue={sliderParameters.price}>
             Цена
           </Slider >
           <Slider
             parameters={sliderParameters.equal}
             onSetSlider={onSetSlider}
-            name={'equal'}>
+            name={'equal'}
+            initialValue={sliderParameters.equal}
+          >
             Количество
           </Slider>
-
+          <MyButton
+            className="card__button"
+            onClick={() => {
+              setFilterParameters([]);
+              setSliderParameters({ price: [0, 100], equal: [0, 100] });
+            }}
+            isActive={false} >
+            Очистить фильтры
+          </MyButton>
+          <MyButton
+            className="card__button"
+            onClick={() => {
+              setSearchLine('');
+              setSelectedSort('name');
+              setFilterParameters([]);
+              setSliderParameters({ price: [0, 100], equal: [0, 100] });
+              localStorage.removeItem('ps0m_online_store');
+            }} isActive={false} >
+            Очистить настройки
+          </MyButton>
         </MyCheckboxBlock>
         <section className='content__container'>
           <div className='search_find'>
             <MyInput
               value={searchLine}
               onChange={event => {
-                console.log(event.target.value);
-
                 setSearchLine(event.target.value)
               }}
               clearValue={() => setSearchLine('')}
@@ -176,7 +234,7 @@ const App = () => {
         </section>
       </main>
       <MyFooter />
-    </div>
+    </div >
   );
 }
 export default App

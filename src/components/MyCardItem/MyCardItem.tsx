@@ -31,7 +31,9 @@ const MyCardItem = (props: MyCardItemProps) => {
   return (
     <div className={cardClasses.join(' ')} key={props.card.id}>
       <img className={classes.card__image} src={props.card.link} alt={props.card.name} />
-      <h3 className={classes.card__title}>{props.card.name}</h3>
+      <div className={classes.card__main}>
+        <h3 className={classes.card__title}>{props.card.name}</h3>
+      </div>
       <p className={classes.card__text}>Количество: {props.card.equal}</p>
       <p className={classes.card__text}>Стратисфакция: {props.card.stratication}</p>
       <p className={classes.card__text}>Почва: {props.card.soil}</p>
@@ -43,7 +45,7 @@ const MyCardItem = (props: MyCardItemProps) => {
         <MyButton
           onClick={clickHandler}
           isActive={inBasket}>
-          <p>Купить</p>
+          <p>{props.card.price}р. Купить</p>
           <div className={classes.card__button_image}></div>
         </MyButton>
 

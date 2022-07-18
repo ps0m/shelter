@@ -2,6 +2,7 @@ import React from 'react';
 import classes from "./MyButton.module.css";
 
 interface MyButtonProps {
+  className?: string
   onClick(e: React.MouseEvent<HTMLButtonElement>): void;
   isActive: boolean;
   children?: React.ReactNode
@@ -9,7 +10,7 @@ interface MyButtonProps {
 
 const MyButton = (props: MyButtonProps) => {
 
-  const cardClasses = [classes.button];
+  const cardClasses = [classes.button, props.className];
   if (props.isActive) {
     cardClasses.push(classes.button_select)
   }
