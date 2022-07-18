@@ -1,6 +1,5 @@
-import { group } from 'console';
 import React from 'react';
-import { MyCheckbox, PropsMyCheckbox } from '../MyCheckbox/MyCheckbox';
+import { MyCheckbox } from '../MyCheckbox/MyCheckbox';
 import classes from "./MyCheckboxBlock.module.css";
 
 
@@ -14,6 +13,7 @@ interface instruction {
 interface PropsMyCheckboxBlock {
   instructions: instruction[];
   changeFilter(e: React.ChangeEvent<HTMLInputElement>): void;
+  children?: React.ReactNode;
 }
 
 const MyCheckboxBlock = (props: PropsMyCheckboxBlock) => {
@@ -25,8 +25,8 @@ const MyCheckboxBlock = (props: PropsMyCheckboxBlock) => {
           {item.options.map((elem) =>
             <MyCheckbox key={elem} option={elem} group={item.group} changeFilter={props.changeFilter} />)}
         </div>
-
       )}
+      {props.children}
     </div>
   );
 };

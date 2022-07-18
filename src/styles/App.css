@@ -22,14 +22,37 @@ body {
   height: 100%;
   max-width: 1900px;
   margin: 0 auto;
+  padding: 0px 20px;
+}
 
+.main{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.content__container{
+width: 100%;
+margin: 20px;
+display:flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+}
+
+.search_find{
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .cards{
   width: 100%;
   display:flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .cards__note{

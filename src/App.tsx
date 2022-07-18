@@ -93,41 +93,45 @@ const App = () => {
   return (
     <div className="container" >
       <MyHeader purchase={equalPurchase} />
+      <main className="main">
+        <MyCheckboxBlock
+          instructions={[
+            { title: "Почва:", group: "soil", options: ['Кислая', 'Любая', 'Болотистая'] },
+            { title: "Морозоустойчивость:", group: "frostresistance", options: ['4', '5'] },
+            { title: "Освещенние:", group: "illumination", options: ['Солнечное', 'Затенненное', 'Любое'] },
+            { title: "Выбор покупателей:", group: "popular", options: ["Поппулярные"] },
+          ]}
+          changeFilter={changeFilter}
+        />
+        <section className='content__container'>
+          <div className='search_find'>
+            <MyInput
+              value={searchLine}
+              onChange={event => {
+                console.log(event.target.value);
 
-      <MyInput
-        value={searchLine}
-        onChange={event => {
-          console.log(event.target.value);
+                setSearchLine(event.target.value)
+              }}
+              clearValue={() => setSearchLine('')}
+              placeholder="Что поищем?"
+              autoComplete='off'
+            >
+            </MyInput >
 
-          setSearchLine(event.target.value)
-        }}
-        clearValue={() => setSearchLine('')}
-        placeholder="Что поищем?"
-        autoComplete='off'
-      >
-      </MyInput >
+            <MySelect
+              defaultValue={'Сортировать по:'}
+              options={[
+                { value: "name", name: 'По имени' },
+                { value: "equal", name: 'По количеству' }
+              ]}
+              value={selectedSort}
+              onChange={sortCards}
+            />
+          </div>
 
-      <MySelect
-        defaultValue={'Сортировать по:'}
-        options={[
-          { value: "name", name: 'По имени' },
-          { value: "equal", name: 'По количеству' }
-        ]}
-        value={selectedSort}
-        onChange={sortCards}
-      />
-
-      <MyCheckboxBlock
-        instructions={[
-          { title: "Почва:", group: "soil", options: ['Кислая', 'Любая', 'Болотистая'] },
-          { title: "Морозоустойчивость:", group: "frostresistance", options: ['4', '5'] },
-          { title: "Освещенние:", group: "illumination", options: ['Солнечное', 'Затенненное', 'Любое'] },
-          { title: "Выбор покупателей:", group: "popular", options: ["Поппулярные"] },
-        ]}
-        changeFilter={changeFilter}
-      />
-
-      <CardList cards={sortAndFilterAndSearchCards} put={putInBasket} />
+          <CardList cards={sortAndFilterAndSearchCards} put={putInBasket} />
+        </section>
+      </main>
       <MyFooter />
     </div>
   );

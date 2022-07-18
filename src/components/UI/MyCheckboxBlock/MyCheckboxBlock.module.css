@@ -2,6 +2,7 @@
 
 .checkbox__container{
   max-width: 270px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -20,7 +21,7 @@
 }
 
 .checkbox__title{
-width: 100%;
+  width: 100%;
   padding: 10px;
   font-size: 1.5rem;
   text-align: center;

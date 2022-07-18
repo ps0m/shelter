@@ -2,9 +2,8 @@
 
 .input{
   position: relative;
-  width: 70%;
+  flex: 5 0 auto;
   margin: 20px;
-
 }
 
 .input__body{
