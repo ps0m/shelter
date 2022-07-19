@@ -14,7 +14,12 @@ import MyButton from './components/UI/MyButtons/MyButton/MyButton';
 
 const App = () => {
   const initialParameters: IInitialParameters = getLocalStorage();
-  console.log('init', initialParameters);
+  console.log(`
+  Добрый день. Есть маленькая просьба:
+  не проверяйте в первый день кроссчека
+  (19.07). Еще немного нужно допилить.
+  Спасибо большое!
+  `);
 
   const [cards, setCards] = useState<ICard[]>([]);
   const [equalShopping, setEqualShopping] = useState<number>(0);
@@ -69,8 +74,6 @@ const App = () => {
     filterParameters.includes(target)
       ? setFilterParameters([...filterParameters.filter(item => item !== target)])
       : setFilterParameters([...filterParameters, target])
-
-    console.log(target, filterParameters);
   }
 
   const sortAndFilterAndSearchCards = useMemo(() => {
