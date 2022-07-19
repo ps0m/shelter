@@ -5,26 +5,25 @@ import "nouislider/distribute/nouislider.css";
 import "./SliderMyStyle.css";
 
 interface ISlider {
-  parameters: number[]
-  onSetSlider(name: string, value: number[]): void
+  onSetSlider(value: number[]): void
   name: string
   initialValue: number[]
   children: React.ReactNode
 }
 
 const Slider = (props: ISlider) => {
-  const getValue = (value: number[]) => {
-    props.onSetSlider(props.name, value)
-  }
+  // const getValue = (value: number[]) => {
+  //   props.onSetSlider(props.name, value)
+  // }
 
-  const initial = props.initialValue
+  const initial = props.initialValue;
   return (
     <div className='slider__container'>
       <p className='slider__title'>{props.children}</p>
       <Nouislider
         connect
-        // start={[initial[0], initial[1]]}
-        start={[0, 100]}
+        start={[initial[0], initial[1]]}
+        // start={[0, 100]}
         behaviour="tap"
         range={{
           min: [0],
@@ -43,7 +42,7 @@ const Slider = (props: ISlider) => {
           }
         }
         tooltips={[true, true]}
-        onSet={getValue}
+        onSet={props.onSetSlider}
       />
     </div>
   );

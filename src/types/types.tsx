@@ -24,13 +24,14 @@ export interface IFilterParameters {
 }
 
 export interface ISliderParameters {
-  price: number[],
-  equal: number[]
+  price?: number[],
+  equal?: number[]
 }
 
 export interface IInitialParameters {
   'shopping': number
   'sort': keyof ICard,
   'filter': string[],
-  'slider': ISliderParameters,
+  'sliderPrice': number[],
+  'sliderEqual': number[],
 }

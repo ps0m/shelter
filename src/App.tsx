@@ -14,19 +14,20 @@ import MyButton from './components/UI/MyButtons/MyButton/MyButton';
 
 const App = () => {
   const initialParameters: IInitialParameters = getLocalStorage();
-  console.log(`
-  Добрый день. Есть маленькая просьба:
-  не проверяйте в первый день кроссчека
-  (19.07). Еще немного нужно допилить.
-  Спасибо большое!
-  `);
+  // console.log(`
+  // Добрый день. Есть маленькая просьба:
+  // не проверяйте в первый день кроссчека
+  // (19.07). Еще немного нужно допилить.
+  // Спасибо большое!
+  // `);
 
   const [cards, setCards] = useState<ICard[]>([]);
   const [equalShopping, setEqualShopping] = useState<number>(0);
   const [selectedSort, setSelectedSort] = useState<keyof ICard>('id');
   const [searchLine, setSearchLine] = useState<string>('');
   const [filterParameters, setFilterParameters] = useState<string[]>(initialParameters.filter);
-  const [sliderParameters, setSliderParameters] = useState<ISliderParameters>(initialParameters.slider)
+  const [sliderParametersPrice, setSliderParametersPrice] = useState<number[]>(initialParameters.sliderPrice);
+  const [sliderParametersEqual, setSliderParametersEqual] = useState<number[]>(initialParameters.sliderEqual);
 
   useEffect(() => {
     getCards();
@@ -36,13 +37,7 @@ const App = () => {
     const data = await GeterCards.getCards();
     data ? setCards(data) : setCards([]);
     setSelectedSort(initialParameters.sort);
-    // setInitialSlider();
   }
-
-  // const setInitialSlider = () => {
-
-  //   setSliderParameters(initialParameters.slider);
-  // }
 
   const putInBasket = (equal: number) => {
     setEqualShopping(equal);
@@ -107,27 +102,22 @@ const App = () => {
 
   const sortSlider = useMemo(() => {
     return sortAndFilterAndSearchCards.filter(card => {
-      return (sliderParameters.equal[0] <= Number(card.equal)
-        && Number(card.equal) <= sliderParameters.equal[1]
-        && sliderParameters.price[0] <= Number(card.price)
-        && Number(card.price) <= sliderParameters.price[1])
+      return (sliderParametersEqual[0] <= Number(card.equal)
+        && Number(card.equal) <= sliderParametersEqual[1]
+        && sliderParametersPrice[0] <= Number(card.price)
+        && Number(card.price) <= sliderParametersPrice[1])
         ? true
         : false
     })
-  }, [searchLine, selectedSort, filterParameters, sliderParameters])
+  }, [searchLine, selectedSort, filterParameters, sliderParametersPrice, sliderParametersEqual])
 
-  const onSetSlider = (name: string, value: number[]) => {
-    name === 'price'
-      ? setSliderParameters({
-        price: [value[0], value[1]],
-        equal: [sliderParameters.equal[0], sliderParameters.equal[1]]
-      })
-      : setSliderParameters({
-        price: [sliderParameters.price[0], sliderParameters.price[1]],
-        equal: [value[0], value[1]]
-      });
+  const onSetSliderPrice = (value: number[]) => {
+    setSliderParametersPrice([value[0], value[1]])
   };
 
+  const onSetSliderEqual = (value: number[]) => {
+    setSliderParametersEqual([value[0], value[1]])
+  };
 
 
   const setLocalStorage = () => {
@@ -135,7 +125,8 @@ const App = () => {
       'shopping': equalShopping,
       'sort': selectedSort,
       'filter': filterParameters,
-      'slider': sliderParameters,
+      'sliderPrice': sliderParametersPrice,
+      'sliderEqual': sliderParametersEqual,
     }
     localStorage.setItem('ps0m_online_store', JSON.stringify(allParameters))
   }
@@ -148,7 +139,8 @@ const App = () => {
         'shopping': 0,
         'sort': 'name',
         'filter': [],
-        'slider': { price: [0, 100], equal: [0, 100] },
+        'sliderPrice': [0, 100],
+        'sliderEqual': [0, 100],
       }
   }
 
@@ -174,17 +166,17 @@ const App = () => {
           checkedFilter={filterParameters}
         >
           <Slider
-            parameters={sliderParameters.price}
-            onSetSlider={onSetSlider}
+            // parameters={sliderParametersPrice}
+            onSetSlider={onSetSliderPrice}
             name={'price'}
-            initialValue={sliderParameters.price}>
+            initialValue={sliderParametersPrice}>
             Цена
           </Slider >
           <Slider
-            parameters={sliderParameters.equal}
-            onSetSlider={onSetSlider}
+            // parameters={sliderParametersEqual}
+            onSetSlider={onSetSliderEqual}
             name={'equal'}
-            initialValue={sliderParameters.equal}
+            initialValue={sliderParametersEqual}
           >
             Количество
           </Slider>
@@ -192,7 +184,8 @@ const App = () => {
             className="card__button"
             onClick={() => {
               setFilterParameters([]);
-              setSliderParameters({ price: [0, 100], equal: [0, 100] });
+              setSliderParametersPrice([0, 100]);
+              setSliderParametersEqual([0, 100]);
             }}
             isActive={false} >
             Очистить фильтры
@@ -203,7 +196,8 @@ const App = () => {
               setSearchLine('');
               setSelectedSort('name');
               setFilterParameters([]);
-              setSliderParameters({ price: [0, 100], equal: [0, 100] });
+              setSliderParametersPrice([0, 100]);
+              setSliderParametersEqual([0, 100]);
               localStorage.removeItem('ps0m_online_store');
             }} isActive={false} >
             Очистить настройки
