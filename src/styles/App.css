@@ -21,6 +21,7 @@ body {
   align-items: center;
   height: 100%;
   max-width: 1900px;
+  min-width: 725px;
   margin: 0 auto;
   padding: 0px 20px;
 }
@@ -43,6 +44,7 @@ align-items: center;
 
 .search_find{
   width: 100%;
+  min-width: 420px;
   display:flex;
   justify-content: space-between;
   align-items: center;
@@ -52,7 +54,8 @@ align-items: center;
   width: 100%;
   display:flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .cards__note{

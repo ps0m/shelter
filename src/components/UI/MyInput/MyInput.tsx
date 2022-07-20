@@ -1,5 +1,8 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import classes from "./MyInput.module.css";
+import cross from "./cross.svg";
+
+
 
 interface PropsMyInput {
   autoComplete: string;
@@ -22,7 +25,7 @@ const MyInput = (props: PropsMyInput) => {
         autoFocus>
       </input >
       {props.children}
-      < div className={classes.input__icon} onClick={props.clearValue}></ div>
+      <img className={classes.input__icon} onClick={props.clearValue} src={cross} alt="" />
     </div>
   );
 };

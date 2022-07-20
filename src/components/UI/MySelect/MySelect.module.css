@@ -1,7 +1,12 @@
 @import url(../../../styles/variables.module.css);
 
 .select {
-  padding: 5px 35px 5px 5px;
+  position: relative;
+}
+
+.select__body {
+  flex: 0 1 auto;
+  padding: 5px 45px 5px 5px;
   font-size: 1rem;
   border: 2px solid var(--mainColor);
   outline: none;
@@ -9,6 +14,15 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url(./arrow_down.svg) 96% / 13% no-repeat var(--mainTextColor);
+  background: transparent;
   color: var(--mainColor);
+}
+
+.select__arrow{
+  position: absolute;
+  filter: var(--greenFilter);
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: -1;
 }

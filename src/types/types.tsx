@@ -28,10 +28,24 @@ export interface ISliderParameters {
   equal?: number[]
 }
 
+export interface ISelectorParameters {
+  keygen: keyof ICard
+  direction: Direction
+}
+
 export interface IInitialParameters {
-  'shopping': number
-  'sort': keyof ICard,
+  'sort': ISelectorParameters,
   'filter': string[],
   'sliderPrice': number[],
   'sliderEqual': number[],
+  'shopping': IShoppingElement[]
+}
+
+export interface IShoppingElement extends ICard {
+  inShopping: boolean;
+}
+
+export enum Direction {
+  Up,
+  Down,
 }

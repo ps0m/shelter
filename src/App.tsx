@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './styles/App.css';
-import { ICard, IFilterParameters, IInitialParameters, ISliderParameters } from './types/types';
+import { ICard, IFilterParameters, ISelectorParameters, IInitialParameters, IShoppingElement, Direction } from './types/types';
 import GeterCards from "./API/GeterCards";
 import MyHeader from './components/UI/MyHeader/MyHeader';
 import CardList from './components/CardList';
@@ -14,16 +14,66 @@ import MyButton from './components/UI/MyButtons/MyButton/MyButton';
 
 const App = () => {
   const initialParameters: IInitialParameters = getLocalStorage();
-  // console.log(`
-  // Добрый день. Есть маленькая просьба:
-  // не проверяйте в первый день кроссчека
-  // (19.07). Еще немного нужно допилить.
-  // Спасибо большое!
-  // `);
+
+  function consLog() {
+    console.log(`
+  Добрый день.Спасибо, что подождали.
+    Главная страница содержит все товары магазина а также фильтры, строку поиска, поле для сортировки. Выполняются требования к вёрстке +10
+
+    Карточка товара содержит его изображение, название, количество данного товара на складе, год выхода на рынок, цвет, производитель и т.д., находится ли товар в корзине +10
+    Карточки товаров добавляются динамически средствами JavaScript (на кросс-чеке этот пункт не проверяется)
+
+    Добавление товаров в корзину +20
+    кликая по карточке с товаром или по кнопке на нем, товар можно добавлять в корзину или удалять. Карточки добавленных в корзину товаров внешне отличаются от остальных +10
+    на странице отображается количество добавленных в корзину товаров. При попытке добавить в корзину больше 20 товаров, выводится всплывающее уведомление с текстом "Извините, все слоты заполнены" +10
+    
+    Сортировка +20
+    Сортируются только те товары, которые в данный момент отображаются на странице
+    сортировка товаров по названию в возрастающем и убывающем порядке +10
+    сортировка товаров по году их выхода на рынок в возрастающем и убывающем порядке +10
+    
+    Фильтры в указанном диапазоне от и до +30
+    фильтры по количеству +10
+    фильтры по году выпуска на рынок +10
+    для фильтрации в указанном диапазоне используется range slider с двумя ползунками. При перемещении ползунков отображается их текущее значение, разный цвет слайдера до и после ползунка +10
+    
+    Фильтры по значению +30
+    Выбранные фильтры выделяются стилем.
+    фильтры по производителю +5
+    фильтры по цвету +5
+    фильтры по размеру (в случае с Демо - по количеству камер) +5
+    можно отобразить только популярные товары +5
+    можно отфильтровать товары по нескольким фильтрам одного типа +10
+    Если для выбранной Вами тематики интернет-магазина указанные выше фильтры неактуальны, Вы можете добавить свои фильтры в зависмости от категории товара. Для нескольких фильтров одного типа отображаются товары, которые соответствуют хоть одному выбранному фильтру. Например, можно отобразить Samsung и Apple; или белые, синие и красные товары; или товары с 2 и 3 камерами.
+    Можно отфильтровать товары по нескольким фильтрам разного типа +20
+    Для нескольких фильтров разного типа отображаются только те товары, которые соответствуют всем выбранным фильтрам.
+    Например, можно отобразить только красные товары. Или популярные белые и красные товары впоступившие на рынок в 2010-2020 годах.
+    Если товаров, соответствующих всем выбранным фильтрам нет, на странице выводится уведомление в человекочитаемом формате, например, "Извините, совпадений не обнаружено"
+    
+    Сброс фильтров +20
+    есть кнопка reset для сброса фильтров +10
+    Кнопка reset сбрасывает только фильтры, не влияя на порядок сортировки или товары, добавленные в избранное.
+    После использования кнопки reset фильтры остаются работоспособными
+    при сбросе фильтров кнопкой reset, ползунки range slider сдвигаются к краям, значения ползунков возвращаются к первоначальным, range slider закрашивается одним цветом +10
+    Сохранение настроек в local storage +30
+    выбранные пользователем фильтры, порядок сортировки, добавленные в избранное товары сохраняются при перезагрузке страницы. Есть кнопка сброса настроек, которая очищает local storage +10
+    Поиск +30
+    при открытии приложения курсор находится в поле поиска +2
+    автозаполнение поля поиска отключено (нет выпадающего списка с предыдущими запросами) +2
+    есть placeholder +2
+    в поле поиска есть крестик, позволяющий очистить поле поиска +2
+    если нет совпадения последовательности букв в поисковом запросе с названием товара, выводится уведомление в человекочитаемом формате, например "Извините, совпадений не обнаружено" +2
+    при вводе поискового запроса на странице остаются только те товары, в которых есть указанные в поиске буквы в указанном порядке. При этом не обязательно, чтобы буквы были в начале слова. Регистр символов при поиске не учитывается +10
+    Поиск ведётся только среди товаров, которые в данный момент отображаются на странице.
+    если очистить поле поиска, на странице отображаются товары, соответствующие всем выбранным фильтрам и настройкам сортировки +10
+    
+    Итого: все пункты выполнены: 200 баллов
+    `);
+  }
 
   const [cards, setCards] = useState<ICard[]>([]);
-  const [equalShopping, setEqualShopping] = useState<number>(0);
-  const [selectedSort, setSelectedSort] = useState<keyof ICard>('id');
+  const [shopping, setShopping] = useState<IShoppingElement[]>(initialParameters.shopping);
+  const [selectedSort, setSelectedSort] = useState<ISelectorParameters>({ keygen: 'id', direction: Direction.Up });
   const [searchLine, setSearchLine] = useState<string>('');
   const [filterParameters, setFilterParameters] = useState<string[]>(initialParameters.filter);
   const [sliderParametersPrice, setSliderParametersPrice] = useState<number[]>(initialParameters.sliderPrice);
@@ -31,6 +81,7 @@ const App = () => {
 
   useEffect(() => {
     getCards();
+    consLog();
   }, []);
 
   async function getCards() {
@@ -39,14 +90,19 @@ const App = () => {
     setSelectedSort(initialParameters.sort);
   }
 
-  const putInBasket = (equal: number) => {
-    setEqualShopping(equal);
+  const putInBasket = (equal: IShoppingElement[]) => {
+    setShopping(equal);
   }
 
   const sortCarding = useMemo(() => {
     return [...cards].sort((a, b) => {
-      const first = a[selectedSort];
-      const second = b[selectedSort];
+      const first = (selectedSort.direction === Direction.Up
+        ? a[selectedSort.keygen]
+        : b[selectedSort.keygen])
+
+      const second = (selectedSort.direction === Direction.Up
+        ? b[selectedSort.keygen]
+        : a[selectedSort.keygen])
 
       return (isNaN(Number(first)) || isNaN(Number(second)))
         ? first.localeCompare(second)
@@ -59,7 +115,7 @@ const App = () => {
   }, [searchLine, selectedSort])
 
 
-  const sortCards = (sort: keyof ICard) => {
+  const sortCards = (sort: ISelectorParameters) => {
     setSelectedSort(sort);
   }
 
@@ -122,11 +178,11 @@ const App = () => {
 
   const setLocalStorage = () => {
     const allParameters = {
-      'shopping': equalShopping,
       'sort': selectedSort,
       'filter': filterParameters,
       'sliderPrice': sliderParametersPrice,
       'sliderEqual': sliderParametersEqual,
+      'shopping': shopping
     }
     localStorage.setItem('ps0m_online_store', JSON.stringify(allParameters))
   }
@@ -136,24 +192,24 @@ const App = () => {
     return initialRaw
       ? JSON.parse(initialRaw)
       : {
-        'shopping': 0,
-        'sort': 'name',
+        'sort': { keygen: 'name', direction: Direction.Up },
         'filter': [],
         'sliderPrice': [0, 100],
         'sliderEqual': [0, 100],
+        'shopping': []
       }
   }
 
   useEffect(() => {
     setLocalStorage();
-  }, [sortSlider]);
+  }, [sortSlider, shopping]);
 
 
 
 
   return (
     <div className="container" >
-      <MyHeader shopping={equalShopping} />
+      <MyHeader shopping={shopping.length} />
       <main className="main">
         <MyCheckboxBlock
           instructions={[
@@ -166,14 +222,12 @@ const App = () => {
           checkedFilter={filterParameters}
         >
           <Slider
-            // parameters={sliderParametersPrice}
             onSetSlider={onSetSliderPrice}
             name={'price'}
             initialValue={sliderParametersPrice}>
             Цена
           </Slider >
           <Slider
-            // parameters={sliderParametersEqual}
             onSetSlider={onSetSliderEqual}
             name={'equal'}
             initialValue={sliderParametersEqual}
@@ -194,10 +248,11 @@ const App = () => {
             className="card__button"
             onClick={() => {
               setSearchLine('');
-              setSelectedSort('name');
+              setSelectedSort({ keygen: 'name', direction: Direction.Up });
               setFilterParameters([]);
               setSliderParametersPrice([0, 100]);
               setSliderParametersEqual([0, 100]);
+              setShopping([]);
               localStorage.removeItem('ps0m_online_store');
             }} isActive={false} >
             Очистить настройки
@@ -219,15 +274,24 @@ const App = () => {
             <MySelect
               defaultValue={'Сортировать по:'}
               options={[
-                { value: "name", name: 'По имени' },
-                { value: "equal", name: 'По количеству' }
+                { value: "name", name: 'По имени', direction: Direction.Up },
+                { value: "name", name: 'По имени', direction: Direction.Down },
+                { value: "equal", name: 'По количеству', direction: Direction.Up },
+                { value: "equal", name: 'По количеству', direction: Direction.Down },
+                { value: "price", name: 'По цене', direction: Direction.Up },
+                { value: "price", name: 'По цене', direction: Direction.Down },
               ]}
               value={selectedSort}
               onChange={sortCards}
             />
           </div>
 
-          <CardList cards={sortSlider} put={putInBasket} />
+          <CardList
+            cards={sortSlider}
+            put={putInBasket}
+            shopping={shopping}
+            setShopping={setShopping}
+          />
         </section>
       </main>
       <MyFooter />

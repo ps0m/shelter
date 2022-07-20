@@ -1,8 +1,8 @@
 @import url(../../styles/variables.module.css);
 
 .card__item{
-  max-width: 300px;
-  min-width: 250px;
+  max-width: 450px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
