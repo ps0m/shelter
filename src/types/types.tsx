@@ -28,13 +28,13 @@ export interface ISliderParameters {
   equal?: number[]
 }
 
-export interface ISelectorParameters {
+export interface ISelectParameters {
   keygen: keyof ICard
   direction: Direction
 }
 
 export interface IInitialParameters {
-  'sort': ISelectorParameters,
+  'sort': ISelectParameters,
   'filter': string[],
   'sliderPrice': number[],
   'sliderEqual': number[],

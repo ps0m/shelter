@@ -21,12 +21,10 @@
 }
 
 .input__icon{
-  content: '';
   position: absolute;
-  top: 50%;
-  right: 1%;
-  transform: translateY(-50%);
-  width: 30px;
+  top: 10%;
+  right: 10px;
+  width: 20px;
   height: 30px;
   cursor: pointer;
 }

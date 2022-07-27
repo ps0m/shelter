@@ -48,7 +48,6 @@
   width: 25px;
   height: 25px;
   margin-left: 10px;
-  background: url(../UI/MyBasket/MyBasket.svg) center/cover no-repeat;
   filter: var(--greenFilter);
   transition: 0.5s;
 }

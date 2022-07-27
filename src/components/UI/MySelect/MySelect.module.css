@@ -22,7 +22,7 @@
   position: absolute;
   filter: var(--greenFilter);
   top: 50%;
-  right: 20px;
+  right: 5px;
   transform: translateY(-50%);
   z-index: -1;
 }

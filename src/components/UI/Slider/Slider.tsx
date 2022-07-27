@@ -12,18 +12,19 @@ interface ISlider {
 }
 
 const Slider = (props: ISlider) => {
-  // const getValue = (value: number[]) => {
-  //   props.onSetSlider(props.name, value)
-  // }
+  let initial;
+  if (props.initialValue !== undefined) {
+    initial = [props.initialValue[0] || 0, props.initialValue[1] || 0]
+  } else {
+    initial = [0, 100]
+  }
 
-  const initial = props.initialValue;
   return (
     <div className='slider__container'>
       <p className='slider__title'>{props.children}</p>
       <Nouislider
         connect
         start={[initial[0], initial[1]]}
-        // start={[0, 100]}
         behaviour="tap"
         range={{
           min: [0],

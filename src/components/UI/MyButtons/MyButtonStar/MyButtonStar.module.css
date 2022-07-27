@@ -11,8 +11,8 @@
   transition: 0.3s;
   }
 
-.button__star:hover,
+/* .button__star:hover,
 .button__star:active,
 .button__star:focus-visible{
   outline:none;
-}
+} */
