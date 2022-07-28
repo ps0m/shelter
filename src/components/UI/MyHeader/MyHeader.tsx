@@ -11,4 +11,5 @@ const MyHeader = ({ shopping }: BasketProps) => {
     </header >
   );
 };
+
 export default MyHeader;

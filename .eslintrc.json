@@ -45,12 +45,46 @@
     "react/react-in-jsx-scope": "off",
     "camelcase": "error",
     "spaced-comment": "error",
-    // "quotes": [
-    //   "error",
-    //   "single"
-    // ],
     "no-duplicate-imports": "error",
-    "@typescript-eslint/no-explicit-any": 2
+    "@typescript-eslint/no-explicit-any": 2,
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": [
+          "const",
+          "let",
+          "var",
+          "block",
+          "block-like",
+          "if",
+          "for",
+          "while",
+          "empty"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": [
+          "const",
+          "let",
+          "var",
+          "block",
+          "block-like",
+          "if",
+          "for",
+          "while",
+          "function",
+          "empty"
+        ],
+        "next": [
+          "const",
+          "let",
+          "var"
+        ]
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

@@ -1,7 +1,7 @@
 @import url(../../styles/variables.module.css);
 
 .card__item{
-  max-width: 450px;
+  max-width: 350px;
   min-width: 200px;
   display: flex;
   flex-direction: column;

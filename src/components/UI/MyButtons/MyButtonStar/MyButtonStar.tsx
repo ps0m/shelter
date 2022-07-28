@@ -9,4 +9,5 @@ const MyButtonStar = () => {
     </button>
   );
 };
+
 export default MyButtonStar;

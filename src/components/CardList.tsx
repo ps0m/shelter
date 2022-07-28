@@ -17,6 +17,7 @@ const CardList: React.FC<CardListProps> = (props) => {
   const addShopping = (newShopping: IShoppingElement) => {
 
     let isInShopping = false;
+
     for (const item of props.shopping) {
       item.id === newShopping.id
         ? isInShopping = true
@@ -48,6 +49,7 @@ const CardList: React.FC<CardListProps> = (props) => {
   if (props.cards.length === 0) {
     return <p className='cards__note'>Нет товаров соответсвующих вашему запросу..</p>
   }
+
   return (
     <div className='cards'>
       <MyModalWindow show={showModalWindow} setShow={setShowModalWindow} />
@@ -73,4 +75,5 @@ const CardList: React.FC<CardListProps> = (props) => {
     </div>
   );
 };
+
 export default CardList;

@@ -26,6 +26,7 @@ const MyCheckboxBlock = (props: PropsMyCheckboxBlock) => {
           {item.name.map((elem) => {
             const id = [item.group, elem].join('&');
             const checked = props.checkedFilter.includes(id);
+
             return <MyCheckbox
               key={elem}
               id={id}
@@ -39,4 +40,5 @@ const MyCheckboxBlock = (props: PropsMyCheckboxBlock) => {
     </div>
   );
 };
+
 export default MyCheckboxBlock;

@@ -28,4 +28,5 @@ const MyModalWindow = (props: PropsMyModalWindow) => {
       : <div></div>
   );
 };
+
 export default MyModalWindow;

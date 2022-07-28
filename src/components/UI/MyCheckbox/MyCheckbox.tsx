@@ -22,4 +22,5 @@ export const MyCheckbox = (props: PropsMyCheckbox) => {
     </div >
   );
 };
+
 export default MyCheckbox;

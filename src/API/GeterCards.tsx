@@ -6,6 +6,7 @@ class GeterCards {
     try {
       const response = await fetch(GeterCards.url, param);
       const data: ICard[] = await response.json();
+
       return data;
     } catch (error) {
       console.error('Error:', error);

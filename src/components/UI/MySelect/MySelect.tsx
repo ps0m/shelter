@@ -1,7 +1,7 @@
 import React from 'react';
 import { ICard, ISelectParameters, Direction } from '../../../types/types';
-import classes from './MySelect.module.css'
-import arrow from './arrow_down.svg'
+import classes from './MySelect.module.css';
+import arrow from './arrow_down.svg';
 
 
 interface IOptionMySelect {
@@ -31,6 +31,7 @@ const MySelect = (props: MySelectProps) => {
             ? Direction.Up
             : Direction.Down
           )
+
           return props.onChange({ keygen: event.target.value.split('&')[0] as keyof ICard, direction: dir })
         }
         }
@@ -50,4 +51,5 @@ const MySelect = (props: MySelectProps) => {
 
   );
 };
+
 export default MySelect;

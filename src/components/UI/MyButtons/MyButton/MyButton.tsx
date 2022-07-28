@@ -11,6 +11,7 @@ interface MyButtonProps {
 const MyButton = (props: MyButtonProps) => {
 
   const cardClasses = [classes.button, props.className];
+
   if (props.isActive) {
     cardClasses.push(classes.button_select)
   }
@@ -21,4 +22,5 @@ const MyButton = (props: MyButtonProps) => {
     </button>
   );
 };
+
 export default MyButton;

@@ -29,5 +29,6 @@ const MyInput = (props: PropsMyInput) => {
     </div>
   );
 };
+
 export default MyInput;
 

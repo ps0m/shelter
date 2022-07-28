@@ -3,6 +3,7 @@ import classes from './MyFooter.module.css';
 
 const MyFooter = () => {
   const date: number = new Date(Date.now()).getFullYear();
+
   return (
     <footer className={classes.footer}>
       <div className={classes.footer__data}>
@@ -16,4 +17,5 @@ const MyFooter = () => {
     </footer>
   );
 };
+
 export default MyFooter;

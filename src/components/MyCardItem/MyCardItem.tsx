@@ -16,7 +16,6 @@ const MyCardItem = (props: MyCardItemProps) => {
 
   const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(currentElement.inShopping);
 
     if (currentElement.inShopping) {
       currentElement.inShopping = false
@@ -25,12 +24,12 @@ const MyCardItem = (props: MyCardItemProps) => {
         currentElement.inShopping = true
       }
     }
-    console.log(currentElement.inShopping);
 
     props.add(currentElement);
   }
 
   const cardClasses = [classes.card__item]
+
   if (currentElement.inShopping) {
     cardClasses.push(classes.card__item_select)
   }
@@ -64,4 +63,5 @@ const MyCardItem = (props: MyCardItemProps) => {
     </div >
   );
 };
+
 export default MyCardItem;

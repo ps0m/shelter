@@ -13,6 +13,7 @@ interface ISlider {
 
 const Slider = (props: ISlider) => {
   let initial;
+
   if (props.initialValue !== undefined) {
     initial = [props.initialValue[0] || 0, props.initialValue[1] || 0]
   } else {
@@ -48,4 +49,5 @@ const Slider = (props: ISlider) => {
     </div>
   );
 }
+
 export default Slider;
