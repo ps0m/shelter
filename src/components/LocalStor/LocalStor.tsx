@@ -1,4 +1,4 @@
-import { Direction, ISelectParameters, IShoppingElement } from '../types/types';
+import { Direction, ISelectParameters, IShoppingElement } from '../../types/types';
 
 export const setLocalStorage = (
   selectedSort: ISelectParameters,

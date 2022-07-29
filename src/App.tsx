@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import GeterCards from "./API/GeterCards";
 import CardList from './components/CardList';
-import { getLocalStorage, setLocalStorage } from './components/LocalStor';
+import { getLocalStorage, setLocalStorage } from './components/LocalStor/LocalStor';
 import MyButton from './components/UI/MyButtons/MyButton/MyButton';
 import MyCheckboxBlock from './components/UI/MyCheckboxBlock/MyCheckboxBlock';
 import MyFooter from './components/UI/MyFooter/MyFooter';

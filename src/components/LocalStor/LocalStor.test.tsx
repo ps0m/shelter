@@ -1,4 +1,4 @@
-import { ISelectParameters, IShoppingElement } from "../types/types";
+import { ISelectParameters, IShoppingElement } from "../../types/types";
 import { getLocalStorage, setLocalStorage } from "./LocalStor";
 
 

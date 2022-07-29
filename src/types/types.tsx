@@ -8,7 +8,7 @@ export interface ICard {
   frostresistance: string,
   illumination: string,
   link: string,
-  popular?: string
+  popular: string
   price: string
 }
 
