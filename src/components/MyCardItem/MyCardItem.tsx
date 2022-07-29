@@ -47,7 +47,7 @@ const MyCardItem = (props: MyCardItemProps) => {
       <p className={classes.card__text}>Морозоустойчивость: {props.element.frostresistance}</p>
       <p className={classes.card__text}>Освещенние: {props.element.illumination}</p>
       <div className={classes.card__buttons}>
-        {props.element.popular
+        {props.element.popular === 'Поппулярные'
           ? <MyButtonStar />
           : <div></div>
         }

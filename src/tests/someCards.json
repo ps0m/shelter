@@ -9,7 +9,8 @@
       "frostresistance": "4",
       "illumination": "Солнечное",
       "link": "https://raw.githubusercontent.com/ps0m/Assets-for-my-projects/main/Online_store/jpg/1.jpg",
-      "price": "20"
+      "price": "20",
+      "popular": "Нет"
     },
     {
       "id": "2",
@@ -34,7 +35,8 @@
       "frostresistance": "4",
       "illumination": "Любое",
       "link": "https://raw.githubusercontent.com/ps0m/Assets-for-my-projects/main/Online_store/jpg/3.jpg",
-      "price": "61"
+      "price": "61",
+      "popular": "Нет"
     },
     {
       "id": "4",
