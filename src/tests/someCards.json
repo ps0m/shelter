@@ -1,0 +1,52 @@
+  [
+    {
+      "id": "1",
+      "name": "Барбарис обыкновенный пурпурнолистный ",
+      "equal": "50",
+      "stratication": "1-2 месяца, мокрая",
+      "soil": "Любая",
+      "depth": "1",
+      "frostresistance": "4",
+      "illumination": "Солнечное",
+      "link": "https://raw.githubusercontent.com/ps0m/Assets-for-my-projects/main/Online_store/jpg/1.jpg",
+      "price": "20"
+    },
+    {
+      "id": "2",
+      "name": "Граб",
+      "equal": "50",
+      "stratication": "замочить",
+      "soil": "Любая",
+      "depth": "1",
+      "frostresistance": "5",
+      "illumination": "Затенненное",
+      "link": "https://raw.githubusercontent.com/ps0m/Assets-for-my-projects/main/Online_store/jpg/2.jpg",
+      "price": "87",
+      "popular": "Поппулярные"
+    },
+    {
+      "id": "3",
+      "name": "Дуб красный",
+      "equal": "10",
+      "stratication": "замочить, 1-2 месяцев, влажная",
+      "soil": "Любая",
+      "depth": "1",
+      "frostresistance": "4",
+      "illumination": "Любое",
+      "link": "https://raw.githubusercontent.com/ps0m/Assets-for-my-projects/main/Online_store/jpg/3.jpg",
+      "price": "61"
+    },
+    {
+      "id": "4",
+      "name": "Ель голубая, колючая",
+      "equal": "100",
+      "stratication": "1-2 месяца, сухая",
+      "soil": "Кислая",
+      "depth": "1",
+      "frostresistance": "5",
+      "illumination": "Любое",
+      "link": "https://raw.githubusercontent.com/ps0m/Assets-for-my-projects/main/Online_store/jpg/4.jpg",
+      "price": "31",
+      "popular": "Поппулярные"
+    }
+  ]
