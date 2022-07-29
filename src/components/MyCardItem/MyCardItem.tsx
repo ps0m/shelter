@@ -1,9 +1,9 @@
 import React from 'react';
-import classes from './MyCardItem.module.css';
-import logoBasket from '../UI/MyBasket/MyBasket.svg';
 import { IShoppingElement } from '../../types/types';
-import MyButtonStar from '../UI/MyButtons/MyButtonStar/MyButtonStar';
+import logoBasket from '../UI/MyBasket/MyBasket.svg';
 import MyButton from '../UI/MyButtons/MyButton/MyButton';
+import MyButtonStar from '../UI/MyButtons/MyButtonStar/MyButtonStar';
+import classes from './MyCardItem.module.css';
 
 interface MyCardItemProps {
   element: IShoppingElement;

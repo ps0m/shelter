@@ -1,7 +1,6 @@
 import React from 'react';
-import classes from "./MyInput.module.css";
 import cross from "./cross.svg";
-
+import classes from "./MyInput.module.css";
 
 
 interface PropsMyInput {

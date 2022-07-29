@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ICard, IShoppingElement } from '../types/types'
+import { ICard, IShoppingElement } from '../types/types';
 import MyCardItem from './MyCardItem/MyCardItem';
 import MyModalWindow from './UI/MyModalWindow/MyModalWindow';
 
@@ -44,7 +44,7 @@ const CardList: React.FC<CardListProps> = (props) => {
     props.shopping.length > 19
       ? setIsFullBasket(true)
       : setIsFullBasket(false)
-  }, [props.shopping]);
+  }, [props, props.shopping]);
 
   if (props.cards.length === 0) {
     return <p className='cards__note'>Нет товаров соответсвующих вашему запросу..</p>
