@@ -12,3 +12,12 @@
   align-items:stretch;
   margin: 10px;
 }
+
+.field__container {
+  display:flex;
+  justify-content:stretch;
+  align-items:stretch;
+  margin: 10px;
+  gap: 10px;
+}
+

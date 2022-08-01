@@ -44,11 +44,6 @@
   background-color: rgb(239, 12, 12);
 }
 
-/* .track__buttons_vertical div{
-  writing-mode: vertical-lr; 
-  text-orientation: upright; 
-} */
-
 .track__car, 
 .track__flag{
   height: 35px;
@@ -61,13 +56,13 @@
   fill:rgb(48, 206, 212)
 }
 
-.track__car svg:hover{
-  fill:rgb(250, 152, 23)
-}
-
 .track__flag{
   position: absolute;
   top: 10%;
   right: 10px;
   transform: translateY(-10%);
+}
+
+.track__title{
+  padding-top: 7px;
 }
