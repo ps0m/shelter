@@ -1,0 +1,14 @@
+.panel__container {
+  display:inline-flex;
+  flex-direction: column;
+  justify-content:stretch;
+  align-items:stretch;
+  margin: 10px;
+}
+
+.panel__buttons{
+  display:flex;
+  justify-content:space-between;
+  align-items:stretch;
+  margin: 10px;
+}

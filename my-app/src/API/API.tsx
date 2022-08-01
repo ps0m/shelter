@@ -1,5 +1,5 @@
 import {
-  ICar, ICarCreate, IEngine, IWinner, Order, Sort,
+  ICar, ICarCreate, IEngine, IWinner, Order, Sort
 } from '../type/type';
 
 const urlBase = 'http://127.0.0.1:3000';
