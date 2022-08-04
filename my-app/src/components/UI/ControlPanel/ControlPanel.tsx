@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { createCar, updateCar } from "../../../API/API";
-import { getRandomName } from "../../../helpers/helpFunctions";
+import { getRandomColor, getRandomName } from "../../../helpers/helpFunctions";
 import { ICar } from "../../../type/type";
 import Button from "../Button/Button";
 import classes from "./ControlPanel.module.css";
+
+const AMOUNT_CREATE_CARS = 100;
 
 interface IControlProps {
   writeCars(): void
@@ -40,7 +42,17 @@ const ControlPanel = ({ writeCars, carSelect, setSelect }: IControlProps) => {
     await updateCar({ id: carSelect.id, 'name': carName, 'color': selectColor });
     writeCars();
     setSelect({ id: 0, name: '', color: selectColor })
-    // setNewName('');
+  }
+
+  const createCards = async () => {
+    for (let i = 0; i < AMOUNT_CREATE_CARS; i++) {
+      const name = getRandomName();
+      const color = getRandomColor();
+
+      await createCar({ 'name': name, 'color': color });
+    }
+
+    writeCars();
   }
 
   return (
@@ -90,9 +102,12 @@ const ControlPanel = ({ writeCars, carSelect, setSelect }: IControlProps) => {
         <Button onClick={function (e: React.MouseEvent<HTMLButtonElement>): void {
           console.log(e.target);
         }} isActive={false} >RESET</Button>
-        <Button onClick={function (e: React.MouseEvent<HTMLButtonElement>): void {
-          console.log(e.target);
-        }} isActive={false} >GENERATE CARDS</Button>
+        <Button
+          onClick={createCards}
+          isActive={false}
+        >
+          GENERATE CARDS
+        </Button>
       </div>
     </div>
   );
