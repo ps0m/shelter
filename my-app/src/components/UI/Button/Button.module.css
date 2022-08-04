@@ -7,7 +7,7 @@
   padding: 0.5rem;
   color: #fff;
   border: none;
-  background: #adadad;
+  background: #808080 ;
   cursor: pointer;
   font-size: 0.7rem;
   text-align: center;
@@ -19,7 +19,7 @@
 .button:active,
 .button:focus-visible,
 .button_select{
-  background: #808080;
+  background: #adadad;
   outline:none;
 }
 

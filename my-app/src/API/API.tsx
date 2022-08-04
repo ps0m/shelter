@@ -2,18 +2,20 @@ import {
   ICar, ICarCreate, IEngine, IWinner, Order, Sort
 } from '../type/type';
 
+export const AMOUNT_PER_PAGES = 7;
 const urlBase = 'http://127.0.0.1:3000';
 const urlGarage = `${urlBase}/garage`;
 const urlWinners = `${urlBase}/winners`;
 const urlEngine = `${urlBase}/engine`;
 
-export const getCars = async (page: number, limit = 7) => {
+export const getCars = async (page: number, limit = AMOUNT_PER_PAGES) => {
   const response = await fetch(`${urlGarage}?_page=${page}&_limit=${limit}`);
   const data = await response.json();
+  const amountPages = response.headers.get('X-Total-Count')
 
-  console.log(data, response.headers.get('X-Total-Count'));
+  console.log(data, amountPages);
 
-  return data;
+  return [data, amountPages];
 };
 
 export const getCar = async (id: number) => {
@@ -52,7 +54,7 @@ export const updateCar = async (car: ICar) => {
   return response.json();
 };
 
-export const getWinners = async (page: number, sort: Sort, order: Order, limit = 7) => {
+export const getWinners = async (page: number, sort: Sort, order: Order, limit = AMOUNT_PER_PAGES) => {
   const response = await fetch(
     `${urlWinners}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`,
   );
