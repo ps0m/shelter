@@ -10,8 +10,8 @@
 .track__body{
   display:flex;
   flex-direction:column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .track__buttons{
@@ -59,7 +59,7 @@
 .track__flag{
   position: absolute;
   top: 10%;
-  right: 10px;
+  right: 40px;
   transform: translateY(-10%);
 }
 
