@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { createCar, updateCar } from "../../../API/API";
 import { getRandomColor, getRandomName } from "../../../helpers/helpFunctions";
-import { ICar } from "../../../type/type";
+import { ICar, statusCar } from "../../../type/type";
 import Button from "../Button/Button";
 import classes from "./ControlPanel.module.css";
 
@@ -11,9 +11,10 @@ interface IControlProps {
   writeCars(): void
   carSelect: ICar
   setSelect(car: ICar): void
+  setCommand: Dispatch<SetStateAction<statusCar>>
 }
 
-const ControlPanel = ({ writeCars, carSelect, setSelect }: IControlProps) => {
+const ControlPanel = ({ writeCars, carSelect, setSelect, setCommand }: IControlProps) => {
   const [newName, setNewName] = useState<string>('');
   const [newColor, setNewColor] = useState<string>('#ff0000');
   const [selectName, setSelectName] = useState<string>('');
@@ -96,12 +97,12 @@ const ControlPanel = ({ writeCars, carSelect, setSelect }: IControlProps) => {
       </div>
 
       <div className={classes.panel__buttons}>
-        <Button onClick={function (e: React.MouseEvent<HTMLButtonElement>): void {
-          console.log(e.target);
-        }} isActive={false} >RACE</Button>
-        <Button onClick={function (e: React.MouseEvent<HTMLButtonElement>): void {
-          console.log(e.target);
-        }} isActive={false} >RESET</Button>
+        <Button
+          onClick={() => setCommand('started')}
+          isActive={false} >RACE</Button>
+        <Button
+          onClick={() => setCommand('stopped')}
+          isActive={false} >RESET</Button>
         <Button
           onClick={createCards}
           isActive={false}

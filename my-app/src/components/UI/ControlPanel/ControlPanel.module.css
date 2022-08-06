@@ -16,7 +16,7 @@
 .field__container {
   display:flex;
   justify-content:stretch;
-  align-items:stretch;
+  align-items:center;
   margin: 10px;
   gap: 10px;
 }

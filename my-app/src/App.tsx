@@ -5,13 +5,14 @@ import PageControl from './components/UI/PageControl/PageControl';
 import Title from './components/UI/Title/Title';
 import Track from './components/UI/Track/Track';
 import './styles/App.css';
-import { ICar } from './type/type';
+import { ICar, statusCar } from './type/type';
 
 function App() {
   const [cars, setCars] = useState<ICar[]>([])
   const [selectCar, setSelectCar] = useState<ICar>({ id: 0, name: '', color: '#000000' })
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [amountCars, setAmountCars] = useState<number>(0)
+  const [commandForCar, setCommandForCar] = useState<statusCar>('waiting')
 
   const writeCars = async () => {
     const answer = await getCars(currentPage)
@@ -31,8 +32,9 @@ function App() {
           writeCars={writeCars}
           carSelect={selectCar}
           setSelect={(car: ICar) => { setSelectCar(car) }}
+          setCommand={setCommandForCar}
         />
-        <div className="img" />
+        {/* <div className="img" /> */}
       </div>
 
       <Title
@@ -44,6 +46,7 @@ function App() {
           car={car}
           writeCars={writeCars}
           setSelect={(car: ICar) => { setSelectCar(car) }}
+          command={commandForCar}
           key={car.id} />
       })}
 

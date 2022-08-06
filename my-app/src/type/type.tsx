@@ -23,7 +23,8 @@ export enum Order {
   'desc' = 'DESC',
 }
 
-type statusEngine = 'started' | 'stopped'
+export type statusEngine = 'started' | 'stopped'
+export type statusCar = 'started' | 'stopped' | 'waiting'
 
 export interface IEngine {
   id: number,

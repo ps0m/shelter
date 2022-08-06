@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-start;
   position: relative;
-  margin: 10px;
+  margin: 10px 0;
   border: 2px salmon dotted;
   gap: 10px;
 }
@@ -59,7 +59,7 @@
 .track__flag{
   position: absolute;
   top: 10%;
-  right: 40px;
+  right: 60px;
   transform: translateY(-10%);
 }
 
