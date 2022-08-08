@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 import { WinnersContext } from './context';
 import Garage from './pages/Garage';
 import Winners from './pages/Winners';
@@ -33,6 +33,9 @@ function App() {
         <Routes>
           <Route path="/garage" element={<Garage />} />
           <Route path="/winners" element={<Winners />} />
+          <Route
+            path="*"
+            element={<Navigate to="/garage" replace />} />
         </Routes>
       </BrowserRouter>
     </WinnersContext.Provider>
