@@ -3,7 +3,7 @@
   justify-content: flex-start;
   position: relative;
   margin: 10px 0;
-  border: 2px salmon dotted;
+  border: 2px #4e4e4e dotted;
   gap: 10px;
 }
 
@@ -38,11 +38,19 @@
 }
 
 .track__buttons_vertical button:first-of-type{
-  background-color: rgb(13, 220, 13);
+  background-color: #0ddc0d;
 }
+
 .track__buttons_vertical button:last-of-type{
-  background-color: rgb(239, 12, 12);
+  background-color: #ef0c0c;
 }
+
+.track__buttons_vertical button:first-of-type:disabled,
+.track__buttons_vertical button:last-of-type:disabled{
+  background-color: #adadad;
+  border: 2px #ffffff solid;
+}
+
 
 .track__car, 
 .track__flag{
@@ -65,4 +73,15 @@
 
 .track__title{
   padding-top: 7px;
+}
+
+
+@keyframes slide {
+  from {
+    transform: translate(var(--from-translate));
+  }
+
+  to {
+    transform: translate(var(--to-translate));
+  }
 }

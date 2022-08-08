@@ -13,7 +13,7 @@ export const getCars = async (page: number, limit = AMOUNT_PER_PAGES) => {
   const data = await response.json();
   const amountPages = response.headers.get('X-Total-Count')
 
-  console.log(data, amountPages);
+  // console.log(data, amountPages);
 
   return [data, amountPages];
 };

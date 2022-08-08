@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createCar, updateCar } from "../../../API/API";
 import { getRandomColor, getRandomName } from "../../../helpers/helpFunctions";
-import { ICar, statusCar } from "../../../type/type";
+import { ICar, statusEngine } from "../../../type/type";
 import Button from "../Button/Button";
 import classes from "./ControlPanel.module.css";
 
@@ -11,10 +11,12 @@ interface IControlProps {
   writeCars(): void
   carSelect: ICar
   setSelect(car: ICar): void
-  setCommand: Dispatch<SetStateAction<statusCar>>
+  changeStatus: (command: statusEngine) => void
+  // cars:ICarsWithStatus[]
+  isRace: boolean
 }
 
-const ControlPanel = ({ writeCars, carSelect, setSelect, setCommand }: IControlProps) => {
+const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }: IControlProps) => {
   const [newName, setNewName] = useState<string>('');
   const [newColor, setNewColor] = useState<string>('#ff0000');
   const [selectName, setSelectName] = useState<string>('');
@@ -56,6 +58,7 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, setCommand }: IControlP
     writeCars();
   }
 
+
   return (
     <div className={classes.panel__container}>
 
@@ -71,8 +74,9 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, setCommand }: IControlP
           value={newColor}
           onChange={(event) => setNewColor(event.target.value)} />
         <Button
+          disabled={isRace}
           onClick={() => addCar()}
-          isActive={false} >CREATE</Button>
+          isActive={isRace} >CREATE</Button>
       </div>
 
       <div className={classes.field__container}>
@@ -89,8 +93,9 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, setCommand }: IControlP
           onChange={(event) => setSelectColor(event.target.value)}
         />
         <Button
+          disabled={isRace}
           onClick={() => carUpdate()}
-          isActive={false}
+          isActive={isRace}
         >
           UPDATE
         </Button>
@@ -98,19 +103,21 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, setCommand }: IControlP
 
       <div className={classes.panel__buttons}>
         <Button
-          onClick={() => setCommand('started')}
-          isActive={false} >RACE</Button>
+          disabled={isRace}
+          onClick={() => changeStatus('started')}
+          isActive={isRace} >RACE</Button>
         <Button
-          onClick={() => setCommand('stopped')}
+          onClick={() => changeStatus('stopped')}
           isActive={false} >RESET</Button>
         <Button
+          disabled={isRace}
           onClick={createCards}
-          isActive={false}
+          isActive={isRace}
         >
           GENERATE CARDS
         </Button>
       </div>
-    </div>
+    </div >
   );
 };
 

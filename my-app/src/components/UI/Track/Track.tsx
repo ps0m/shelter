@@ -1,106 +1,88 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { controlEngine, deleteCar, switchEngine } from '../../../API/API';
-import { ICar, statusCar } from '../../../type/type';
+import { ICar, ICarsWithStatus, statusEngine } from '../../../type/type';
 import BoxSvg from '../BoxSvg/BoxSvg';
 import Button from '../Button/Button';
 import Car from '../Car/Car';
-import classes from './Track.module.css';
+import './Track.css';
 
 
 interface ITrack {
-  car: ICar
+  carWithStatus: ICarsWithStatus
   writeCars(): void
   setSelect(car: ICar): void
-  command: statusCar
+  changeStatus: (car: ICarsWithStatus, command: statusEngine) => void
+  setCurrentResultOfCar: Dispatch<SetStateAction<ICarsWithStatus | undefined>>
+  isRace: boolean
 }
 
-const Track = ({ car, writeCars, setSelect, command }: ITrack) => {
+const Track = ({ carWithStatus, writeCars, setSelect, changeStatus, setCurrentResultOfCar, isRace }: ITrack) => {
 
-  const [drive, setDrive] = useState<statusCar>(command)
-
+  useEffect(() => {
+    switchStatus(carWithStatus.status);
+  }, [carWithStatus.status])
 
 
   const carRef = useRef<HTMLDivElement>(null);
-  let stopAnimationFlag: number;
-
 
   const removeCar = async () => {
-    await deleteCar(car.id);
+    await deleteCar(carWithStatus.car.id);
     writeCars();
   }
 
   const moveCar = (time: number) => {
-    const frames = time / 1000 * 60;
-    const clientWidth = document.documentElement.clientWidth;
-    const delta = clientWidth / frames;
-
     if (carRef.current === null) {
       return;
     }
 
+    const timeToSeconds = time / 1000;
+    const clientWidth = document.documentElement.clientWidth;
     const clientRect = carRef.current.getBoundingClientRect()
     const maxDistance = clientWidth - clientRect.left - 1.5 * clientRect.width;
 
-    const animationCar = () => {
-      let currentX = 0;
-      const step = () => {
-        currentX += delta;
+    carRef.current.style.cssText = `--from-translate:0; --to-translate:${maxDistance}px;
+      animation:slide ${timeToSeconds}s linear 1 forwards`;
+  }
 
-        if (carRef.current === null) {
-          return;
-        }
 
-        carRef.current.style.transform = `translate(${currentX}px)`;
-
-        if (currentX < maxDistance) {
-          stopAnimationFlag = requestAnimationFrame(step);
-        }
-
-      }
-
-      step()
+  const startCar = () => {
+    if (carWithStatus.time !== null) {
+      moveCar(carWithStatus.time);
     }
 
-    animationCar()
   }
-
-
-
-  const startCar = async () => {
-    const response = await controlEngine({ id: car.id, status: 'started' });
-    const time = response.distance / response.velocity;
-
-    moveCar(time);
-
-    await switchEngine(car.id).catch(() => stopCar());
-  }
-
-
 
   const stopCar = async () => {
-    cancelAnimationFrame(stopAnimationFlag);
-    await controlEngine({ id: car.id, status: 'stopped' });
+    controlEngine({ id: carWithStatus.car.id, status: 'stopped' });
+    if (carRef.current === null) {
+      return;
+    }
+
+    carRef.current.style.animationPlayState = 'paused';
   }
 
 
   const returnToStart = () => {
-
     if (carRef.current === null) {
       return
     }
 
-    carRef.current.style.transform = `translate(0px)`;
+    carRef.current.style.cssText = ``;
+    console.log('go home');
 
   }
 
-  if (command !== drive) {
-    setDrive(command);
-  }
-
-  useEffect(() => {
-    switch (drive) {
+  const switchStatus = async (status: statusEngine) => {
+    switch (status) {
       case 'started':
         startCar()
+        switchEngine(carWithStatus.car.id)
+          .then(() => {
+            if (isRace) {
+              setCurrentResultOfCar(carWithStatus)
+            }
+          })
+          .catch(() => stopCar());
         break;
       case 'stopped':
         stopCar();
@@ -110,65 +92,56 @@ const Track = ({ car, writeCars, setSelect, command }: ITrack) => {
         break;
     }
 
-  }, [drive]);
-
-
-
-  // switch (drive) {
-  //   case 'started':
-  //     startCar()
-  //     break;
-  //   case 'stopped':
-  //     stopCar();
-  //     returnToStart();
-  //     break;
-  //   default:
-  //     break;
-  // }
+  }
 
 
   return (
-    <div className={classes.track__container}>
-      <div className={classes.track__buttons_vertical} >
+    <div className='track__container'>
+      <div className='track__buttons_vertical' >
         <Button
-          // onClick={startCar}
-          onClick={() => setDrive('started')}
-          isActive={false} >
+          disabled={isRace || carWithStatus.status === 'started'}
+          onClick={async () => {
+            changeStatus(carWithStatus, 'started');
+          }
+          }
+          isActive={isRace} >
           GO
         </Button>
         <Button
-          // onClick={() => {
-          //   stopCar();
-          //   returnToStart();
-          // }
-          // }
-          onClick={() => setDrive('stopped')}
-          isActive={false} >
+          disabled={isRace || carWithStatus.status === 'stopped'}
+          onClick={() => {
+            changeStatus(carWithStatus, 'stopped')
+          }
+          }
+          isActive={isRace} >
           STOP
         </Button>
       </div>
 
-      <div className={classes.track__body}>
-        <div className={classes.track__buttons} >
+      <div className='track__body'>
+        <div className='track__buttons' >
           <Button
-            onClick={() => { setSelect(car) }} isActive={false} >
+            disabled={isRace}
+            onClick={() => { setSelect(carWithStatus.car) }}
+            isActive={isRace} >
             SELECT
           </Button>
           <Button
+            disabled={isRace}
             onClick={() => removeCar()}
-            isActive={false} >
+            isActive={isRace} >
             REMOVE
           </Button>
         </div>
         <Car
-          color={car.color}
+          color={carWithStatus.car.color}
           ref={carRef}
         />
       </div>
 
-      <div className={classes.track__title}>{car.name}</div>
+      <div className='track__title'>{carWithStatus.car.name}</div>
 
-      <div className={classes.track__flag}>
+      <div className='track__flag'>
         <BoxSvg color={'#ff0000'} id={'flag'} />
       </div>
 

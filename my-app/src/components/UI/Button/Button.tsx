@@ -6,6 +6,7 @@ interface MyButtonProps {
   onClick(e: React.MouseEvent<HTMLButtonElement>): void;
   isActive: boolean;
   children?: React.ReactNode
+  disabled?: boolean
 }
 
 const MyButton = (props: MyButtonProps) => {
@@ -17,7 +18,7 @@ const MyButton = (props: MyButtonProps) => {
   }
 
   return (
-    <button onClick={props.onClick} className={cardClasses.join(" ")} >
+    <button onClick={props.onClick} disabled={props.disabled} className={cardClasses.join(" ")} >
       {props.children}
     </button>
   );

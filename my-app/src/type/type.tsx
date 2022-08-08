@@ -4,6 +4,11 @@ export interface ICar {
   color: string
 }
 
+export interface IVelocityAndDistance {
+  velocity: number
+  distance: number
+}
+
 export type ICarCreate = Pick<ICar, 'name' | 'color'>;
 
 export interface IWinner {
@@ -31,6 +36,11 @@ export interface IEngine {
   status: statusEngine
 }
 
+export interface ICarsWithStatus {
+  car: ICar
+  status: statusEngine
+  time: number | null
+}
 
 
 // export type IWinnerCreate = Pick<IWinner, 'wins' | 'time'>;
