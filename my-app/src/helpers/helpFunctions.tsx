@@ -1,3 +1,6 @@
+import { getCar, getWinners } from "../API/API";
+import { IWinner, IWinnerOfServer, Order, Sort } from "../type/type";
+
 const AMOUNT_COLOR = 256;
 
 const firstName = ['Tesla', 'Ferrari', 'Lamborghini', 'Ford',
@@ -27,4 +30,18 @@ export const getRandomColor = () => {
   }
 
   return hexColor;
+}
+
+
+export const writeWinners = async (currentPage = 1, sort = Sort.id, order = Order.asc) => {
+  const winnersOfServer: IWinnerOfServer[] = await getWinners(currentPage, sort, order);
+  const newWinners: IWinner[] = []
+
+  for (const iterator of winnersOfServer) {
+    const car = await getCar(iterator.id)
+
+    newWinners.push({ car: car, wins: iterator.wins, time: iterator.time })
+  }
+
+  return newWinners;
 }

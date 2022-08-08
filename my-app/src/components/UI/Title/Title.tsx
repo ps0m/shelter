@@ -1,12 +1,13 @@
 interface IPropsTitle {
-  amountCars: number
+  amount: number
   currentPage: number
+  title: string
 }
 
-const Title = ({ amountCars, currentPage }: IPropsTitle) => {
+const Title = ({ amount, currentPage, title }: IPropsTitle) => {
   return (
     <div>
-      <h3>Garage ({amountCars})</h3>
+      <h3>{title} ({amount})</h3>
       <h3>Page #{currentPage}</h3>
 
     </div>

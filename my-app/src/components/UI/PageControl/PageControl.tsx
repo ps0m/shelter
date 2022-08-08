@@ -6,17 +6,17 @@ import classes from "./PageControl.module.css";
 interface IPropsPageControl {
   current: number;
   setCurrent: Dispatch<SetStateAction<number>>
-  amountCars: number
+  amount: number
 }
 
-const PageControl = ({ current, setCurrent, amountCars }: IPropsPageControl) => {
+const PageControl = ({ current, setCurrent, amount }: IPropsPageControl) => {
   const increase = () => {
 
-    if (amountCars / AMOUNT_PER_PAGES > current) {
+    if (amount / AMOUNT_PER_PAGES > current) {
       setCurrent(current + 1)
     }
 
-    console.log(amountCars, AMOUNT_PER_PAGES, current);
+    console.log(amount, AMOUNT_PER_PAGES, current);
   }
 
   const decrease = () => {
@@ -34,7 +34,7 @@ const PageControl = ({ current, setCurrent, amountCars }: IPropsPageControl) => 
       </Button>
       <Button
         onClick={increase}
-        isActive={(amountCars / AMOUNT_PER_PAGES) < current}>
+        isActive={(amount / AMOUNT_PER_PAGES) < current}>
         Next
       </Button>
     </div >

@@ -1,5 +1,5 @@
 import {
-  ICar, ICarCreate, IEngine, IWinner, Order, Sort
+  ICar, ICarCreate, IEngine, IWinnerOfServer, Order, Sort
 } from '../type/type';
 
 export const AMOUNT_PER_PAGES = 7;
@@ -19,7 +19,7 @@ export const getCars = async (page: number, limit = AMOUNT_PER_PAGES) => {
 };
 
 export const getCar = async (id: number) => {
-  const response = await fetch(`${urlGarage}${id}`);
+  const response = await fetch(`${urlGarage}/${id}`);
 
   return response.json();
 };
@@ -59,20 +59,21 @@ export const getWinners = async (page: number, sort: Sort, order: Order, limit =
     `${urlWinners}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`,
   );
   const data = await response.json();
+  const amountPages = response.headers.get('X-Total-Count')
 
-  console.log(data);
-  return data;
-
+  return [data, amountPages];
   // return response.json();
 };
 
 export const getWinner = async (id: number) => {
-  const response = await fetch(`${urlWinners}${id}`);
+
+  const response = await fetch(`${urlWinners}/:${id}`);
 
   return response.json();
-};
 
-export const createWinner = async (winner: IWinner) => {
+}
+
+export const createWinner = async (winner: IWinnerOfServer) => {
   const response = await fetch(urlWinners, {
     method: 'POST',
     body: JSON.stringify(winner),
@@ -90,6 +91,21 @@ export const deleteWinner = async (id: number) => {
   return response.json();
 };
 
+export const updateWinner = async (winner: IWinnerOfServer) => {
+  console.log({ "id": winner.id, "wins": winner.wins, "time": winner.time });
+
+  const response = await fetch(`${urlWinners}/${winner.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(winner),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  return response.json();
+};
+
+
 export const controlEngine = async (engine: IEngine) => {
   const response = await fetch(`${urlEngine}?id=${engine.id}&status=${engine.status}`, {
     method: 'PATCH',
@@ -104,7 +120,7 @@ export const switchEngine = async (id: number) => {
   });
   const data = await response.json();
 
-  console.log('resp', response.status, data);
+  // console.log('resp', response.status, data);
 
   return data;
   // return response.json();

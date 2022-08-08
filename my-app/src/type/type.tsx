@@ -11,11 +11,18 @@ export interface IVelocityAndDistance {
 
 export type ICarCreate = Pick<ICar, 'name' | 'color'>;
 
-export interface IWinner {
+export interface IWinnerOfServer {
   id: number,
   wins: number,
   time: number
 }
+
+export interface IWinner {
+  car: ICar,
+  wins: number,
+  time: number
+}
+
 
 export enum Sort {
   'id' = 'id',

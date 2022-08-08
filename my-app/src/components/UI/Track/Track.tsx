@@ -35,13 +35,13 @@ const Track = ({ carWithStatus, writeCars, setSelect, changeStatus, setCurrentRe
       return;
     }
 
-    const timeToSeconds = time / 1000;
+    // const timeToSeconds = time / 1000;
     const clientWidth = document.documentElement.clientWidth;
     const clientRect = carRef.current.getBoundingClientRect()
     const maxDistance = clientWidth - clientRect.left - 1.5 * clientRect.width;
 
     carRef.current.style.cssText = `--from-translate:0; --to-translate:${maxDistance}px;
-      animation:slide ${timeToSeconds}s linear 1 forwards`;
+      animation:slide ${time}s linear 1 forwards`;
   }
 
 
@@ -68,8 +68,6 @@ const Track = ({ carWithStatus, writeCars, setSelect, changeStatus, setCurrentRe
     }
 
     carRef.current.style.cssText = ``;
-    console.log('go home');
-
   }
 
   const switchStatus = async (status: statusEngine) => {
