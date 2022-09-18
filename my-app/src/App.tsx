@@ -1,44 +1,35 @@
 import { useState } from 'react';
-import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
+import MyFooter from './components/UI/MyFooter/MyFooter';
+import Navigation from './components/UI/Navigation/Navigation';
 import { WinnersContext } from './context';
 import Garage from './pages/Garage';
 import Winners from './pages/Winners';
 import './styles/App.css';
-import { IWinner } from './type/type';
+import { namePage } from './type/type';
 
 function App() {
   const [amountCars, setAmountCars] = useState<number>(0)
-  const [winners, setWinners] = useState<IWinner[]>([]);
-
+  const [nameCurrentPage, setNameCurrentPage] = useState<namePage>(namePage.garage)
+  const [abortController, setAbortController] = useState<AbortController>(new AbortController())
 
 
   return (
     <WinnersContext.Provider value={{
       amountCars,
       setAmountCars,
-      winners,
-      setWinners
+      nameCurrentPage,
+      setNameCurrentPage,
+      abortController,
+      setAbortController
     }}>
-      <BrowserRouter>
-        <nav
-          style={{
-            borderBottom: "solid 1px",
-            paddingBottom: "1rem",
-            alignItems: 'center'
-          }}
-        >
-          <Link to="/garage">Garage</Link> |{" "}
-          <Link to="/winners">Winners</Link>
-        </nav>
-        <Routes>
-          <Route path="/garage" element={<Garage />} />
-          <Route path="/winners" element={<Winners />} />
-          <Route
-            path="*"
-            element={<Navigate to="/garage" replace />} />
-        </Routes>
-      </BrowserRouter>
+      <div className='container'>
+        <MyFooter></MyFooter>
+        <Navigation></Navigation>
+        <Garage></Garage>
+        <Winners></Winners>
+      </div >
     </WinnersContext.Provider>
+
   );
 }
 

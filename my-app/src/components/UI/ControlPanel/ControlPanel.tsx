@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createCar, updateCar } from "../../../API/API";
+import { WinnersContext } from "../../../context";
 import { getRandomColor, getRandomName } from "../../../helpers/helpFunctions";
 import { ICar, statusEngine } from "../../../type/type";
 import Button from "../Button/Button";
@@ -21,6 +22,9 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }:
   const [newColor, setNewColor] = useState<string>('#ff0000');
   const [selectName, setSelectName] = useState<string>('');
   const [selectColor, setSelectColor] = useState<string>('#ff0000');
+
+  const { abortController, setAbortController } = useContext(WinnersContext)
+
 
   useEffect(() => {
     setSelectName(carSelect.name)
@@ -64,12 +68,14 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }:
 
       <div className={classes.field__container}>
         <input
+          className={classes.panel__input}
           type="text"
           placeholder="Please, enter a brand car"
           title="If you do`nt enter a name, it will be selected automatically"
           value={newName}
           onChange={(event) => setNewName(event.target.value)} />
         <input
+          className={classes.panel__input}
           type="color"
           value={newColor}
           onChange={(event) => setNewColor(event.target.value)} />
@@ -81,6 +87,7 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }:
 
       <div className={classes.field__container}>
         <input
+          className={classes.panel__input}
           type="text"
           placeholder="Please, select a car"
           title="If you do`nt enter a name, it will be selected automatically"
@@ -88,6 +95,7 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }:
           onChange={(event) => setSelectName(event.target.value)}
         />
         <input
+          className={classes.panel__input}
           type="color"
           value={selectColor}
           onChange={(event) => setSelectColor(event.target.value)}
@@ -107,7 +115,12 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }:
           onClick={() => changeStatus('started')}
           isActive={isRace} >RACE</Button>
         <Button
-          onClick={() => changeStatus('stopped')}
+          onClick={() => {
+            changeStatus('stopped')
+            abortController.abort();
+            setAbortController(new AbortController())
+          }
+          }
           isActive={false} >RESET</Button>
         <Button
           disabled={isRace}

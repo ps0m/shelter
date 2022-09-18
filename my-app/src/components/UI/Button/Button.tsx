@@ -9,17 +9,17 @@ interface MyButtonProps {
   disabled?: boolean
 }
 
-const MyButton = (props: MyButtonProps) => {
+const MyButton = ({ className, onClick, isActive, children, disabled }: MyButtonProps) => {
 
-  const cardClasses = [classes.button, props.className];
+  const cardClasses = [classes.button, className];
 
-  if (props.isActive) {
+  if (isActive) {
     cardClasses.push(classes.button_select)
   }
 
   return (
-    <button onClick={props.onClick} disabled={props.disabled} className={cardClasses.join(" ")} >
-      {props.children}
+    <button onClick={onClick} disabled={disabled} className={cardClasses.join(" ")} >
+      {children}
     </button>
   );
 };

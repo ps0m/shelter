@@ -16,7 +16,6 @@ const PageControl = ({ current, setCurrent, amount }: IPropsPageControl) => {
       setCurrent(current + 1)
     }
 
-    console.log(amount, AMOUNT_PER_PAGES, current);
   }
 
   const decrease = () => {

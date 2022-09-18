@@ -36,7 +36,6 @@ export enum Order {
 }
 
 export type statusEngine = 'started' | 'stopped'
-export type statusCar = 'started' | 'stopped' | 'waiting'
 
 export interface IEngine {
   id: number,
@@ -49,5 +48,7 @@ export interface ICarsWithStatus {
   time: number | null
 }
 
-
-// export type IWinnerCreate = Pick<IWinner, 'wins' | 'time'>;
+export enum namePage {
+  'garage' = 'garage',
+  'winners' = 'winners',
+}

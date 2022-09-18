@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction, useEffect, useRef } from "react";
-import { controlEngine, deleteCar, switchEngine } from '../../../API/API';
+import { Dispatch, SetStateAction, useContext, useEffect, useRef } from "react";
+import { controlEngine, deleteCar, deleteWinner, switchEngine } from '../../../API/API';
+import { WinnersContext } from "../../../context";
 import { ICar, ICarsWithStatus, statusEngine } from '../../../type/type';
 import BoxSvg from '../BoxSvg/BoxSvg';
 import Button from '../Button/Button';
@@ -18,6 +19,9 @@ interface ITrack {
 
 const Track = ({ carWithStatus, writeCars, setSelect, changeStatus, setCurrentResultOfCar, isRace }: ITrack) => {
 
+  const { abortController } = useContext(WinnersContext)
+
+
   useEffect(() => {
     switchStatus(carWithStatus.status);
   }, [carWithStatus.status])
@@ -26,7 +30,8 @@ const Track = ({ carWithStatus, writeCars, setSelect, changeStatus, setCurrentRe
   const carRef = useRef<HTMLDivElement>(null);
 
   const removeCar = async () => {
-    await deleteCar(carWithStatus.car.id);
+    deleteCar(carWithStatus.car.id);
+    deleteWinner(carWithStatus.car.id)
     writeCars();
   }
 
@@ -74,7 +79,7 @@ const Track = ({ carWithStatus, writeCars, setSelect, changeStatus, setCurrentRe
     switch (status) {
       case 'started':
         startCar()
-        switchEngine(carWithStatus.car.id)
+        switchEngine(carWithStatus.car.id, abortController)
           .then(() => {
             if (isRace) {
               setCurrentResultOfCar(carWithStatus)
@@ -95,6 +100,7 @@ const Track = ({ carWithStatus, writeCars, setSelect, changeStatus, setCurrentRe
 
   return (
     <div className='track__container'>
+      <div className='track__background'></div>
       <div className='track__buttons_vertical' >
         <Button
           disabled={isRace || carWithStatus.status === 'started'}

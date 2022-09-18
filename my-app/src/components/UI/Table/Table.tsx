@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { IWinner, Order, Sort } from "../../../type/type";
 import Car from "../Car/Car";
-import "./Table.css";
+import classes from "./Table.module.css";
 
 interface ITableProps {
   winners: IWinner[]
@@ -26,28 +26,30 @@ const Table = ({ winners, setSort, sort, order, setOrder }: ITableProps) => {
     <table>
       <thead>
         <tr>
-          <th>Number</th>
-          <th>Car</th>
-          <th onClick={() => setSortAndOrder(Sort.id)}>Name</th>
-          <th onClick={() => setSortAndOrder(Sort.wins)}>Wins</th>
-          <th onClick={() => setSortAndOrder(Sort.time)}>Best time (ms)</th>
+          <th className={classes.table__headers}>Number</th>
+          <th className={[classes.table__headers, classes.table__headers_sort].join(' ')} onClick={() => setSortAndOrder(Sort.id)}>ID</th>
+          <th className={classes.table__headers}>Car</th>
+          <th className={classes.table__headers}>Name</th>
+          <th className={[classes.table__headers, classes.table__headers_sort].join(' ')} onClick={() => setSortAndOrder(Sort.wins)}>Wins</th>
+          <th className={[classes.table__headers, classes.table__headers_sort].join(' ')} onClick={() => setSortAndOrder(Sort.time)}>Best time (s)</th>
         </tr>
       </thead>
       <tbody>
         {winners.map((winner, index) => {
           return (
             <tr key={winner.car.id}>
-              <td>{index + 1}</td>
-              <td><Car color={winner.car.color} /></td>
-              <td>{winner.car.name}</td>
-              <td>{winner.wins}</td>
-              <td>{winner.time}</td>
+              <td className={classes.table__row}>{index + 1}</td>
+              <td className={classes.table__row}>{winner.car.id}</td>
+              <td className={classes.table__car}><Car color={winner.car.color} /></td>
+              <td className={classes.table__row}>{winner.car.name}</td>
+              <td className={classes.table__row}>{winner.wins}</td>
+              <td className={classes.table__row}>{winner.time}</td>
             </tr>
           )
         })}
 
       </tbody>
-    </table>
+    </table >
   );
 };
 

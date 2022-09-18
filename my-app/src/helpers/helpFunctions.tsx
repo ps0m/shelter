@@ -1,5 +1,5 @@
-import { getCar, getWinners } from "../API/API";
-import { IWinner, IWinnerOfServer, Order, Sort } from "../type/type";
+import { controlEngine, createWinner, getWinner, updateWinner } from "../API/API";
+import { ICarsWithStatus, IVelocityAndDistance, IWinnerOfServer, statusEngine } from "../type/type";
 
 const AMOUNT_COLOR = 256;
 
@@ -33,15 +33,56 @@ export const getRandomColor = () => {
 }
 
 
-export const writeWinners = async (currentPage = 1, sort = Sort.id, order = Order.asc) => {
-  const winnersOfServer: IWinnerOfServer[] = await getWinners(currentPage, sort, order);
-  const newWinners: IWinner[] = []
+export const setWinnerToServer = async (winnerCar: ICarsWithStatus | null) => {
 
-  for (const iterator of winnersOfServer) {
-    const car = await getCar(iterator.id)
-
-    newWinners.push({ car: car, wins: iterator.wins, time: iterator.time })
+  if (winnerCar === null) {
+    return
   }
 
-  return newWinners;
+  if (winnerCar.time === null) {
+    return
+  }
+
+  const response: IWinnerOfServer = await getWinner(winnerCar.car.id)
+
+  if ('id' in response) {
+
+    const time = winnerCar.time > response.time ? response.time : winnerCar.time
+    const wins = response.wins + 1
+
+    updateWinner({ id: response.id, wins: wins, time: time })
+  } else {
+
+    createWinner({ id: winnerCar.car.id, wins: 1, time: winnerCar.time })
+  }
+}
+
+
+export const setTimeTripAllCars = async (carsOfServer: ICarsWithStatus[]) => {
+  const newCars = [...carsOfServer]
+  const promiseControlEngine = []
+
+  for (let i = 0; i < newCars.length; i++) {
+    if (newCars[i].status === 'started') {
+      promiseControlEngine.push(controlEngine({ id: newCars[i].car.id, status: 'started' }))
+    }
+  }
+  const resultArray: PromiseSettledResult<IVelocityAndDistance>[] = await Promise.allSettled(promiseControlEngine)
+
+
+  resultArray.map((promise, index) => {
+    if (promise.status === 'fulfilled') {
+      const time = Number(((promise.value.distance / promise.value.velocity) / 1000).toFixed(2))
+
+      newCars[index].time = time
+    }
+  })
+
+  return newCars;
+}
+
+export const setTimeTripCar = async (car: ICarsWithStatus, command: statusEngine) => {
+  const response: IVelocityAndDistance = await controlEngine({ id: car.car.id, status: command })
+
+  return Number(((response.distance / response.velocity) / 1000).toFixed(2))
 }

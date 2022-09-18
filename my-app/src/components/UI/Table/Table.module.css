@@ -1,0 +1,35 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid #333;
+}
+
+.table__headers {
+  padding: 0 10px;
+  justify-content: stretch;
+  align-items: flex-start;
+  background-color: #333;
+  color: #fff;
+}
+
+.table__headers_sort{
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.table__headers_sort:hover{
+  background-color: rgb(138, 134, 134);
+}
+
+.table__row{
+  text-align: center;
+  border: 2px solid #000;
+}
+
+.table__car{
+  padding: 3px;
+  border: 2px solid #000;
+
+}

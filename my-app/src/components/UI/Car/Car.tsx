@@ -5,12 +5,8 @@ import classes from "./Car.module.css";
 
 interface IPropsCar {
   color: string
-  // ref: ForwardedRef<HTMLDivElement>
 }
-// const Car = ({ color, className }: IPropsCar) => {
 const Car = forwardRef(function Hello({ color }: IPropsCar, ref: ForwardedRef<HTMLDivElement>) {
-
-  // const classStyle = [className, classes.car].join(' ')
 
   return (
     <div

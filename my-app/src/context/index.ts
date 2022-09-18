@@ -1,18 +1,23 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { IWinner } from "../type/type";
+import { namePage } from "../type/type";
 
 interface IWinnersContext {
   amountCars: number,
   setAmountCars: Dispatch<SetStateAction<number>>,
-  winners: IWinner[],
-  setWinners: Dispatch<SetStateAction<IWinner[]>>,
+  nameCurrentPage: namePage,
+  setNameCurrentPage: Dispatch<SetStateAction<namePage>>,
+  abortController: AbortController
+  setAbortController: Dispatch<SetStateAction<AbortController>>
 }
+
 
 const InitialContext = {
   amountCars: 0,
   setAmountCars: () => '',
-  winners: [],
-  setWinners: () => ''
+  nameCurrentPage: namePage.garage,
+  setNameCurrentPage: () => '',
+  abortController: new AbortController(),
+  setAbortController: () => ''
 }
 
 export const WinnersContext = createContext<IWinnersContext>(InitialContext)

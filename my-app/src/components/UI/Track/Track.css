@@ -1,10 +1,21 @@
 .track__container{
+  position: relative;
   display: flex;
   justify-content: flex-start;
-  position: relative;
   margin: 10px 0;
-  border: 2px #4e4e4e dotted;
+  padding: 2px;
   gap: 10px;
+  border: 2px #4e4e4e solid;
+  perspective: 400px;
+}
+
+.track__background{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: /* rgba(255, 0, 0, 30%) */ url(./assets/field.jpg) 0 0/auto 100% ;
+  opacity: 30%;
+  z-index: -1;
 }
 
 .track__body{
@@ -17,15 +28,17 @@
 .track__buttons{
   display:flex;
   justify-content: stretch;
-  align-items: center;
+  align-items: flex-start;
   gap: 15px;
   margin: 5px 0;
 }
+
 .track__buttons_vertical{
   display:flex;
   flex-direction: column;
   justify-content: stretch;
   align-items: center;
+  gap:20px
 }
 
 .track__buttons_vertical button{
@@ -39,16 +52,32 @@
 
 .track__buttons_vertical button:first-of-type{
   background-color: #0ddc0d;
+  border: 2px solid  #0b9d0b;
+}
+
+.track__buttons_vertical button:first-of-type::before{
+  background-color: #0b9d0b;
 }
 
 .track__buttons_vertical button:last-of-type{
   background-color: #ef0c0c;
+  border: 2px solid  #a50000;
+
+}
+
+.track__buttons_vertical button:last-of-type::before{
+  background-color: #a50000;
 }
 
 .track__buttons_vertical button:first-of-type:disabled,
 .track__buttons_vertical button:last-of-type:disabled{
   background-color: #adadad;
-  border: 2px #ffffff solid;
+  border-color: #5f5f5f;
+}
+
+.track__buttons_vertical button:first-of-type:disabled:before,
+.track__buttons_vertical button:last-of-type:disabled:before{
+    background: #5f5f5f;
 }
 
 
@@ -61,7 +90,8 @@
 .track__flag svg{
   width: 100%;
   height: 100%;
-  fill:rgb(48, 206, 212)
+  fill:rgb(48, 206, 212);
+  cursor:pointer;
 }
 
 .track__flag{
@@ -69,9 +99,15 @@
   top: 10%;
   right: 60px;
   transform: translateY(-10%);
+  transition: 0.2s;
+}
+
+.track__flag:hover{
+  transform: rotate3d(1, 1, 1, 0deg)
 }
 
 .track__title{
+  font-size: 1rem;
   padding-top: 7px;
 }
 

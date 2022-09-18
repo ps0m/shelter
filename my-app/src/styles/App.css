@@ -1,29 +1,85 @@
+@import url(https://fonts.googleapis.com/css?family=Hachi+Maru+Pop:regular);
+
 *{
 box-sizing: border-box;
 }
 
 body{
-  margin: 0;
-  padding: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Hachi Maru Pop";
+  overflow-x: hidden;
+  background-color: #fffafa;
+}
+
+.container{
+  max-width: 1600px;
+  height: 100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
 }
 
 .panel{
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
+  border:  4px solid #fffd97;
+  outline: 4px solid #ffbf00;
+
 }
 
-.img{
-  width: 300px;
-  /* height: 200px; */
-  background: url(../back.jpg) no-repeat;
+.navigation{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap:50px;
+  margin: 20px;
+  font-size: 2rem;
+}
+
+.navigation__buttons{
+  font-size: 2rem;
+}
+
+.information{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 30px;
+}
+
+.information__title{
+  position: relative;
 }
 
 .winner__title{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  font-size: 2rem;
-  text-align: center;
+  position: relative;
+  margin: 10px auto;
+  padding: 10px;
 }
+
+.winner__title div{
+  text-align:center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+.garage,
+.garage_hide {
+  position: relative;
+  width: 98%;
+}
+
+.winners, 
+.winners_hide{
+  position: absolute;
+  width: 98%;
+  top:180px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.garage_hide,
+.winners_hide{
+  left:500%;
+} 
