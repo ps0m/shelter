@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
-import { createCar, updateCar } from "../../../API/API";
-import { WinnersContext } from "../../../context";
-import { getRandomColor, getRandomName } from "../../../helpers/helpFunctions";
-import { ICar, statusEngine } from "../../../type/type";
-import Button from "../Button/Button";
-import classes from "./ControlPanel.module.css";
+/* eslint-disable no-unused-vars */
+import { useContext, useEffect, useState } from 'react';
+import { createCar, updateCar } from '../../../API/API';
+import WinnersContext from '../../../context';
+import { getRandomColor, getRandomName } from '../../../helpers/helpFunctions';
+import { ICar, statusEngine } from '../../../type/type';
+import Button from '../Button/Button';
+import classes from './ControlPanel.module.css';
 
 const AMOUNT_CREATE_CARS = 100;
 
@@ -13,55 +14,56 @@ interface IControlProps {
   carSelect: ICar
   setSelect(car: ICar): void
   changeStatus: (command: statusEngine) => void
-  // cars:ICarsWithStatus[]
   isRace: boolean
 }
 
-const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }: IControlProps) => {
+const ControlPanel = ({
+  writeCars, carSelect, setSelect, changeStatus, isRace,
+}: IControlProps) => {
   const [newName, setNewName] = useState<string>('');
   const [newColor, setNewColor] = useState<string>('#ff0000');
   const [selectName, setSelectName] = useState<string>('');
   const [selectColor, setSelectColor] = useState<string>('#ff0000');
 
-  const { abortController, setAbortController } = useContext(WinnersContext)
+  const { abortController, setAbortController } = useContext(WinnersContext);
 
-
-  useEffect(() => {
-    setSelectName(carSelect.name)
-    setSelectColor(carSelect.color)
-  },
-    [carSelect])
+  useEffect(
+    () => {
+      setSelectName(carSelect.name);
+      setSelectColor(carSelect.color);
+    },
+    [carSelect],
+  );
 
   const addCar = async () => {
-    const carName = newName.length ? newName : getRandomName()
+    const carName = newName.length ? newName : getRandomName();
 
-    await createCar({ 'name': carName, 'color': newColor });
+    await createCar({ name: carName, color: newColor });
     writeCars();
     setNewName('');
-  }
+  };
 
   const carUpdate = async () => {
     if (carSelect.id === 0) {
-      return
+      return;
     }
-    const carName = selectName.length ? selectName : getRandomName()
+    const carName = selectName.length ? selectName : getRandomName();
 
-    await updateCar({ id: carSelect.id, 'name': carName, 'color': selectColor });
+    await updateCar({ id: carSelect.id, name: carName, color: selectColor });
     writeCars();
-    setSelect({ id: 0, name: '', color: selectColor })
-  }
+    setSelect({ id: 0, name: '', color: selectColor });
+  };
 
   const createCards = async () => {
-    for (let i = 0; i < AMOUNT_CREATE_CARS; i++) {
+    for (let i = 0; i < AMOUNT_CREATE_CARS; i += 1) {
       const name = getRandomName();
       const color = getRandomColor();
 
-      await createCar({ 'name': name, 'color': color });
+      createCar({ name, color });
     }
 
     writeCars();
-  }
-
+  };
 
   return (
     <div className={classes.panel__container}>
@@ -73,16 +75,21 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }:
           placeholder="Please, enter a brand car"
           title="If you do`nt enter a name, it will be selected automatically"
           value={newName}
-          onChange={(event) => setNewName(event.target.value)} />
+          onChange={(event) => setNewName(event.target.value)}
+        />
         <input
           className={classes.panel__input}
           type="color"
           value={newColor}
-          onChange={(event) => setNewColor(event.target.value)} />
+          onChange={(event) => setNewColor(event.target.value)}
+        />
         <Button
           disabled={isRace}
           onClick={() => addCar()}
-          isActive={isRace} >CREATE</Button>
+          isActive={isRace}
+        >
+          CREATE
+        </Button>
       </div>
 
       <div className={classes.field__container}>
@@ -113,15 +120,20 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }:
         <Button
           disabled={isRace}
           onClick={() => changeStatus('started')}
-          isActive={isRace} >RACE</Button>
+          isActive={isRace}
+        >
+          RACE
+        </Button>
         <Button
           onClick={() => {
-            changeStatus('stopped')
+            changeStatus('stopped');
             abortController.abort();
-            setAbortController(new AbortController())
-          }
-          }
-          isActive={false} >RESET</Button>
+            setAbortController(new AbortController());
+          }}
+          isActive={false}
+        >
+          RESET
+        </Button>
         <Button
           disabled={isRace}
           onClick={createCards}
@@ -130,7 +142,7 @@ const ControlPanel = ({ writeCars, carSelect, setSelect, changeStatus, isRace }:
           GENERATE CARDS
         </Button>
       </div>
-    </div >
+    </div>
   );
 };
 

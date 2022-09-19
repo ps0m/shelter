@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import { WinnersContext } from "../../../context";
-import { namePage } from "../../../type/type";
-import Button from "../Button/Button";
+import { useContext } from 'react';
+import WinnersContext from '../../../context';
+import { namePage } from '../../../type/type';
+import Button from '../Button/Button';
 
 const Navigation = () => {
-  const { nameCurrentPage, setNameCurrentPage } = useContext(WinnersContext)
+  const { nameCurrentPage, setNameCurrentPage } = useContext(WinnersContext);
 
   return (
     <nav className="navigation">
@@ -13,14 +13,17 @@ const Navigation = () => {
         disabled={nameCurrentPage === namePage.garage}
         onClick={() => setNameCurrentPage(namePage.garage)}
         isActive={false}
-      >Garage
+      >
+        Garage
       </Button>
       <Button
         className="navigation__buttons"
         disabled={nameCurrentPage === namePage.winners}
         onClick={() => setNameCurrentPage(namePage.winners)}
         isActive={false}
-      >Winners</Button>
+      >
+        Winners
+      </Button>
     </nav>
   );
 };

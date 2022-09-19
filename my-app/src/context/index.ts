@@ -1,5 +1,5 @@
-import { createContext, Dispatch, SetStateAction } from "react";
-import { namePage } from "../type/type";
+import { createContext, Dispatch, SetStateAction } from 'react';
+import { namePage } from '../type/type';
 
 interface IWinnersContext {
   amountCars: number,
@@ -10,14 +10,15 @@ interface IWinnersContext {
   setAbortController: Dispatch<SetStateAction<AbortController>>
 }
 
-
 const InitialContext = {
   amountCars: 0,
   setAmountCars: () => '',
   nameCurrentPage: namePage.garage,
   setNameCurrentPage: () => '',
   abortController: new AbortController(),
-  setAbortController: () => ''
-}
+  setAbortController: () => '',
+};
 
-export const WinnersContext = createContext<IWinnersContext>(InitialContext)
+const WinnersContext = createContext<IWinnersContext>(InitialContext);
+
+export default WinnersContext;

@@ -1,53 +1,56 @@
-import { useContext, useEffect, useState } from "react";
-import { getCar, getWinners } from "../API/API";
-import PageControl from "../components/UI/PageControl/PageControl";
-import Table from "../components/UI/Table/Table";
-import Title from "../components/UI/Title/Title";
-import { WinnersContext } from "../context";
-import { ICar, IWinner, IWinnerOfServer, namePage, Order, Sort } from "../type/type";
+import { useContext, useEffect, useState } from 'react';
+import { getCar, getWinners } from '../API/API';
+import PageControl from '../components/UI/PageControl/PageControl';
+import Table from '../components/UI/Table/Table';
+import Title from '../components/UI/Title/Title';
+import WinnersContext from '../context';
+import {
+  ICar, IWinner, IWinnerOfServer, namePage, Order, Sort,
+} from '../type/type';
 
 const Winners = () => {
-  const [winners, setWinners] = useState<IWinner[]>([])
-  const [amountWinners, setAmountWinners] = useState<number>(0)
-  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [winners, setWinners] = useState<IWinner[]>([]);
+  const [amountWinners, setAmountWinners] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [sort, setSort] = useState<Sort>(Sort.id);
   const [order, setOrder] = useState<Order>(Order.asc);
 
-  const { nameCurrentPage } = useContext(WinnersContext)
-
-  useEffect(() => {
-    writeWinners(currentPage, sort, order)
-  }, [nameCurrentPage, currentPage, sort, order]);
+  const { nameCurrentPage } = useContext(WinnersContext);
 
   const writeWinners = async (curPage: number, curSort: Sort, curOrder: Order) => {
     const answer = await getWinners(curPage, curSort, curOrder);
-    const winnersOfServer: IWinnerOfServer[] = answer[0]
-    const newWinners: IWinner[] = []
+    const winnersOfServer: IWinnerOfServer[] = answer[0];
+    const newWinners: IWinner[] = [];
 
     setAmountWinners(answer[1]);
 
-    for (const iterator of winnersOfServer) {
-      const car: ICar = await getCar(iterator.id)
+    // eslint-disable-next-line no-restricted-syntax
+    for await (const winner of winnersOfServer) {
+      const car: ICar = await getCar(winner.id);
 
-      newWinners.push({ car: car, wins: iterator.wins, time: iterator.time })
+      newWinners.push({ car, wins: winner.wins, time: winner.time });
     }
 
     setWinners([...newWinners]);
-  }
+  };
 
+  useEffect(() => {
+    writeWinners(currentPage, sort, order);
+  }, [nameCurrentPage, currentPage, sort, order]);
 
   return (
     <div className={
       nameCurrentPage === namePage.winners
-        ? "winners"
-        : "winners_hide"
+        ? 'winners'
+        : 'winners_hide'
     }
     >
-      <div className='information'>
+      <div className="information">
         <Title
           amount={amountWinners}
           currentPage={currentPage}
-          title={"Winners"} />
+          title="Winners"
+        />
         <PageControl
           current={currentPage}
           setCurrent={setCurrentPage}
@@ -61,7 +64,7 @@ const Winners = () => {
         setOrder={setOrder}
         winners={winners}
       />
-    </div >
+    </div>
   );
 };
 

@@ -8,8 +8,8 @@
     "plugin:react/recommended",
     "prettier",
     "plugin:import/recommended",
-    "plugin:@typescript-eslint/recommended"
-    // "airbnb"
+    "plugin:@typescript-eslint/recommended",
+    "airbnb"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -86,7 +86,24 @@
       }
     ],
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": [
+          "function-declaration",
+          "arrow-function"
+        ],
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/require-default-props": 0,
+    "array-callback-return": [
+      2,
+      {
+        "allowImplicit": true
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

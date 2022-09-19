@@ -4,14 +4,21 @@ interface IPropsTitle {
   title: string
 }
 
-const Title = ({ amount, currentPage, title }: IPropsTitle) => {
-  return (
-    <div className="information__title">
-      <h3>{title} ({amount})</h3>
-      <h3>Page #{currentPage}</h3>
+const Title = ({ amount, currentPage, title }: IPropsTitle) => (
+  <div className="information__title">
+    <h3>
+      {title}
+      {' '}
+      (
+      {amount}
+      )
+    </h3>
+    <h3>
+      Page #
+      {currentPage}
+    </h3>
 
-    </div>
-  );
-};
+  </div>
+);
 
 export default Title;

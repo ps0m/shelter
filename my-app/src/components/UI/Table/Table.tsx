@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
-import { IWinner, Order, Sort } from "../../../type/type";
-import Car from "../Car/Car";
-import classes from "./Table.module.css";
+import { Dispatch, SetStateAction } from 'react';
+import { IWinner, Order, Sort } from '../../../type/type';
+import Car from '../Car/Car';
+import classes from './Table.module.css';
 
 interface ITableProps {
   winners: IWinner[]
@@ -11,16 +11,16 @@ interface ITableProps {
   setOrder: Dispatch<SetStateAction<Order>>
 }
 
-const Table = ({ winners, setSort, sort, order, setOrder }: ITableProps) => {
+const Table = ({
+  winners, setSort, sort, order, setOrder,
+}: ITableProps) => {
   const setSortAndOrder = (thisSort: Sort) => {
     if (sort === thisSort) {
-      order === Order.asc
-        ? setOrder(Order.desc)
-        : setOrder(Order.asc)
+      setOrder(order === Order.asc ? Order.desc : Order.asc);
     } else {
-      setSort(thisSort)
+      setSort(thisSort);
     }
-  }
+  };
 
   return (
     <table>
@@ -35,21 +35,19 @@ const Table = ({ winners, setSort, sort, order, setOrder }: ITableProps) => {
         </tr>
       </thead>
       <tbody>
-        {winners.map((winner, index) => {
-          return (
-            <tr key={winner.car.id}>
-              <td className={classes.table__row}>{index + 1}</td>
-              <td className={classes.table__row}>{winner.car.id}</td>
-              <td className={classes.table__car}><Car color={winner.car.color} /></td>
-              <td className={classes.table__row}>{winner.car.name}</td>
-              <td className={classes.table__row}>{winner.wins}</td>
-              <td className={classes.table__row}>{winner.time}</td>
-            </tr>
-          )
-        })}
+        {winners.map((winner, index) => (
+          <tr key={winner.car.id}>
+            <td className={classes.table__row}>{index + 1}</td>
+            <td className={classes.table__row}>{winner.car.id}</td>
+            <td className={classes.table__car}><Car color={winner.car.color} /></td>
+            <td className={classes.table__row}>{winner.car.name}</td>
+            <td className={classes.table__row}>{winner.wins}</td>
+            <td className={classes.table__row}>{winner.time}</td>
+          </tr>
+        ))}
 
       </tbody>
-    </table >
+    </table>
   );
 };
 
